@@ -1,0 +1,82 @@
+html{
+	background-color: #C2C2C2;
+}
+body {
+	margin: 0;
+	direction: rtl;
+	font: 0.75em/170% Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #454C43;
+}
+
+.report_results_page{
+	width: 600px;
+	display: block;
+	margin:auto;
+	padding:20px;
+	background-color: white;
+}
+
+table{
+	border-collapse: collapse;
+	font-size: 12px;
+}
+
+table th{
+	border: 1px solid black;
+	padding:10px;
+	text-align: center;
+}
+
+table td{
+	border: 1px solid black;
+	padding: 4px 2px;
+}
+
+.report_logo{
+	float:left;
+	display: inline-block;
+	padding: 0 0 20px 0;
+}
+
+.report_title{
+	font-size: 16px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.report_main_title{
+	display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 51px;
+    text-align: center;
+}
+
+.report_from_date{
+	float: right;
+	margin-left: 50px;	
+}
+
+.seperator{
+	width: 600px;
+	height: 1px;
+	line-height: 1px;
+	background-color: #fff;
+	border-top:1px solid #000;
+	display: inline-block;
+}
+
+.report_info{
+	padding: 10px;
+}
+
+.deletedreport_note{
+	color:red;
+}
+
+.report_city{
+	font-weight: bold;
+}

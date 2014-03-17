@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.action.extension" value="," />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources" value="/resources/client_messages" />
+
+	<package name="default" extends="struts-default">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+
+		<interceptors>
+			<interceptor name="authentication"
+				class="interceptors.AuthenticationInterceptor"></interceptor>
+
+			<interceptor name="administrator" class="interceptors.AdminInterceptor"></interceptor>
+
+			<interceptor-stack name="authStack">
+				<interceptor-ref name="authentication"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+
+			<interceptor-stack name="adminStack">
+				<interceptor-ref name="administrator"></interceptor-ref>
+				<interceptor-ref name="authStack"></interceptor-ref>
+			</interceptor-stack>
+
+		</interceptors>
+
+		<default-interceptor-ref name="authStack"></default-interceptor-ref>
+
+		<global-results>
+			<result name="login" type="redirect">/login</result>
+			<result name="error" type="redirect">/login</result>
+		</global-results>
+
+		<action name="login" class="actions.LoginAction">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result type="tiles">login.tiles</result>
+		</action>
+
+		<action name="loginUser" class="actions.LoginAction" method="loginUser">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="admin" type="redirect">/admin</result>
+			<result name="success" type="redirect">/reporting</result>
+		</action>
+		
+		<action name="logout" class="actions.LoginAction" method="logout" />
+
+		<action name="admin" class="actions.AdministrationAction">
+			<interceptor-ref name="adminStack" />
+			<result type="tiles">admin.tiles</result>
+		</action>
+
+		<action name="test">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result>/WEB-INF/content/test.jsp</result>
+		</action>
+
+		<action name="loginTest" class="actions.LoginAction" method="test">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+		<!-- <action name="*Menu" method="{1}" class="actions.MenuAction"> -->
+		<!-- <result name="tiger" type="tiles">tiger</result> -->
+		<!-- <result name="lion" type="tiles">lion</result> -->
+		<!-- </action> -->
+
+		<!-- <action name="reporting" class="actions.ReportingAction"> -->
+		<!-- <result name="success" type="tiles">welcome.tiles</result> -->
+		<!-- </action> -->
+
+
+		<!-- <action name="reporting-invoices" class="actions.ReportingAction" -->
+		<!-- method="getInvoiceReport"> -->
+		<!-- <result name="success" type="tiles">invoice-report.tiles</result> -->
+		<!-- </action> -->
+
+		<!-- <action name="login" class="actions.LoginAction"> -->
+		<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
+		<!-- <result type="tiles">login.tiles</result> -->
+		<!-- </action> -->
+		<!-- <action name="login" class="actions.LoginAction"> -->
+		<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
+		<!-- <result name="admin" type="tiles">admin.tiles</result> -->
+		<!-- <result name="success" type="redirect">/reporting</result> -->
+		<!-- <result name="error" type="tiles">login.tiles</result> -->
+		<!-- </action> -->
+		<!-- <action name="loginUser" class="actions.LoginAction" method="login"> -->
+		<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
+		<!-- <result name="admin" type="tiles">admin.tiles</result> -->
+		<!-- <result name="success" type="redirect">/reporting</result> -->
+		<!-- <result name="error" type="tiles">login.tiles</result> -->
+		<!-- </action> -->
+
+	</package>
+
+	<package name="reports" namespace="/Reports" extends="default">
+		<action name="item-report" class="actions.reports.ItemReportAction">
+			<result name="success" type="tiles">item-report.tiles</result>
+		</action>
+	</package>
+</struts>

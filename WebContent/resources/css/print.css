@@ -1,0 +1,256 @@
+body {
+	margin: 0;
+	direction: rtl;
+	font: 0.75em/170% Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #454C43;
+}
+
+table {
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+.invoice_table table.payment_print_table td{
+	border: 1px solid;
+}
+
+
+.printing_page {
+	width: 650px;
+	margin: auto;
+	display: block;
+}
+
+.field_wrapper {
+	margin-bottom: 2px;
+}
+
+th{
+	text-align: center;
+}
+
+.invoice_table table th {
+	padding: 0 5px;
+	border-left: 1px solid #000000;
+}
+
+.invoice_table table td {
+	font-size: 12px;
+    padding: 5px;
+    text-align: right;
+    border-left: 1px solid #000000;
+}
+
+.invoice_table table tr{
+	border-top: 1px dashed #000; 
+}
+
+.company_image {
+	float: left;
+	color: #3265A3;
+}
+
+.footer {
+	border-top: 1px solid #454C43;
+	font-size: 9px;
+	direction: rtl;
+	text-align: center;
+}
+
+.print_invoice_right {
+	color: #3265A3;
+}
+
+.invoice_number {
+	font-size: 32px;
+	font-weight: bold;
+}
+
+.print_invoice_right {
+	display: inline-block;
+	float: right;
+	margin-top: 40px;
+	width: 200px;
+}
+
+.print_invoice_left {
+	display: inline-block;
+	float: left;
+	width:350px;
+	font-size: 16px;
+	margin-top: 20px;
+}
+
+.print_invoice_left label {
+	font-weight: bold;
+	   float: right;
+}
+
+.bottom_right {
+	float: right;
+	width: 350px;
+}
+
+.bottom_left {
+	float: left;
+	width: 350px;
+	text-align: left;
+	margin-top: 22px;
+}
+
+.signature {
+	float: left;
+	text-align: center;
+	width: 200px;
+	font-weight: bold;
+}
+
+.stamp {
+	float: left;
+	text-align: right;
+	width: 200px;
+	margin-top: 20px;
+	font-weight: bold;
+	margin-bottom: 50px;
+}
+
+
+.address{
+	display: inline-block;
+}
+
+
+.save{
+	float: left;
+	display: inline-block;
+	margin-left: 40px;
+}
+
+.today_date{
+	float: right;
+	display: inline-block;
+	font-size: 11px;
+}
+
+.hidden{
+	display: none;
+}
+
+
+.description_direction2{
+	direction: ltr;
+	line-height: 14px;
+}
+
+.company_name{
+	display: inline-block;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 35px;
+    text-align: center;
+     margin-top: 5px;
+}
+
+.company_description{
+	font-size: 25px;
+    font-weight: normal;    
+}
+
+.seperator{
+	width: 650px;
+	height: 1px;
+	line-height: 1px;
+	background-color: #fff;
+	border-top:1px solid #000;
+	display: inline-block;
+}
+
+.vat_number{
+	font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+    width: 217px;
+    float: right;
+}
+
+.invoice_title{
+	font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+    width: 217px;
+    float: right;
+}
+
+.original_copy {
+	float: right;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    padding-top: 10px;
+    text-align: center;
+    width: 215px;
+}
+
+.info_first_part{
+	margin-top: 10px;
+}
+
+.invoice_date{
+	border-bottom: 1px dotted #000000;
+    width: 76px;
+    display: inline-block;
+}
+
+.invoice_date_area label{
+	float: right;
+	display: inline-block;
+}
+
+.invoice_number_area{
+	display: inline-block;
+    float: left;
+}
+
+.invoice_date_area{
+	display: inline-block;
+	float: right;
+}
+
+.info_second_part label{
+	float: right;
+	display: inline-block;
+	margin-top: 9px;
+}
+
+.second_part_info{
+	border-bottom: 1px dotted #000;
+	display: inline-block;
+	margin-right: 5px;
+	width: 582px;
+	margin-top: 5px;
+}
+
+.payment_print_table {
+	border-collapse:collapse;
+	margin-top: 20px;
+	border: 1px solid #000000;
+	text-align: center;
+}
+
+.payment_print_table th{
+	border: 1px solid #000000;
+}
+
+.payment_print_table td{
+	border: 1px solid #000000;
+}
+
+.was_paid_cash{
+	font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+}

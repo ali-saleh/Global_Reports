@@ -1,0 +1,853 @@
+@CHARSET "ISO-8859-1";
+
+table{
+	border-collapse: collapse;
+}
+
+body {
+	margin: 0;
+	direction: rtl;
+	font: 0.75em/170% Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #454C43;
+}
+
+html {
+	background-color: #C2C2C2;
+}
+
+#wrapper {
+	background-color: #fff;
+	display: block;
+	margin: 0 auto;
+	width: 964px;
+}
+
+#header {
+	background-image: url("../images/header.jpg");
+	background-repeat: repeat-x;
+	height: 107px;
+	margin: 0;
+	padding: 0;
+	width: auto;
+}
+
+.header_text{
+	font-size: 30px;
+	font-weight:bold;
+	color: #CA9B1F;
+	margin-top: 30px;
+	display: inline-block;
+	float: left;
+}
+
+#headerbg {
+	background-image: url("../images/header-logo.png");
+	background-position: right center;
+	background-repeat: no-repeat;
+	display: block;
+	height: 101px;
+	margin: auto;
+	width: 964px;
+}
+
+#logo {
+	background-image: url("../images/logo2.png");
+    background-position: right center;
+    background-repeat: no-repeat;
+    display: block;
+    float: right;
+    height: 101px;
+    margin: auto auto auto 100px;
+    width: 235px;
+}
+
+#footer {
+	background-image: url("../images/footer.gif");
+	height: 31px;
+	text-align: center;
+	color: #fff;
+}
+
+#navigation {
+	display: inline-block;
+	float: right;
+	margin-right: 14px;
+	width: 945px;
+	margin-bottom: 10px;
+}
+
+#page_title {
+	background-image: url("../images/title-bg.png");
+	background-repeat: no-repeat;
+	float: right;
+	font-size: 24px;
+	height: 23px;
+	margin-right: 7px;
+	padding: 20px;
+	width: 909px;
+	font-weight: bold;
+}
+
+#content {
+	display: inline-block;
+	width: 964px;
+}
+
+#login {
+	width: 380px;
+	height: 500px;
+	margin: auto;
+}
+
+.rtl {
+	display: block;
+	float: right;
+}
+
+.left {
+	display: block;
+	float: left;
+}
+
+.nav_separator {
+	display: block;
+	float: right;
+	width: 15px;
+	height: 20px;
+}
+
+.search_bar {
+	float: right;
+	margin: 10px;
+	width: 929px;
+}
+
+.listing_table {
+	float: right;
+	margin-bottom: 50px;
+	margin-right: 7px;
+}
+
+.search_bar input {
+	float: left;
+}
+
+ztable {
+	border: 1px solid #666666;
+	border-collapse: collapse;
+}
+
+table td {
+	border: 1px solid #666666;
+}
+
+table td img {
+	border: 0;
+}
+
+#login input {
+	float: left;
+}
+
+.login_title h1 {
+	color: #20426F;
+	font-weight: normal;
+}
+
+label {
+	display: inline-block;
+	margin-left: 10px;
+	width: 110px;
+	float: right;
+}
+
+.button_container {
+	display: inline-block;
+}
+
+.button {
+	display: inline-block;
+	cursor: pointer;
+	float: left;
+}
+
+.button_left {
+	background-image: url("../images/buttonbg_left.png");
+	border: 0;
+	height: 28px;
+	width: 18px;
+	color: white;
+	margin-left: 20px;
+	float: left;
+	cursor: pointer;
+}
+
+.button_right {
+	background-image: url("../images/buttonbg_right.png");
+	border: 0;
+	height: 28px;
+	width: 18px;
+	color: white;
+	float: right;
+	cursor: pointer;
+}
+
+.button input {
+	background-image: url("../images/buttonbg_middle.png");
+	border: 0;
+	height: 28px;
+	color: white;
+	padding: 0 15px;
+	float: right;
+	cursor: pointer;
+}
+
+.button a {
+	background-image: url("../images/buttonbg_middle.png");
+	border: 0;
+	height: 23px;
+	color: white;
+	display: inline-block;
+	padding: 5px 15px 0;
+	text-decoration: none;
+	float: right;
+	cursor: pointer;
+}
+
+.button span {
+	background-image: url("../images/buttonbg_middle.png");
+	border: 0;
+	height: 23px;
+	color: white;
+	display: inline-block;
+	padding: 5px 15px 0;
+	text-decoration: none;
+	float: right;
+	cursor: pointer;
+	cursor: pointer;
+}
+
+.inside_content {
+	float: right;
+	margin-right: 7px;
+	margin-top: 20px;
+}
+
+.fieldwrapper {
+	float: right;
+	margin-bottom: 20px;
+	width: 350px;
+}
+
+.fieldlabel {
+	float: right;
+	width: 100px;
+}
+
+.fieldinput {
+	float: right;
+	width: 220px;
+}
+
+.fieldinput input {
+	width: 100px;
+	direction: rtl;
+}
+
+.fieldinput a input{
+	cursor: pointer;
+}
+
+.subscription_period label{
+	font-size: 16px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.fielderror {
+	color: red;
+	display: inline-block;
+	float: right;
+	font-size: 10px;
+	line-height: 14px;
+	margin-bottom: 7px;
+	margin-right: 120px;
+	text-align: right;
+	width: 185px;
+}
+
+.fieldinput label {
+	float: right;
+	margin: 0 10px 0 0;
+	text-align: right;
+	width: 100px;
+}
+
+th {
+	background-image: url("../images/buttonBg2.gif");
+	border: 0 none;
+	color: white;
+	font-weight: bold;
+	margin: 0;
+	padding: 3px;
+	text-align: center;
+}
+
+#add_item {
+	color: #0000FF;
+	display: inline-block;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.otheritemstable {
+	background-color: white;
+	display: none;
+	left: 0;
+	position: absolute;
+	top: 0;
+	z-index: 6;
+	padding: 10px 20px 20px 20px;
+	height: 400px;
+}
+
+#lightbox {
+	background-color: black;
+	display: none;
+	left: 0;
+	opacity: 0.8;
+	position: absolute;
+	top: 0;
+	z-index: 5;
+	left: 0;
+}
+
+#closeitemstable {
+	font-family: tahoma;
+	color: #0000FF;
+	cursor: pointer;
+}
+
+.itemrow {
+	cursor: pointer;
+}
+
+.itemstable input {
+	width: 66px;
+}
+
+.itemstable{
+	display: inline-block;
+}
+
+.removeItem {
+	background-image: url("../images/delete_icon.gif");
+	background-repeat: no-repeat;
+	height: 20px;
+	margin-right: 5px;
+	margin-top: 5px;
+	cursor: pointer;
+	width: 20px;
+}
+
+.hidden {
+	display: none;
+}
+
+.create_order_buttons {
+	height: 28px;
+	margin: 30px auto;
+	width: 460px;
+}
+
+.user_form_page {
+	display: inline-block
+}
+
+.fields_block {
+	display: inline-block;
+	float: right;
+	width: 400px;
+	margin-right: 7px;
+	margin-top: 30px;
+}
+
+.block_header {
+	background-image: url("../images/buttonBg2.gif");
+	display: inline-block;
+	padding: 5px 10px 0;
+	height: 23px;
+	color: white;
+	margin-bottom: 20px;
+	width: 292px;
+}
+
+.block_header label {
+	float: right;
+}
+
+.input_area {
+	display: inline-block;
+}
+
+.field_wrapper {
+	margin-bottom: 5px;
+	margin-left: 20px;
+	float: right;
+}
+
+.fields_block select {
+	width: 185px;
+}
+
+.create_user_buttons {
+	display: block;
+	height: 28px;
+	margin: 30px auto;
+	width: 245px;
+}
+
+.customer_page_tables table {
+	float: right;
+	margin-left: 20px;
+}
+
+.edit_cstomer_submit {
+	display: block;
+	height: 28px;
+	margin: 30px auto;
+	width: 202px;
+}
+
+.item_description_td input {
+	width: 500px;
+	background-color: white;
+	border: 0;
+}
+
+.price_not_editable {
+	background-color: white;
+	border: 0;
+}
+
+.item_id_td input {
+	background-color: white;
+	border: 0;
+}
+
+.loading {
+	background-image: url("../images/loading.gif");
+	display: block;
+	height: 400px;
+	margin: auto;
+	width: 281px;
+}
+
+.payments_table {
+	border: 0;
+	text-align: center;
+}
+
+.payments_table td {
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+	border-bottom: 1p solid black;
+	padding: 10px 0;
+}
+
+.clickable_invoice_td {
+	cursor: pointer;
+}
+
+.payments_left_area {
+	float: left;
+	margin-right: 20px;
+	width: 450px;
+}
+
+.payments_right_area {
+	width: 450px;
+	float: right;
+}
+
+.payway_table {
+	border: 0
+}
+
+.payway_table td {
+	border: 0;
+	padding: 5px;
+}
+
+.payment_cash_form {
+	width: 350px;
+	margin: auto;
+	margin-top: 30px;
+	height: 90px;
+}
+
+.payment_cheque_form {
+	width: 710px;
+	margin: auto;
+	margin-top: 30px;
+	height: 135px;
+}
+
+.submit_payment_button {
+	width: 125px;
+	height: 28px;
+	margin: 30px auto;
+}
+
+.empty_date {
+	background-image: url("../images/delete_icon.gif");
+	background-repeat: no-repeat;
+	height: 20px;
+	margin-right: 5px;
+	margin-top: 5px;
+	cursor: pointer;
+	width: 20px;
+	display: inline-block;
+}
+
+.remove_invoice {
+	background-image: url("../images/delete_icon.gif");
+	background-repeat: no-repeat;
+	height: 20px;
+	margin-right: 5px;
+	margin-top: 5px;
+	cursor: pointer;
+	width: 20px;
+	display: inline-block;
+}
+
+.date-pick {
+	float: right;
+}
+
+.payment_details_table {
+	border: 0;
+	margin: 30px 0 0 0;
+}
+
+.payment_details_table td {
+	border: 0;
+}
+
+.payment_details_table th {
+	text-align: center;
+}
+
+#payment_add_invoice {
+	display: inline-block;
+	color: #0000FF;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.payment_available_invoices {
+	border: 0;
+}
+
+.payment_available_invoices td {
+	border: 1px solid #666666;
+	border-left: 0 none;
+	border-right: 0 none;
+	border-top: 0 none;
+	padding: 10px 0;
+}
+
+.payment_available_invoices_tr {
+	cursor: pointer;
+}
+
+.order_orderlines_table {
+	border: 0;
+	margin-top: 30px;
+}
+
+.order_orderlines_table td {
+	border: 0;
+	padding: 5px 10px;
+}
+
+.view_invoice_page_right,.view_invoice_page_left {
+	width: 400px;
+	float: right;
+}
+
+
+.review_order_page {
+	width: 900px;
+}
+
+.invisible {
+	border: 0;
+	background-color: white;
+}
+
+.review_order_submit {
+	width: 480px;
+	margin: 30px auto;
+	display: block;
+	height: 28px;
+}
+
+.listing_table td {
+	cursor: pointer;
+}
+
+.search_bar input {
+	margin-right: 5px;
+}
+
+.orders_table,.payment_table,.invoice_table {
+	margin: 0 150px;
+	width: 600px;
+}
+
+.navigation_item_left {
+	height: 23px;
+	float: left;
+	padding: 5px;
+}
+
+.navigation_item {
+	float: right;
+	height: 33px;
+	margin-left: 10px;
+}
+
+.navigation_item a {
+	display: inline-block;
+	height: 23px;
+	padding: 5px;
+	color: #3265A3;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.navigation_item a:hover {
+	background-image: url(../images/MenuItem.png);
+	color: white;
+}
+
+.active_navigation_item {
+	background-image: url(../images/MenuItem.png);
+}
+
+.active_navigation_item a {
+	color: white;
+}
+
+.navigation_item_left a {
+	color: #3265A3;
+	text-decoration: none;
+	font-size: 14px;
+}
+
+.update_user_table {
+	width: 300px;
+	float: right;
+	margin: 0 10px;
+}
+
+#info {
+	margin-right: 10px;
+}
+
+.customer_page_tables {
+	display: inline-block;
+}
+
+.add_payment_button {
+	width: 135px;
+	margin: 30px auto;
+	height: 28px;
+}
+
+.add_order_button {
+	width: 135px;
+	margin: 30px auto;
+	height: 28px;
+}
+
+.update_customer_row {
+	cursor: pointer;
+}
+
+td a {
+	color: #454C43;
+	text-decoration: none;
+}
+
+.print_button {
+	width: 490px;
+	margin: 30px auto;
+	height: 28px;
+}
+
+.view_order_buttons {
+	display: block;
+	height: 28px;
+	margin: 30px auto;
+	width: 455px;
+}
+
+.items_list_title {
+	color: #3265A3;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+}
+
+td {
+	padding-right: 2px;
+}
+
+.item_percentage_td input {
+	background-color: white;
+	border: 0 none;
+}
+
+
+.filtration_box {
+	margin: 10px 0;
+}
+
+.redirection_buttons {
+	display: block;
+	margin: 300px auto;
+	width: 245px;
+}
+
+.notes_textarea {
+	background-color: white;
+	border: 0 none;
+	max-height: 100px;
+	width: 400px;
+	overflow: auto;
+}
+
+.description_direction {
+	direction: rtl;
+	width: 300px;
+}
+
+.description_direction2 {
+	direction: rtl;
+}
+
+#pager {
+	margin-top: 20px;
+	text-align: center;
+	color: #3265A3;
+	font-weight: bold;
+}
+
+#pager a{
+	text-decoration: none;
+	font-size: 14px;
+	color: #3265A3;
+	font-weight: normal;
+}
+
+.current_page{
+	font-size: 16px;
+}
+
+.popup_table{
+	display: inline-block;
+    height: 280px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.closepopup_button{
+	width: 112px;
+	margin: 10px auto;
+}
+
+.issued{
+	color: #CCCCCC;
+    display: inline-block;
+    font-size: 87px;
+    line-height: 87px;
+    padding: 141px 18px;
+}
+
+.password_generator{
+	color: #0000FF;
+    cursor: pointer;
+    margin-right: 92px;
+    text-decoration: underline;
+}
+
+.reports_page{
+	 margin-right: 15px;
+}
+
+.report_title{
+	color: #3265A3;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    height: 23px;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.plus{
+	background-image: url("../images/plus.png");
+    background-repeat: no-repeat;
+    display: block;
+    float: right;
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+}
+
+.minus{
+	background-image: url("../images/minus.png");
+    background-repeat: no-repeat;
+    display: block;
+    float: right;
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+}
+
+.report_title_text{
+	display: inline-block;
+	 margin-top: 6px;
+}
+
+.collapseable{
+	display: none;
+}
+
+.reports_page label{
+	width: 60px;
+}
+
+.reports_page .field_wrapper{
+	width: 200px;
+}
+
+.reports_page form{
+	margin-right: 30px;
+	width: 700px;
+	background-color: #E7EBF0;
+	padding: 30px;
+}
+
+.checkboxes label{
+	width:130px
+}
+
+.checkboxes input{
+	float: right;
+}
