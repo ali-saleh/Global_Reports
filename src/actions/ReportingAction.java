@@ -15,15 +15,19 @@ import db.billingdb.model.custom.InvoiceReport;
 
 public class ReportingAction extends ActionSupport implements UserAware {
 
+	/**
+	 * generated serial Version UID for serialization
+	 */
+	private static final long serialVersionUID = 866767945016267932L;
+	
 	private List<String> cities = new ArrayList<String>();
 	private static final String CITY_PREFIX = "city.";
 	private List<InvoiceReport> invoices;
+	private int selectedCity;
 	
 	public void setInvoices(List<InvoiceReport> invoices) {
 		this.invoices = invoices;
 	}
-	
-	private int selectedCity;
 
 	public int getSelectedCity() {
 		return selectedCity;

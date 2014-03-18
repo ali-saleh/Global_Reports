@@ -1,18 +1,18 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-
 <form action="reporting-invoices" method="post">
 	<input type="hidden" name="action" value="balance_report">
 	<div class="field_wrapper">
 		<label>Label</label>
 		<div class="input_area">
 			<select name="selectedCity">
-				<s:set id="i" value="0"/>
-				<s:iterator value="cities" var="city" >
-					<option value="${i}"><s:property value="#city" escapeHtml="false"/></option>
-					<s:set id="i" value="#i+1"/>	
+				<s:set id="i" value="0" />
+				<s:iterator value="cities" var="city">
+					<option value="${i}"><s:property value="#city"
+							escapeHtml="false" /></option>
+					<s:set id="i" value="#i+1" />
 				</s:iterator>
-			</select>	
+			</select>
 		</div>
 	</div>
 	<div class="fieldwrapper" style="width: 500px">
@@ -48,6 +48,3 @@
 	</div>
 	<div style="clear: both;"></div>
 </form>
-
-
-

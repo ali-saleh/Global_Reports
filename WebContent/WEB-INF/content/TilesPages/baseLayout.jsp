@@ -11,6 +11,8 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/globalcom.css" />
 <link rel="stylesheet" media="screen" type="text/css"
 	href="${pageContext.request.contextPath}/resources/libraries/date/date_input.css" />
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/libraries/dataTable/jquery.dataTables.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/libraries/date/date_methods.js"></script>
@@ -18,6 +20,10 @@
 	src="${pageContext.request.contextPath}/resources/libraries/date/jquery.date_input.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/libraries/mask/mask.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/globalcom.js"></script>
+<title>Item Report (See if this appears ??)</title>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/libraries/dataTable/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/test.js"></script>
 </head>
 
 <body dir="rtl">

@@ -46,15 +46,18 @@
 		<action name="loginUser" class="actions.LoginAction" method="loginUser">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<result name="admin" type="redirect">/admin</result>
-			<result name="success" type="redirect">/reporting</result>
+			<result name="success" type="tiles">main.tiles</result>
 		</action>
-		
+
 		<action name="logout" class="actions.LoginAction" method="logout" />
 
 		<action name="admin" class="actions.AdministrationAction">
 			<interceptor-ref name="adminStack" />
 			<result type="tiles">admin.tiles</result>
 		</action>
+
+
+
 
 		<action name="test">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
@@ -69,19 +72,20 @@
 			</result>
 		</action>
 
+		<action name="reporting" class="actions.ReportingAction">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">welcome.tiles</result>
+		</action>
+
+		<action name="reporting-invoices" class="actions.ReportingAction"
+			method="getInvoiceReport">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">invoice-report.tiles</result>
+		</action>
+
 		<!-- <action name="*Menu" method="{1}" class="actions.MenuAction"> -->
 		<!-- <result name="tiger" type="tiles">tiger</result> -->
 		<!-- <result name="lion" type="tiles">lion</result> -->
-		<!-- </action> -->
-
-		<!-- <action name="reporting" class="actions.ReportingAction"> -->
-		<!-- <result name="success" type="tiles">welcome.tiles</result> -->
-		<!-- </action> -->
-
-
-		<!-- <action name="reporting-invoices" class="actions.ReportingAction" -->
-		<!-- method="getInvoiceReport"> -->
-		<!-- <result name="success" type="tiles">invoice-report.tiles</result> -->
 		<!-- </action> -->
 
 		<!-- <action name="login" class="actions.LoginAction"> -->

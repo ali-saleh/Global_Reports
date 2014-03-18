@@ -2,7 +2,7 @@
 
 <div id="navigation">
 	<div class="navigation_item">
-		<a href="<s:url action="tigerMenu"/>">Reports</a>
+		<a href="<s:url action="reports"/>">Reports</a>
 	</div>
 	<div class="navigation_item">
 		<a href="http://www.google.com">Test</a><br>
