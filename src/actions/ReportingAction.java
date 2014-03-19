@@ -71,9 +71,9 @@ public class ReportingAction extends ActionSupport implements UserAware {
 		InvoiceCondition condition = new InvoiceCondition();
 		condition.setCity(selectedCity);
 		this.invoices = dao.getInvoicesByCondition(condition);
-		InvoiceReport invoiceReport = invoices.get(0);
-		invoiceReport.setDisply_name("<br><b>"+invoiceReport.getDisply_name()+"</b>");
-		invoices.set(0,invoiceReport);
+//		InvoiceReport invoiceReport = invoices.get(0);
+//		invoiceReport.setDisply_name("<br><b>"+invoiceReport.getDisply_name()+"</b>");
+//		invoices.set(0,invoiceReport);
 		return SUCCESS;
 	}
 

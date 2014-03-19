@@ -1,5 +1,6 @@
 $(function() {
-	$("#example").dataTable();
+	$(".report_table").dataTable();
+	$( "#accordion" ).accordion();
 });
 
 function ali_test() {
