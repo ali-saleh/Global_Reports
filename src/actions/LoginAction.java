@@ -49,7 +49,7 @@ public class LoginAction extends ActionSupport implements SessionAware,
 	private Map<String, Object> sessionAttributes = null;
 
 	public String execute() throws Exception {
-		LOG.info("This should be called on startup");
+		//LOG.info("This should be called on startup");
 		return SUCCESS;
 	}
 

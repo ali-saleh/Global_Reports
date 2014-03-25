@@ -24,6 +24,9 @@ public class ReportingAction extends ActionSupport implements UserAware {
 	private static final String CITY_PREFIX = "city.";
 	private List<InvoiceReport> invoices;
 	private int selectedCity;
+	private int fld_reports_currency;
+	private String city;
+	private String currency;
 	
 	public void setInvoices(List<InvoiceReport> invoices) {
 		this.invoices = invoices;
@@ -35,6 +38,7 @@ public class ReportingAction extends ActionSupport implements UserAware {
 
 	public void setSelectedCity(int selectedCity) {
 		this.selectedCity = selectedCity;
+		this.setCity(getText(CITY_PREFIX + selectedCity, ""));
 	}
 
 	public ReportingAction() {
@@ -85,5 +89,43 @@ public class ReportingAction extends ActionSupport implements UserAware {
 	public void setUser(SessionUser user) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public int getFld_reports_currency() {
+		return fld_reports_currency;
+	}
+
+	public void setFld_reports_currency(int fld_reports_currency) {
+		this.fld_reports_currency = fld_reports_currency;
+		switch (this.fld_reports_currency) {
+		case 1:
+			setCurrency(getText("report.report.both.currencies", ""));
+			break;
+		case 2:
+			setCurrency(getText("report.report.dollar", ""));
+			break;
+		case 3:
+			setCurrency(getText("report.report.shekel", ""));
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
 	}
 }

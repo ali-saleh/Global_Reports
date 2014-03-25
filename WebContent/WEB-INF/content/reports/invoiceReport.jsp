@@ -1,8 +1,16 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
+<div id="report_header">
+	<h1><s:property value="getText('reports.invoice.reports.title')" escapeHtml="true"/></h1>
+</div>
+
 <div id="filter_fields">
-
-
+	<s:textfield label="city" name="city" readonly="true"/>
+	<br>
+	<s:textfield label="currency" name="curruncy" readonly="true"/>
+	<br>
+	<s:textfield label="Start Date" name="startDate" readonly="true"/>
+	
 </div>
 
 <div id="invoice_res" class="result_table">
