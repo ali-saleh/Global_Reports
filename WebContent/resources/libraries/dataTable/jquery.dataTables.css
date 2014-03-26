@@ -3,12 +3,19 @@
  * Table
  */
 table.dataTable {
-	margin: 0 auto;
+	border-collapse: collapse;
+	/*margin: 0 auto;
 	clear: both;
-	width: 100%;
+	width: 100%;*/
 }
 
 table.dataTable thead th {
+	background-image: url("../images/buttonBg2.gif");
+	border: 0 none;
+	color: white;
+	margin: 0;
+	padding: 3px;
+	text-align: center;
 	padding: 3px 18px 3px 10px;
 	border-bottom: 1px solid black;
 	font-weight: bold;
