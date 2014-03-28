@@ -96,20 +96,8 @@
 					<label><s:property value="getText('report.vat')"
 						escapeHtml="false" /></label>
 				</div>
-				<div class="fieldinput" style="width: 500px">
-					<input style="float: right;" type="radio"
-						name="fld_reports_currency" checked="checked" value="1"> <label
-						style="width: 90px"><s:property
-							value="getText('report.report.both.currencies')"
-							escapeHtml="false" /></label>
-					<div style="clear: both;"></div>
-					<input style="float: right;" type="radio"
-						name="fld_reports_currency" value="2"> <label><s:property
-							value="getText('report.report.dollar')" escapeHtml="false" /></label>
-					<div style="clear: both;"></div>
-					<input style="float: right;" type="radio"
-						name="fld_reports_currency" value="3"> <label><s:property
-							value="getText('report.report.shekel')" escapeHtml="false" /></label>
+				<div class="fieldinput">
+					<input type="checkbox" checked="checked" name="vatSelect">
 				</div>
 			</div>
 
