@@ -24,7 +24,7 @@ public class ItemReportAction implements UserAware{
 	public String execute() throws Exception {
 		ItemReportDAO dao = new ItemReportDAO();
 		try {
-			this.items = dao.report();
+			//this.items = dao.report();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

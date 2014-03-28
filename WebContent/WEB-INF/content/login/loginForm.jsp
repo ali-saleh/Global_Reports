@@ -25,7 +25,8 @@
 			<div class="button_container" style="float: left;">
 				<div class="button_left"></div>
 				<div class="button">
-					<input type="submit" value="<s:property value="getText('login.submit')" escapeHtml="false" />">
+					<input type="submit" value="<s:property value="getText('login.submit')" escapeHtml="false" />"
+					style="margin: 0">
 				</div>
 				<div class="button_right"></div>
 			</div>

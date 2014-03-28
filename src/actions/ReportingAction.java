@@ -27,7 +27,43 @@ public class ReportingAction extends ActionSupport implements UserAware {
 	private int fld_reports_currency;
 	private String city;
 	private String currency;
+	private int selectedItem;
+	private String fromDate;
+	private String toDate;
+	private boolean vatSelect;
 	
+	public int getSelectedItem() {
+		return selectedItem;
+	}
+
+	public void setSelectedItem(int selectedItem) {
+		this.selectedItem = selectedItem;
+	}
+
+	public String getFromDate() {
+		return fromDate;
+	}
+
+	public void setFromDate(String fromDate) {
+		this.fromDate = fromDate;
+	}
+
+	public String getToDate() {
+		return toDate;
+	}
+
+	public void setToDate(String toDate) {
+		this.toDate = toDate;
+	}
+
+	public boolean isVatSelect() {
+		return vatSelect;
+	}
+
+	public void setVatSelect(boolean vatSelect) {
+		this.vatSelect = vatSelect;
+	}
+
 	public void setInvoices(List<InvoiceReport> invoices) {
 		this.invoices = invoices;
 	}
