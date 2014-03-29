@@ -21,12 +21,19 @@ public class LoginAction extends ActionSupport implements SessionAware,
 
 	private static final long serialVersionUID = -6190050699323786248L;
     private InputStream inputStream;
-    public InputStream getInputStream() {
+    private String username;
+	private String password;
+	private SessionUser user = new SessionUser();
+	private Map<String, Object> sessionAttributes = null;
+	public String test() throws UnsupportedEncodingException {
+		inputStream = new ByteArrayInputStream("Hello World! This is a text string response from a Struts 2 Action.".getBytes("UTF-8"));
+	    return SUCCESS;
+	}
+
+	public InputStream getInputStream() {
         return inputStream;
     }
 	
-	private String username;
-
 	public String getUsername() {
 		return username;
 	}
@@ -35,22 +42,12 @@ public class LoginAction extends ActionSupport implements SessionAware,
 		this.username = username;
 	}
 
-	private String password;
-
 	public String getPassword() {
 		return password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	private SessionUser user = new SessionUser();
-	private Map<String, Object> sessionAttributes = null;
-
-	public String execute() throws Exception {
-		//LOG.info("This should be called on startup");
-		return SUCCESS;
 	}
 
 	public String loginUser() {
@@ -85,23 +82,11 @@ public class LoginAction extends ActionSupport implements SessionAware,
 		return LOGIN;
 	}
 
-	private User authenticate(String user, String password) {
-		LoginUserDAO loginUser = new LoginUserDAO();
-		User loggedUser = null;
-		try {
-			loggedUser = loginUser.authenticateUser(user, password);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public String execute() throws Exception {
+		//LOG.info("This should be called on startup");
+		return SUCCESS;
+	}
 
-		return loggedUser;
-	}
-	
-	public String test() throws UnsupportedEncodingException {
-		inputStream = new ByteArrayInputStream("Hello World! This is a text string response from a Struts 2 Action.".getBytes("UTF-8"));
-        return SUCCESS;
-	}
-	
 	@Override
 	public SessionUser getModel() {
 		return user;
@@ -110,5 +95,17 @@ public class LoginAction extends ActionSupport implements SessionAware,
 	@Override
 	public void setSession(Map<String, Object> session) {
 		sessionAttributes = session;
+	}
+
+	private User authenticate(String user, String password) {
+		LoginUserDAO loginUser = new LoginUserDAO();
+		User loggedUser = null;
+		try {
+			loggedUser = loginUser.authenticateUser(user, password);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
+		return loggedUser;
 	}
 }

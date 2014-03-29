@@ -1,6 +1,6 @@
 @CHARSET "ISO-8859-1";
 
-table{
+.normal_table table {
 	border-collapse: collapse;
 }
 
@@ -32,9 +32,9 @@ html {
 	width: auto;
 }
 
-.header_text{
+.header_text {
 	font-size: 30px;
-	font-weight:bold;
+	font-weight: bold;
 	color: #CA9B1F;
 	margin-top: 30px;
 	display: inline-block;
@@ -53,13 +53,13 @@ html {
 
 #logo {
 	background-image: url("../images/logo2.png");
-    background-position: right center;
-    background-repeat: no-repeat;
-    display: block;
-    float: right;
-    height: 101px;
-    margin: auto auto auto 100px;
-    width: 235px;
+	background-position: right center;
+	background-repeat: no-repeat;
+	display: block;
+	float: right;
+	height: 101px;
+	margin: auto auto auto 100px;
+	width: 235px;
 }
 
 #footer {
@@ -138,11 +138,11 @@ ztable {
 	border-collapse: collapse;
 }
 
-table td {
+.normal table td {
 	border: 1px solid #666666;
 }
 
-table td img {
+.normal table td img {
 	border: 0;
 }
 
@@ -196,6 +196,7 @@ label {
 .button input {
 	background-image: url("../images/buttonbg_middle.png");
 	border: 0;
+	margin: 0;
 	height: 28px;
 	color: white;
 	padding: 0 15px;
@@ -254,14 +255,14 @@ label {
 	direction: rtl;
 }
 
-.fieldinput a input{
+.fieldinput a input {
 	cursor: pointer;
 }
 
-.subscription_period label{
+.subscription_period label {
 	font-size: 16px;
-    font-weight: bold;
-    text-decoration: underline;
+	font-weight: bold;
+	text-decoration: underline;
 }
 
 .fielderror {
@@ -283,10 +284,9 @@ label {
 	width: 100px;
 }
 
-th {
+.normal_table th {
 	background-image: url("../images/buttonBg2.gif");
 	border: 0 none;
-	color: white;
 	font-weight: bold;
 	margin: 0;
 	padding: 3px;
@@ -336,7 +336,7 @@ th {
 	width: 66px;
 }
 
-.itemstable{
+.itemstable {
 	display: inline-block;
 }
 
@@ -577,7 +577,6 @@ th {
 	float: right;
 }
 
-
 .review_order_page {
 	width: 900px;
 }
@@ -712,7 +711,6 @@ td {
 	border: 0 none;
 }
 
-
 .filtration_box {
 	margin: 10px 0;
 }
@@ -747,106 +745,106 @@ td {
 	font-weight: bold;
 }
 
-#pager a{
+#pager a {
 	text-decoration: none;
 	font-size: 14px;
 	color: #3265A3;
 	font-weight: normal;
 }
 
-.current_page{
+.current_page {
 	font-size: 16px;
 }
 
-.popup_table{
+.popup_table {
 	display: inline-block;
-    height: 280px;
-    overflow-x: hidden;
-    overflow-y: auto;
+	height: 280px;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
-.closepopup_button{
+.closepopup_button {
 	width: 112px;
 	margin: 10px auto;
 }
 
-.issued{
+.issued {
 	color: #CCCCCC;
-    display: inline-block;
-    font-size: 87px;
-    line-height: 87px;
-    padding: 141px 18px;
-}
-
-.password_generator{
-	color: #0000FF;
-    cursor: pointer;
-    margin-right: 92px;
-    text-decoration: underline;
-}
-
-.reports_page{
-	 margin-right: 15px;
-}
-
-.report_title{
-	color: #3265A3;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: bold;
-    height: 23px;
-    padding: 5px;
-    text-decoration: none;
-}
-
-.plus{
-	background-image: url("../images/plus.png");
-    background-repeat: no-repeat;
-    display: block;
-    float: right;
-    height: 32px;
-    width: 32px;
-    cursor: pointer;
-}
-
-.minus{
-	background-image: url("../images/minus.png");
-    background-repeat: no-repeat;
-    display: block;
-    float: right;
-    height: 32px;
-    width: 32px;
-    cursor: pointer;
-}
-
-.report_title_text{
 	display: inline-block;
-	 margin-top: 6px;
+	font-size: 87px;
+	line-height: 87px;
+	padding: 141px 18px;
 }
 
-.collapseable{
+.password_generator {
+	color: #0000FF;
+	cursor: pointer;
+	margin-right: 92px;
+	text-decoration: underline;
+}
+
+.reports_page {
+	margin-right: 15px;
+}
+
+.report_title {
+	color: #3265A3;
+	display: inline-block;
+	font-size: 14px;
+	font-weight: bold;
+	height: 23px;
+	padding: 5px;
+	text-decoration: none;
+}
+
+.plus {
+	background-image: url("../images/plus.png");
+	background-repeat: no-repeat;
+	display: block;
+	float: right;
+	height: 32px;
+	width: 32px;
+	cursor: pointer;
+}
+
+.minus {
+	background-image: url("../images/minus.png");
+	background-repeat: no-repeat;
+	display: block;
+	float: right;
+	height: 32px;
+	width: 32px;
+	cursor: pointer;
+}
+
+.report_title_text {
+	display: inline-block;
+	margin-top: 6px;
+}
+
+.collapseable {
 	display: none;
 }
 
-.reports_page label{
+.reports_page label {
 	width: 60px;
 }
 
-.reports_page .field_wrapper{
+.reports_page .field_wrapper {
 	width: 200px;
 }
 
-.reports_page form{
+.reports_page form {
 	margin-right: 30px;
 	width: 700px;
 	background-color: #E7EBF0;
 	padding: 30px;
 }
 
-.checkboxes label{
-	width:130px
+.checkboxes label {
+	width: 130px
 }
 
-.checkboxes input{
+.checkboxes input {
 	float: right;
 }

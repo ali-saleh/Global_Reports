@@ -55,6 +55,12 @@
 		<put-attribute name="body"
 			value="/WEB-INF/content/reports/invoiceReport.jsp" />
 	</definition>
+	
+	<definition name="service-report.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Use properties (service)" />
+		<put-attribute name="body"
+			value="/WEB-INF/content/reports/serviceReport.jsp" />
+	</definition>
 
 	<definition name="main.tiles" extends="baseLayout">
 		<put-attribute name="title" value="Home" />

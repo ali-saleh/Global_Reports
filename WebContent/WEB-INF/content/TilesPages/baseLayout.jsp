@@ -15,6 +15,8 @@
 	href="${pageContext.request.contextPath}/resources/libraries/dataTable/jquery.dataTables.css">
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/libraries/jQueryUI/jquery-ui-1.10.4.custom.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/libraries/chosen/chosen.min.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/libraries/date/date_methods.js"></script>
@@ -27,10 +29,11 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/libraries/jQueryUI/jquery-ui-1.10.4.custom.js"></script>	
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/test.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/libraries/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/libraries/chosen/chosen.proto.min.js"></script>
 </head>
 
 <body dir="rtl">
-
 	<div id="header">
 		<tiles:insertAttribute name="header" />
 		<br />

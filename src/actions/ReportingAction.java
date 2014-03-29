@@ -2,16 +2,24 @@ package actions;
 
 import interceptors.UserAware;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.StringUtils;
 
 import model.SessionUser;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 import db.billingdb.dao.custom.impl.InvoiceReportDAO;
+import db.billingdb.dao.custom.impl.ItemReportDAO;
 import db.billingdb.model.custom.InvoiceCondition;
 import db.billingdb.model.custom.InvoiceReport;
+import db.billingdb.model.custom.Item;
+import db.billingdb.model.custom.ItemReport;
+import db.billingdb.model.custom.ItemReportCondition;
 
 public class ReportingAction extends ActionSupport implements UserAware {
 
@@ -19,8 +27,10 @@ public class ReportingAction extends ActionSupport implements UserAware {
 	 * generated serial Version UID for serialization
 	 */
 	private static final long serialVersionUID = 866767945016267932L;
-	
+
 	private List<String> cities = new ArrayList<String>();
+	private List<Item> items;
+	private List<ItemReport> services;
 	private static final String CITY_PREFIX = "city.";
 	private List<InvoiceReport> invoices;
 	private int selectedCity;
@@ -31,13 +41,24 @@ public class ReportingAction extends ActionSupport implements UserAware {
 	private String fromDate;
 	private String toDate;
 	private boolean vatSelect;
-	
+
+	public ReportingAction() {
+		prepareCities();
+		prepareItems();
+	}
+
 	public int getSelectedItem() {
 		return selectedItem;
 	}
 
 	public void setSelectedItem(int selectedItem) {
 		this.selectedItem = selectedItem;
+		for(Item i : items) {
+			if (i.getId() == selectedItem) {
+				this.setItemName(i.getDesc());
+				break;
+			}
+		}
 	}
 
 	public String getFromDate() {
@@ -77,8 +98,12 @@ public class ReportingAction extends ActionSupport implements UserAware {
 		this.setCity(getText(CITY_PREFIX + selectedCity, ""));
 	}
 
-	public ReportingAction() {
-		prepareCities();
+	public List<Item> getItems() {
+		return items;
+	}
+
+	public void setItems(List<Item> items) {
+		this.items = items;
 	}
 
 	public List<String> getCities() {
@@ -89,34 +114,51 @@ public class ReportingAction extends ActionSupport implements UserAware {
 		this.cities = cities;
 	}
 
-	void prepareCities() {
-		if (cities.size() == 0) {
-			int size = 0;
-			while (true) {
-				String name;
-				if ((name = getText(CITY_PREFIX + size++, "")).isEmpty())
-					break;
-				cities.add(name);
-			}
-		}
-	}
-
 	public String execute() throws Exception {
 		return SUCCESS;
 	}
-	
+
 	public String getInvoiceReport() {
-		
+
 		InvoiceReportDAO dao = new InvoiceReportDAO();
 		InvoiceCondition condition = new InvoiceCondition();
-		condition.setCity(selectedCity);
+
+		if (selectedCity != 0)
+			condition.setCity(selectedCity);
+		if (fromDate != null && !fromDate.isEmpty())
+			condition.setStartDate(Date.valueOf(convertDateFormat(fromDate)));
+		if (toDate != null && !toDate.isEmpty())
+			condition.setEndDate(Date.valueOf(convertDateFormat(toDate)));
+		if (selectedItem != 0)
+			condition.setItemId(selectedItem);
+		if (vatSelect)
+			condition.setVatRate(1.0); //Note: this value is just !0 and will be overridden
+
 		this.invoices = dao.getInvoicesByCondition(condition);
-//		InvoiceReport invoiceReport = invoices.get(0);
-//		invoiceReport.setDisply_name("<br><b>"+invoiceReport.getDisply_name()+"</b>");
-//		invoices.set(0,invoiceReport);
+
 		return SUCCESS;
 	}
+	
+	public String getServiceReport() {
+		ItemReportDAO dao = new ItemReportDAO();
+		ItemReportCondition condition = new ItemReportCondition();
 
+		if (selectedCity != 0)
+			condition.setCity(selectedCity);
+		if (fromDate != null && !fromDate.isEmpty())
+			condition.setStartDate(Date.valueOf(convertDateFormat(fromDate)));
+		if (toDate != null && !toDate.isEmpty())
+			condition.setEndDate(Date.valueOf(convertDateFormat(toDate)));
+		if (selectedItem != 0)
+			condition.setItemId(selectedItem);
+		if (vatSelect)
+			condition.setVatRate(1.0); //Note: this value is just !0 and will be overridden
+
+		this.setServices(dao.getItemReport(condition));
+
+		return SUCCESS;
+	}
+	
 	public List<InvoiceReport> getInvoices() {
 		return invoices;
 	}
@@ -133,6 +175,16 @@ public class ReportingAction extends ActionSupport implements UserAware {
 
 	public void setCity(String city) {
 		this.city = city;
+	}
+
+	private String itemName;
+
+	public String getItemName() {
+		return itemName;
+	}
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
 	}
 
 	public int getFld_reports_currency() {
@@ -163,5 +215,40 @@ public class ReportingAction extends ActionSupport implements UserAware {
 
 	public void setCurrency(String currency) {
 		this.currency = currency;
+	}
+
+	private void prepareCities() {
+		if (cities.size() == 0) {
+			int size = 0;
+			while (true) {
+				String name;
+				if ((name = getText(CITY_PREFIX + size++, "")).isEmpty())
+					break;
+				cities.add(name);
+			}
+		}
+	}
+
+	private void prepareItems() {
+		if (items == null) {
+			ItemReportDAO dao = new ItemReportDAO();
+			items = dao.listItems();
+		}
+	}
+
+	private String convertDateFormat(String date) {
+		String[] parts = date.split("/");
+		
+		ArrayUtils.reverse(parts);
+		
+		return StringUtils.join(parts, '-');
+	}
+
+	public List<ItemReport> getServices() {
+		return services;
+	}
+
+	public void setServices(List<ItemReport> services) {
+		this.services = services;
 	}
 }

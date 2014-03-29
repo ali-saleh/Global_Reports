@@ -1,6 +1,7 @@
 $(function() {
 	$(".report_table").dataTable();
 	$( "#accordion" ).accordion();
+	$(".chosen-select").chosen();
 });
 
 function ali_test() {
