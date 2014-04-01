@@ -52,10 +52,10 @@
 		<tbody>
 			<s:iterator value="invoices" var="item">
 				<tr>
-					<td><s:property value="#item.disply_name" escapeHtml="false" /></td>
-					<td><s:property value="#item.invoice_id" /></td>
-					<td><s:property value="#item.create_datetime" /></td>
-					<td><s:property value="#item.balance" /></td>
+					<td><s:property value="#item.userFullName" escapeHtml="false" /></td>
+					<td><s:property value="#item.invoiceId" /></td>
+					<td><s:property value="#item.createDate" /></td>
+					<td><s:property value="#item.total" /></td>
 				</tr>
 			</s:iterator>
 		</tbody>

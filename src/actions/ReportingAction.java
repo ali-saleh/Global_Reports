@@ -28,37 +28,173 @@ public class ReportingAction extends ActionSupport implements UserAware {
 	 */
 	private static final long serialVersionUID = 866767945016267932L;
 
+	private static final String CITY_PREFIX = "city.";
+
+	private List<InvoiceReport> invoices;
+
+	private List<ItemReport> services;
+
 	private List<String> cities = new ArrayList<String>();
 	private List<Item> items;
-	private List<ItemReport> services;
-	private static final String CITY_PREFIX = "city.";
-	private List<InvoiceReport> invoices;
 	private int selectedCity;
-	private int fld_reports_currency;
+
 	private String city;
+
+	private int currencyId;
 	private String currency;
-	private int selectedItem;
+	private List<Integer> selectedItems;
+	private List<String> itemNames = new ArrayList<String>();
+
 	private String fromDate;
 	private String toDate;
 	private boolean vatSelect;
 
 	public ReportingAction() {
 		prepareCities();
-		prepareItems();
+		items = ListProvider.getItemList();
 	}
 
-	public int getSelectedItem() {
-		return selectedItem;
+	public String execute() throws Exception {
+		return SUCCESS;
 	}
 
-	public void setSelectedItem(int selectedItem) {
-		this.selectedItem = selectedItem;
-		for(Item i : items) {
-			if (i.getId() == selectedItem) {
-				this.setItemName(i.getDesc());
-				break;
+	@Override
+	public void setUser(SessionUser user) {
+		// TODO Auto-generated method stub
+	}
+
+	public String getInvoiceReport() {
+
+		InvoiceReportDAO dao = new InvoiceReportDAO();
+		InvoiceCondition condition = new InvoiceCondition();
+
+		if (selectedCity != 0)
+			condition.setCity(selectedCity);
+		if (fromDate != null && !fromDate.isEmpty())
+			condition.setStartDate(Date.valueOf(convertDateFormat(fromDate)));
+		if (toDate != null && !toDate.isEmpty())
+			condition.setEndDate(Date.valueOf(convertDateFormat(toDate)));
+		// if (selectedItem != 0)
+		// condition.setItemId(selectedItem);
+		if (!vatSelect)
+			condition.setVatRate(1.0); // Note: this value is just !0 and will
+										// be overridden
+
+		this.invoices = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
+
+		return SUCCESS;
+	}
+
+	public String getServiceReport() {
+		ItemReportDAO dao = new ItemReportDAO();
+		ItemReportCondition condition = new ItemReportCondition();
+
+		if (selectedCity != 0)
+			condition.setCity(selectedCity);
+		if (fromDate != null && !fromDate.isEmpty())
+			condition.setStartDate(Date.valueOf(convertDateFormat(fromDate)));
+		if (toDate != null && !toDate.isEmpty())
+			condition.setEndDate(Date.valueOf(convertDateFormat(toDate)));
+		// if (selectedItem != 0)
+		// condition.setItemId(selectedItem);
+		if (!vatSelect)
+			condition.setVatRate(1.0); // Note: this value is just !0 and will
+										// be overridden
+
+		this.setServices(dao.getItemReport(condition));
+
+		return SUCCESS;
+	}
+
+	public List<InvoiceReport> getInvoices() {
+		return invoices;
+	}
+
+	public List<ItemReport> getServices() {
+		return services;
+	}
+
+	public void setServices(List<ItemReport> services) {
+		this.services = services;
+	}
+
+	public List<String> getCities() {
+		return cities;
+	}
+
+	public List<Item> getItems() {
+		return items;
+	}
+
+	public int getSelectedCity() {
+		return selectedCity;
+	}
+
+	public void setSelectedCity(int selectedCity) {
+		this.selectedCity = selectedCity;
+		this.setCity(getText(CITY_PREFIX + selectedCity, ""));
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public int getCurrencyId() {
+		return currencyId;
+	}
+
+	public void setCurrencyId(int currencyId) {
+		this.currencyId = currencyId;
+		switch (this.currencyId) {
+		case 1:
+			setCurrency(getText("report.report.both.currencies", ""));
+			break;
+		case 2:
+			setCurrency(getText("report.report.dollar", ""));
+			break;
+		case 3:
+			setCurrency(getText("report.report.shekel", ""));
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+
+	public List<Integer> getSelectedItems() {
+		return selectedItems;
+	}
+
+	public void setSelectedItems(List<Integer> selectedItems) {
+		this.selectedItems = selectedItems;
+		for (Integer x : this.selectedItems) {
+			for (Item i : items) {
+				if (i.getId() == x) {
+					this.getItemNames().add(i.getDesc());
+					break;
+				}
 			}
 		}
+	}
+
+	public List<String> getItemNames() {
+		return itemNames;
+	}
+
+	public void setItemNames(List<String> itemNames) {
+		this.itemNames = itemNames;
 	}
 
 	public String getFromDate() {
@@ -85,138 +221,6 @@ public class ReportingAction extends ActionSupport implements UserAware {
 		this.vatSelect = vatSelect;
 	}
 
-	public void setInvoices(List<InvoiceReport> invoices) {
-		this.invoices = invoices;
-	}
-
-	public int getSelectedCity() {
-		return selectedCity;
-	}
-
-	public void setSelectedCity(int selectedCity) {
-		this.selectedCity = selectedCity;
-		this.setCity(getText(CITY_PREFIX + selectedCity, ""));
-	}
-
-	public List<Item> getItems() {
-		return items;
-	}
-
-	public void setItems(List<Item> items) {
-		this.items = items;
-	}
-
-	public List<String> getCities() {
-		return cities;
-	}
-
-	public void setCities(List<String> cities) {
-		this.cities = cities;
-	}
-
-	public String execute() throws Exception {
-		return SUCCESS;
-	}
-
-	public String getInvoiceReport() {
-
-		InvoiceReportDAO dao = new InvoiceReportDAO();
-		InvoiceCondition condition = new InvoiceCondition();
-
-		if (selectedCity != 0)
-			condition.setCity(selectedCity);
-		if (fromDate != null && !fromDate.isEmpty())
-			condition.setStartDate(Date.valueOf(convertDateFormat(fromDate)));
-		if (toDate != null && !toDate.isEmpty())
-			condition.setEndDate(Date.valueOf(convertDateFormat(toDate)));
-		if (selectedItem != 0)
-			condition.setItemId(selectedItem);
-		if (vatSelect)
-			condition.setVatRate(1.0); //Note: this value is just !0 and will be overridden
-
-		this.invoices = dao.getInvoicesByCondition(condition);
-
-		return SUCCESS;
-	}
-	
-	public String getServiceReport() {
-		ItemReportDAO dao = new ItemReportDAO();
-		ItemReportCondition condition = new ItemReportCondition();
-
-		if (selectedCity != 0)
-			condition.setCity(selectedCity);
-		if (fromDate != null && !fromDate.isEmpty())
-			condition.setStartDate(Date.valueOf(convertDateFormat(fromDate)));
-		if (toDate != null && !toDate.isEmpty())
-			condition.setEndDate(Date.valueOf(convertDateFormat(toDate)));
-		if (selectedItem != 0)
-			condition.setItemId(selectedItem);
-		if (vatSelect)
-			condition.setVatRate(1.0); //Note: this value is just !0 and will be overridden
-
-		this.setServices(dao.getItemReport(condition));
-
-		return SUCCESS;
-	}
-	
-	public List<InvoiceReport> getInvoices() {
-		return invoices;
-	}
-
-	@Override
-	public void setUser(SessionUser user) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	private String itemName;
-
-	public String getItemName() {
-		return itemName;
-	}
-
-	public void setItemName(String itemName) {
-		this.itemName = itemName;
-	}
-
-	public int getFld_reports_currency() {
-		return fld_reports_currency;
-	}
-
-	public void setFld_reports_currency(int fld_reports_currency) {
-		this.fld_reports_currency = fld_reports_currency;
-		switch (this.fld_reports_currency) {
-		case 1:
-			setCurrency(getText("report.report.both.currencies", ""));
-			break;
-		case 2:
-			setCurrency(getText("report.report.dollar", ""));
-			break;
-		case 3:
-			setCurrency(getText("report.report.shekel", ""));
-			break;
-
-		default:
-			break;
-		}
-	}
-
-	public String getCurrency() {
-		return currency;
-	}
-
-	public void setCurrency(String currency) {
-		this.currency = currency;
-	}
-
 	private void prepareCities() {
 		if (cities.size() == 0) {
 			int size = 0;
@@ -229,26 +233,11 @@ public class ReportingAction extends ActionSupport implements UserAware {
 		}
 	}
 
-	private void prepareItems() {
-		if (items == null) {
-			ItemReportDAO dao = new ItemReportDAO();
-			items = dao.listItems();
-		}
-	}
-
 	private String convertDateFormat(String date) {
 		String[] parts = date.split("/");
-		
+
 		ArrayUtils.reverse(parts);
-		
+
 		return StringUtils.join(parts, '-');
-	}
-
-	public List<ItemReport> getServices() {
-		return services;
-	}
-
-	public void setServices(List<ItemReport> services) {
-		this.services = services;
 	}
 }

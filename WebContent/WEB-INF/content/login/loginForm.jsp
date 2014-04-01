@@ -2,7 +2,7 @@
 
 <div id="login">
 	<br></br> <br></br>
-
+	
 	<div class="login_title">
 		<h1>
 			<s:property value="getText('login.title')" escapeHtml="false" />

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type"
 	content="text/html; charset=windows-1256">
 
-<tiles:insertAttribute name="title"/>
+<title><tiles:insertAttribute name="title"/></title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/globalcom.css" />
 <link rel="stylesheet" media="screen" type="text/css"
 	href="${pageContext.request.contextPath}/resources/libraries/date/date_input.css" />

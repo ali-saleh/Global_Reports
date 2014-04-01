@@ -56,7 +56,7 @@
 				<label><s:property value="getText('report.report.items')"
 						escapeHtml="false" /></label>
 				<div class="input_area">
-					<select name="selectedItem" class="chosen-select">
+					<select name="selectedItems" multiple class="chosen-select chosen-rtl">
 						<option value="0">--</option>
 						<s:iterator value="items" var="item">
 							<option value="<s:property value='#item.id'/>">
