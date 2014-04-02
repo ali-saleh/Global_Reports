@@ -83,6 +83,11 @@
 			<result name="success" type="tiles">invoice-report.tiles</result>
 		</action>
 
+		<action name="invoice_report" class="actions.reports.InvoiceReportAction">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">invoice-report.tiles</result>
+		</action>
+
 		<action name="reporting-services" class="actions.ReportingAction"
 			method="getServiceReport">
 			<interceptor-ref name="defaultStack"></interceptor-ref>

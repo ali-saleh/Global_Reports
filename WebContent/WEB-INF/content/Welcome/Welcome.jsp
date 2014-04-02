@@ -4,7 +4,7 @@
 <div id="accordion">
 	<h3>Section 1</h3>
 	<div>
-		<form action="reporting-invoices" method="post">
+		<form action="invoice_report" method="post">
 			<div class="field_wrapper" id="city-field">
 				<label><s:property value="getText('users.customer.city')"
 						escapeHtml="false" /> </label>
@@ -37,8 +37,6 @@
 						class="empty_date"></span>
 				</div>
 			</div>
-			<div style="clear: both;"></div>
-
 			<div class="fieldwrapper" id="to-date-field">
 				<div class="fieldlabel">
 					<s:property value="getText('report.report.date.to')"
@@ -74,17 +72,17 @@
 				</div>
 				<div class="fieldinput" style="width: 500px">
 					<input style="float: right;" type="radio"
-						name="fld_reports_currency" checked="checked" value="1"> <label
+						name="currencyId" checked="checked" value="1"> <label
 						style="width: 90px"><s:property
 							value="getText('report.report.both.currencies')"
 							escapeHtml="false" /></label>
 					<div style="clear: both;"></div>
 					<input style="float: right;" type="radio"
-						name="fld_reports_currency" value="2"> <label><s:property
+						name="currencyId" value="2"> <label><s:property
 							value="getText('report.report.dollar')" escapeHtml="false" /></label>
 					<div style="clear: both;"></div>
 					<input style="float: right;" type="radio"
-						name="fld_reports_currency" value="3"> <label><s:property
+						name="currencyId" value="3"> <label><s:property
 							value="getText('report.report.shekel')" escapeHtml="false" /></label>
 				</div>
 			</div>

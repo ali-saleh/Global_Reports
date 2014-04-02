@@ -43,19 +43,19 @@ public class InvoiceReportAction extends ActionSupport {
 
 		InvoiceReportDAO dao = new InvoiceReportDAO();
 		InvoiceCondition condition = new InvoiceCondition();
-		
-		//City setting
+
+		// City setting
 		if (selectedCity != 0)
 			condition.setCity(selectedCity);
-		
-		//From date validation
+
+		// From date validation
 		if (fromDate != null && !fromDate.isEmpty())
 			condition.setStartDate(Date.valueOf(convertDateFormat(fromDate)));
-		//To date validation
+		// To date validation
 		if (toDate != null && !toDate.isEmpty())
 			condition.setEndDate(Date.valueOf(convertDateFormat(toDate)));
-		
-		//Currency setting
+
+		// Currency setting
 		switch (this.currencyId) {
 		case 2:
 			condition.setCurrencyId(1);
@@ -66,14 +66,14 @@ public class InvoiceReportAction extends ActionSupport {
 		default:
 			break;
 		}
-		
+
 		// if (selectedItem != 0)
 		// condition.setItemId(selectedItem);
 		if (!vatSelect)
 			condition.setVatRate(1.0); // Note: this value is just !0 and will
 										// be overridden
-		
-		this.invoices = dao.getInvoicesByCondition(condition);
+
+		this.invoices = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
 
 		return SUCCESS;
 	}
