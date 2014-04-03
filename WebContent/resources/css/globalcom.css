@@ -393,7 +393,7 @@ label {
 .field_wrapper {
 	margin-bottom: 5px;
 	margin-left: 20px;
-	float: right;
+	/*float: right;*/
 }
 
 .fields_block select {

@@ -20,6 +20,7 @@ DESCRIPTION: This document contains the structural formatting files for the acco
 	background: #003366;
 	border-bottom: 1px solid #FFFFFF;
 	cursor: pointer;
+	text-align: center;
 	}
 	
 .accordionContent {	
