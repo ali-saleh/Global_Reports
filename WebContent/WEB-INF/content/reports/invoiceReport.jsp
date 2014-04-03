@@ -36,7 +36,7 @@
 </div>
 
 <div id="invoice_res" class="result_table">
-	<table id="example" class="report_table">
+	<table class="report_table" style="display:none;">
 		<thead>
 			<tr>
 				<th><s:property value="getText('order.create.fullname')"

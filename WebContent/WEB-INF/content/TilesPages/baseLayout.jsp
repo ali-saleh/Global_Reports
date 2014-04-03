@@ -8,6 +8,7 @@
 	content="text/html; charset=windows-1256">
 
 <title><tiles:insertAttribute name="title"/></title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/accordion.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/globalcom.css" />
 <link rel="stylesheet" media="screen" type="text/css"
 	href="${pageContext.request.contextPath}/resources/libraries/date/date_input.css" />
@@ -24,12 +25,13 @@
 	src="${pageContext.request.contextPath}/resources/libraries/date/jquery.date_input.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/libraries/mask/mask.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/globalcom.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/accordion.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/libraries/dataTable/jquery.dataTables.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/libraries/jQueryUI/jquery-ui-1.10.4.custom.js"></script>	
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/test.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/libraries/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/libraries/chosen/chosen.jquery.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/libraries/chosen/chosen.proto.min.js"></script>
 </head>
 

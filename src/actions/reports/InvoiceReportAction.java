@@ -73,7 +73,7 @@ public class InvoiceReportAction extends ActionSupport {
 			condition.setVatRate(1.0); // Note: this value is just !0 and will
 										// be overridden
 
-		this.invoices = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
+		 this.invoices = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
 
 		return SUCCESS;
 	}
@@ -184,4 +184,19 @@ public class InvoiceReportAction extends ActionSupport {
 
 		return StringUtils.join(parts, '-');
 	}
+
+//	void test() {
+//		this.invoices = new ArrayList<InvoiceReport>();
+//		int i = 0;
+//		while (i < 20) {
+//			InvoiceReport x = new InvoiceReport();
+//			x.setCreateDate(Date.valueOf("2012-3-1"));
+//			x.setUserFullName("test user");
+//			x.setInvoiceId(100);
+//			x.setTotal(500.0);
+//			this.invoices.add(x);
+//			
+//			i++;
+//		}
+//	}
 }

@@ -1,6 +1,6 @@
 $(function() {
 	$(".report_table").dataTable();
-	$( "#accordion" ).accordion();
+	$(".report_table").slideDown();
 	$(".chosen-select").chosen();
 });
 

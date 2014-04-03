@@ -1,5 +1,6 @@
 package actions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import db.billingdb.dao.custom.impl.ItemReportDAO;
@@ -14,6 +15,14 @@ public class ListProvider {
 			System.out.println("ListProvider: Creating item list");
 			ItemReportDAO dao = new ItemReportDAO();
 			items = dao.listItems();
+			
+//			items = new ArrayList<Item>();
+//			int i = 0;
+//			while (i < 10) {
+//				Item x = new Item();
+//				x.setId(i);
+//				x.setDesc("Test Item" + i);
+//			}
 		}
 
 		return items;

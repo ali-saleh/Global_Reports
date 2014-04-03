@@ -7,26 +7,27 @@ PHONE: 509-321-2849
 DATE: 2/26/2009
 DESCRIPTION: This document contains the structural formatting files for the accordion style menu.
 ************************************************************************************************************************/
-/* #wrapper { */
-/* 	width: 800px; */
-/* 	margin-left: auto; */
-/* 	margin-right: auto; */
-/* 	} */
+#accordion_wrapper {
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	}
 
 .accordionButton {	
 	width: 800px;
-	float: left;
-	_float: none;  /* Float works in all browsers but IE6 */
+/* 	float: right; */
+/* 	_float: none;  Float works in all browsers but IE6 */
 	background: #003366;
 	border-bottom: 1px solid #FFFFFF;
 	cursor: pointer;
 	}
 	
 .accordionContent {	
-	width: 800px;
-	float: left;
-	_float: none; /* Float works in all browsers but IE6 */
+	width: 760px;
+/* 	float: right; */
+/* 	_float: none; Float works in all browsers but IE6 */
 	background: #95B1CE;
+	padding:20px;
 	}
 	
 /***********************************************************************************************************************
@@ -40,3 +41,7 @@ DESCRIPTION: This document contains the structural formatting files for the acco
 .over {
 	background: #CCCCCC;
 	}
+	
+.clear {
+	clear: 0 both;
+}
