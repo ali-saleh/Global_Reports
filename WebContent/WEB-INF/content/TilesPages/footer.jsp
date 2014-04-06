@@ -1,4 +1,3 @@
-<%@page import="utils.GCProperties"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 
-<%GCProperties prop = GCProperties.getSystemProperties();%>
-<%= prop.get("print.footer", null)%>
+<s:property value="getText('print.footer')" escapeHtml="false" />

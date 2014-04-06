@@ -1,11 +1,20 @@
 <%@taglib uri="/struts-tags" prefix="s"%>
 
 <div id="navigation">
-	<div class="navigation_item">
-		<a href="<s:url action="reports"/>">Reports</a>
+
+	<div class="navigation_item 
+	<s:if test="#{ page == 'user'}">
+		active_navigation_item
+	</s:if>
+	">
+		<a href="<s:url action="reporting"/>">Reports</a>
 	</div>
-	<div class="navigation_item">
-		<a href="http://www.google.com">Test</a><br>
+	<div class="navigation_item 
+		<s:if test="#{ page == 'reports'}">
+		active_navigation_item
+	</s:if>
+	">
+		<a href="<s:url action="user"/>">User</a><br>
 	</div>
 	<div class="navigation_item_left">
 		<a href="<s:url action="logout"/>">

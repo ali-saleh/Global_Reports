@@ -25,6 +25,8 @@ public class LoginAction extends ActionSupport implements SessionAware,
 	private String password;
 	private SessionUser user = new SessionUser();
 	private Map<String, Object> sessionAttributes = null;
+	
+	
 	public String test() throws UnsupportedEncodingException {
 		inputStream = new ByteArrayInputStream("Hello World! This is a text string response from a Struts 2 Action.".getBytes("UTF-8"));
 	    return SUCCESS;

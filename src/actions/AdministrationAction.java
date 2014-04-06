@@ -1,7 +1,5 @@
 package actions;
 
-import java.util.Map;
-
 import model.SessionUser;
 import interceptors.*;
 
@@ -11,8 +9,13 @@ public class AdministrationAction extends ActionSupport implements UserAware {
 
 	private static final long serialVersionUID = 5837460494893351128L;
 	
-	SessionUser user;
+	private SessionUser user;
+	private String page = "reports";
 	
+	public String getPage() {
+		return page;
+	}
+
 	@Override
 	public void setUser(SessionUser user) {
 		this.user = user;
@@ -20,7 +23,7 @@ public class AdministrationAction extends ActionSupport implements UserAware {
 	
 	@Override
 	public String execute() {
-		LOG.info("Inside AdminAction");
+		LOG.info("Inside AdminAction for user " + this.user.getName());
 		return SUCCESS;
 	}
 }

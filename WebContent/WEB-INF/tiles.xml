@@ -13,22 +13,27 @@
 			value="/WEB-INF/content/TilesPages/header.jsp" />
 		<put-attribute name="menu"
 			value="/WEB-INF/content/TilesPages/menu.jsp" />
-		<put-attribute name="body"
-			value="/WEB-INF/content/TilesPages/body.jsp" />
+		<!-- <put-attribute name="body" -->
+		<!-- value="/WEB-INF/content/TilesPages/body.jsp" /> -->
 		<put-attribute name="footer"
 			value="/WEB-INF/content/TilesPages/footer.jsp" />
 	</definition>
 
-	<!-- <definition name="tiger" extends="baseLayout"> -->
-	<!-- <put-attribute name="title" value="Tiger"/> -->
-	<!-- <put-attribute name="body" value="/pages/TilesTest/tiger.jsp"/> -->
-	<!-- </definition> -->
-	<!-- <definition name="lion" extends="baseLayout"> -->
-	<!-- <put-attribute name="title" value="Lion"/> -->
-	<!-- <put-attribute name="body" value="/pages/TilesTest/lion.jsp"/> -->
-	<!-- </definition> -->
+	<definition name="printLayout"
+		template="/WEB-INF/content/TilesPages/printLayout.jsp">
+		<put-attribute name="title" value="Print Example" />
+		<!-- <put-attribute name="header" -->
+		<!-- value="/WEB-INF/content/TilesPages/header.jsp" /> -->
+		<!-- <put-attribute name="menu" -->
+		<!-- value="/WEB-INF/content/TilesPages/menu.jsp" /> -->
+		<!-- <put-attribute name="body" -->
+		<!-- value="/WEB-INF/content/TilesPages/body.jsp" /> -->
+		<!-- <put-attribute name="footer" -->
+		<!-- value="/WEB-INF/content/TilesPages/footer.jsp" /> -->
+	</definition>
+
 	<definition name="login.tiles" extends="baseLayout">
-		<!-- <put-attribute name="title" value="login with tiles"/> -->
+		<put-attribute name="title" value="login with tiles" />
 		<put-attribute name="menu" value="" />
 		<put-attribute name="body"
 			value="/WEB-INF/content/login/loginForm.jsp" />
@@ -55,7 +60,7 @@
 		<put-attribute name="body"
 			value="/WEB-INF/content/reports/invoiceReport.jsp" />
 	</definition>
-	
+
 	<definition name="service-report.tiles" extends="baseLayout">
 		<put-attribute name="title" value="Use properties (service)" />
 		<put-attribute name="body"
@@ -65,10 +70,23 @@
 	<definition name="main.tiles" extends="baseLayout">
 		<put-attribute name="title" value="Home" />
 		<put-attribute name="menu" value="" />
-		<put-attribute name="body"
-			value="/WEB-INF/content/main_page.jsp" />
+		<put-attribute name="body" value="/WEB-INF/content/main_page.jsp" />
 	</definition>
 
-	<!-- <definition name="logged_in" extends="baselayout" ></definition> -->
+	<definition name="user.tiles" extends="baseLayout">
+		<put-attribute name="title" value="User page (property)" />
+		<put-attribute name="body"
+			value="/WEB-INF/content/userpage/usersearch.jsp" />
+	</definition>
+
+	<!-- Separator -->
+	<!-- Separator -->
+	<!-- Separator -->
+
+	<definition name="invoice-print.tiles" extends="printLayout">
+		<put-attribute name="title" value="Use properties (invoices)" />
+		<put-attribute name="body"
+			value="/WEB-INF/content/reports/print/invoiceReport.jsp" />
+	</definition>
 
 </tiles-definitions>

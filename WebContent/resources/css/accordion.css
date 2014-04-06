@@ -17,17 +17,23 @@ DESCRIPTION: This document contains the structural formatting files for the acco
 	width: 800px;
 /* 	float: right; */
 /* 	_float: none;  Float works in all browsers but IE6 */
-	background: #003366;
-	border-bottom: 1px solid #FFFFFF;
-	cursor: pointer;
+	/*background: #003366;*/
+	background-image: url("../images/buttonBg2.gif");
+	/*border-bottom: 1px solid #FFFFFF;*/
+	color:white;
+	border: 0 none;
+	font-weight: bold;
+	margin: 0;
+	padding: 3px;
 	text-align: center;
+	cursor: pointer;
 	}
 	
 .accordionContent {	
 	width: 760px;
 /* 	float: right; */
 /* 	_float: none; Float works in all browsers but IE6 */
-	background: #95B1CE;
+	background: silver;
 	padding:20px;
 	}
 	

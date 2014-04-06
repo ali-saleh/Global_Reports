@@ -3,7 +3,7 @@
    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
    "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-<!-- 	<constant name="struts.action.extension" value="," /> -->
+	<constant name="struts.action.extension" value="," />
 	<constant name="struts.devMode" value="true" />
 	<constant name="struts.custom.i18n.resources" value="/resources/client_messages" />
 
@@ -57,7 +57,30 @@
 		</action>
 
 
+		<action name="invoice_report" class="actions.reports.InvoiceReportAction">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">invoice-report.tiles</result>
+		</action>
 
+
+		<!-- Separator -->
+		<!-- Separator -->
+		<!-- Separator -->
+
+
+		<action name="user" class="actions.ReportingAction">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">user.tiles</result>
+		</action>
+
+		<action name="userTest" class="actions.reports.UserReportAction"
+			method="test">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
 
 		<action name="test">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
@@ -77,16 +100,15 @@
 			<result name="success" type="tiles">welcome.tiles</result>
 		</action>
 
+
+
 		<action name="reporting-invoices" class="actions.ReportingAction"
 			method="getInvoiceReport">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<result name="success" type="tiles">invoice-report.tiles</result>
 		</action>
 
-		<action name="invoice_report" class="actions.reports.InvoiceReportAction">
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-			<result name="success" type="tiles">invoice-report.tiles</result>
-		</action>
+
 
 		<action name="reporting-services" class="actions.ReportingAction"
 			method="getServiceReport">
@@ -121,6 +143,14 @@
 	<package name="reports" namespace="/Reports" extends="default">
 		<action name="item-report" class="actions.reports.ItemReportAction">
 			<result name="success" type="tiles">item-report.tiles</result>
+		</action>
+	</package>
+
+	<package name="ajax-testing" namespace="/Ajax" extends="default, json-default">
+		<action name="jsonTest" class="actions.reports.UserReportAction"
+			method="test">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result type="json" />
 		</action>
 	</package>
 </struts>

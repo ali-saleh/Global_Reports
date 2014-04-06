@@ -1,30 +1,27 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
-<head dir="ltr">
+<head>
 <meta http-equiv="Content-Type"
 	content="text/html; charset=windows-1256">
-
-<tiles:insertAttribute name="title"/>
-
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/print.css" />
 </head>
 
 <body dir="rtl">
+	<div class="report_results_page balance_results_report">
+		<div class="report_main_title">
+			<tiles:insertAttribute name="title" />
+		</div>
+		<div class="report_logo">
+			<img alt="logo"
+				src="${pageContext.request.contextPath}/resources/images/logobw.png">
+		</div>
+		<div style="clear: both;"></div>
+		<div class="seperator"></div>
+		<div class="seperator"></div>
 
-	<div id="header">
-		<tiles:insertAttribute name="header" />
-		<br />
-	</div>
-	<div id="wrapper">
 		<tiles:insertAttribute name="body" />
-		<br />
-	</div>
-	<hr />
-	<div id="footer">
-		<tiles:insertAttribute name="footer" />
-		<br />
 	</div>
 </body>
 </html>

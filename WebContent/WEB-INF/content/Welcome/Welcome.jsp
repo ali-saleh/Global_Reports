@@ -2,7 +2,7 @@
 
 <div style="clear: both;"></div>
 <div id="accordion_wrapper">
-	<div class="accordionButton">Section 1</div>
+	<div class="accordionButton">Test</div>
 	<div class="accordionContent">
 		<form action="invoice_report" method="post">
 			<div class="field_wrapper" id="city-field">
@@ -21,11 +21,13 @@
 				</div>
 			</div>
 			<div style="clear: both;"></div>
+			
 			<div class="subscription_period">
 				<label><s:property value="getText('report.report.period')"
 						escapeHtml="false" /></label>
 			</div>
 			<div style="clear: both;"></div>
+			
 			<div class="fieldwrapper" id="from-date-field">
 				<div class="fieldlabel">
 					<s:property value="getText('report.report.date.from')"
@@ -37,6 +39,7 @@
 						class="empty_date"></span>
 				</div>
 			</div>
+			
 			<div class="fieldwrapper" id="to-date-field">
 				<div class="fieldlabel">
 					<s:property value="getText('report.report.date.to')"
@@ -50,12 +53,29 @@
 			</div>
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
+			
+			<div class="field_wrapper" id="user-field" style="width: 370px;">
+				<label><s:property value="getText('report.report.user')"
+						escapeHtml="false" /></label>
+				<div class="input_area">
+					<select name="selectedItems" class="chosen-select chosen-rtl">
+						<option value="0">--</option>
+						<s:iterator value="customers" var="cust">
+							<option value="<s:property value='#cust.id'/>">
+								<s:property value="#cust.combinedName" escapeHtml="false" />
+							</option>
+						</s:iterator>
+					</select>
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+			
 			<div class="field_wrapper" id="item-field" style="width: 370px;">
 				<label><s:property value="getText('report.report.items')"
 						escapeHtml="false" /></label>
 				<div class="input_area">
 					<select name="selectedItems" multiple
-						class="chosen-select chosen-rtl" style="width:500px;">
+						class="chosen-select chosen-rtl">
 						<option value="0">--</option>
 						<s:iterator value="items" var="item">
 							<option value="<s:property value='#item.id'/>">
@@ -66,6 +86,7 @@
 				</div>
 			</div>
 			<div style="clear: both;"></div>
+			
 			<div class="fieldwrapper" id="currency-field" style="width: 500px">
 				<div class="fieldlabel">
 					<label><s:property
@@ -87,6 +108,7 @@
 				</div>
 			</div>
 			<div style="clear: both;"></div>
+			
 			<div class="fieldwrapper" id="vat-field">
 				<div class="fieldlabel">
 					<label><s:property value="getText('report.vat')"
@@ -97,9 +119,9 @@
 						value="true">
 				</div>
 			</div>
-
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
+			
 			<div class="button_container" style="float: left;">
 				<div class="button_left"></div>
 				<div class="button">
@@ -389,6 +411,6 @@
 			<div style="clear: both;"></div>
 		</form>
 	</div>
-	
+
 </div>
 

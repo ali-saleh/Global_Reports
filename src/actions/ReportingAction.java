@@ -15,6 +15,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import db.billingdb.dao.custom.impl.InvoiceReportDAO;
 import db.billingdb.dao.custom.impl.ItemReportDAO;
+import db.billingdb.model.custom.Customer;
 import db.billingdb.model.custom.InvoiceCondition;
 import db.billingdb.model.custom.InvoiceReport;
 import db.billingdb.model.custom.Item;
@@ -31,11 +32,11 @@ public class ReportingAction extends ActionSupport implements UserAware {
 	private static final String CITY_PREFIX = "city.";
 
 	private List<InvoiceReport> invoices;
-
 	private List<ItemReport> services;
 
 	private List<String> cities = new ArrayList<String>();
 	private List<Item> items;
+	private List<Customer> customers;
 	private int selectedCity;
 
 	private String city;
@@ -52,6 +53,7 @@ public class ReportingAction extends ActionSupport implements UserAware {
 	public ReportingAction() {
 		prepareCities();
 		items = ListProvider.getItemList();
+		customers = ListProvider.getCustomerList();
 	}
 
 	public String execute() throws Exception {
@@ -124,6 +126,10 @@ public class ReportingAction extends ActionSupport implements UserAware {
 
 	public List<Item> getItems() {
 		return items;
+	}
+
+	public List<Customer> getCustomers() {
+		return customers;
 	}
 
 	public int getSelectedCity() {
