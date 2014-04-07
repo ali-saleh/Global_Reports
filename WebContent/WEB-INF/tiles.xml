@@ -84,7 +84,6 @@
 	<!-- Separator -->
 
 	<definition name="invoice-print.tiles" extends="printLayout">
-		<put-attribute name="title" value="Use properties (invoices)" />
 		<put-attribute name="body"
 			value="/WEB-INF/content/reports/print/invoiceReport.jsp" />
 	</definition>

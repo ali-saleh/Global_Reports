@@ -25,7 +25,10 @@ public class InvoiceReportAction extends ActionSupport {
 
 	private static final String CITY_PREFIX = "city.";
 
-	private List<InvoiceReport> invoices;
+	private List<InvoiceReport> invoicesDollar;
+	private List<InvoiceReport> invoicesShekel;
+	private List<InvoiceReport> invoicesDollarDeleted;
+	private List<InvoiceReport> invoicesShekelDeleted;
 
 	private int selectedCity;
 	private String city;
@@ -37,6 +40,9 @@ public class InvoiceReportAction extends ActionSupport {
 	private String fromDate;
 	private String toDate;
 	private boolean vatSelect;
+	private boolean invoicePaid;
+	private boolean invoiceUnPaid;
+	private boolean invoiceDeleted;
 
 	@Override
 	public String execute() throws Exception {
@@ -54,32 +60,46 @@ public class InvoiceReportAction extends ActionSupport {
 		// To date validation
 		if (toDate != null && !toDate.isEmpty())
 			condition.setEndDate(Date.valueOf(convertDateFormat(toDate)));
-
-		// Currency setting
-		switch (this.currencyId) {
-		case 2:
-			condition.setCurrencyId(1);
-			break;
-		case 3:
-			condition.setCurrencyId(12);
-			break;
-		default:
-			break;
-		}
-
-		// if (selectedItem != 0)
-		// condition.setItemId(selectedItem);
+		
 		if (!vatSelect)
 			condition.setVatRate(1.0); // Note: this value is just !0 and will
 										// be overridden
-
-		 this.invoices = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
-
+		// Currency setting
+		if((this.currencyId & 1) == 1) {
+			condition.setCurrencyId(1);
+			this.invoicesDollar = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
+			if(invoiceDeleted) {
+				condition.setDeleted(true);
+				this.invoicesDollarDeleted = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
+			}
+		}
+		condition.setDeleted(false);
+		if((this.currencyId & 2) == 2) {
+			condition.setCurrencyId(12);
+			this.invoicesShekel = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
+			if(invoiceDeleted) {
+				condition.setDeleted(true);
+				this.invoicesShekelDeleted = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
+			}
+		}
+		
 		return SUCCESS;
 	}
 
-	public List<InvoiceReport> getInvoices() {
-		return invoices;
+	public List<InvoiceReport> getInvoicesDollar() {
+		return invoicesDollar;
+	}
+	
+	public List<InvoiceReport> getInvoicesShekel() {
+		return invoicesShekel;
+	}
+	
+	public List<InvoiceReport> getInvoicesDollarDeleted() {
+		return invoicesDollarDeleted;
+	}
+	
+	public List<InvoiceReport> getInvoicesShekelDeleted() {
+		return invoicesShekelDeleted;
 	}
 
 	public int getSelectedCity() {
@@ -176,6 +196,30 @@ public class InvoiceReportAction extends ActionSupport {
 	public void setVatSelect(boolean vatSelect) {
 		this.vatSelect = vatSelect;
 	}
+	
+	public boolean isInvoicePaid() {
+		return invoicePaid;
+	}
+
+	public void setInvoicePaid(boolean invoicePaid) {
+		this.invoicePaid = invoicePaid;
+	}
+
+	public boolean isInvoiceUnPaid() {
+		return invoiceUnPaid;
+	}
+
+	public void setInvoiceUnPaid(boolean invoiceUnPaid) {
+		this.invoiceUnPaid = invoiceUnPaid;
+	}
+
+	public boolean isInvoiceDeleted() {
+		return invoiceDeleted;
+	}
+
+	public void setInvoiceDeleted(boolean invoiceDeleted) {
+		this.invoiceDeleted = invoiceDeleted;
+	}
 
 	private String convertDateFormat(String date) {
 		String[] parts = date.split("/");
@@ -184,7 +228,7 @@ public class InvoiceReportAction extends ActionSupport {
 
 		return StringUtils.join(parts, '-');
 	}
-
+	
 //	void test() {
 //		this.invoices = new ArrayList<InvoiceReport>();
 //		int i = 0;

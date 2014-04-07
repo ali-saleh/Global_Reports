@@ -14,7 +14,7 @@ public class ListProvider {
 	private static List<Customer> customrs;
 
 	public static List<Item> getItemList() {
-		if (items == null) {
+//		if (items == null) {
 			System.out.println("ListProvider: Creating item list");
 			ItemReportDAO dao = new ItemReportDAO();
 			items = dao.listItems();
@@ -26,7 +26,7 @@ public class ListProvider {
 //				x.setId(i);
 //				x.setDesc("Test Item" + i);
 //			}
-		}
+//		}
 
 		return items;
 	}
@@ -42,11 +42,11 @@ public class ListProvider {
 	}
 	
 	public static List<Customer> getCustomerList() {
-		if (customrs == null) {
+//		if (customrs == null) {
 			System.out.println("ListProvider: Creating customer list");
 			UserReportDAO dao = new UserReportDAO();
 			customrs = dao.getAllCustomers();
-		}
+//		}
 		
 		return customrs;
 	}

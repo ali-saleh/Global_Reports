@@ -21,13 +21,13 @@
 				</div>
 			</div>
 			<div style="clear: both;"></div>
-			
+
 			<div class="subscription_period">
 				<label><s:property value="getText('report.report.period')"
 						escapeHtml="false" /></label>
 			</div>
 			<div style="clear: both;"></div>
-			
+
 			<div class="fieldwrapper" id="from-date-field">
 				<div class="fieldlabel">
 					<s:property value="getText('report.report.date.from')"
@@ -39,7 +39,7 @@
 						class="empty_date"></span>
 				</div>
 			</div>
-			
+
 			<div class="fieldwrapper" id="to-date-field">
 				<div class="fieldlabel">
 					<s:property value="getText('report.report.date.to')"
@@ -53,11 +53,11 @@
 			</div>
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
-			
+
 			<div class="field_wrapper" id="user-field" style="width: 370px;">
 				<label><s:property value="getText('report.report.user')"
 						escapeHtml="false" /></label>
-				<div class="input_area">
+				<div class="fieldinput">
 					<select name="selectedItems" class="chosen-select chosen-rtl">
 						<option value="0">--</option>
 						<s:iterator value="customers" var="cust">
@@ -69,7 +69,7 @@
 				</div>
 			</div>
 			<div style="clear: both;"></div>
-			
+
 			<div class="field_wrapper" id="item-field" style="width: 370px;">
 				<label><s:property value="getText('report.report.items')"
 						escapeHtml="false" /></label>
@@ -86,7 +86,7 @@
 				</div>
 			</div>
 			<div style="clear: both;"></div>
-			
+
 			<div class="fieldwrapper" id="currency-field" style="width: 500px">
 				<div class="fieldlabel">
 					<label><s:property
@@ -108,7 +108,7 @@
 				</div>
 			</div>
 			<div style="clear: both;"></div>
-			
+
 			<div class="fieldwrapper" id="vat-field">
 				<div class="fieldlabel">
 					<label><s:property value="getText('report.vat')"
@@ -121,7 +121,7 @@
 			</div>
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
-			
+
 			<div class="button_container" style="float: left;">
 				<div class="button_left"></div>
 				<div class="button">
@@ -135,12 +135,17 @@
 		</form>
 	</div>
 
-	<div class="accordionButton">Section 2</div>
+	<div class="accordionButton">
+		<s:property value="getText('reports.invoice.reports.title')"
+			escapeHtml="false" />
+	</div>
 	<div class="accordionContent">
-		<form action="reporting-services" method="post">
+		<form action="invoice_report" method="post">
+			<!-- 		if user does not have previlege to change city, do not show this -->
+			<%-- 			<s:if test=""> --%>
+			<%-- 			</s:if> --%>
 			<div class="field_wrapper" id="city-field">
-				<label><s:property value="getText('users.customer.city')"
-						escapeHtml="false" /> </label>
+				<s:text name="users.customer.city"></s:text>
 				<div class="input_area">
 					<select name="selectedCity">
 						<s:set id="i" value="0" />
@@ -170,7 +175,6 @@
 						class="empty_date"></span>
 				</div>
 			</div>
-			<div style="clear: both;"></div>
 
 			<div class="fieldwrapper" id="to-date-field">
 				<div class="fieldlabel">
@@ -185,42 +189,51 @@
 			</div>
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
-			<div class="field_wrapper" id="item-field" style="width: 370px;">
-				<label><s:property value="getText('report.report.items')"
-						escapeHtml="false" /></label>
-				<div class="input_area">
-					<select name="selectedItem">
-						<option value="0">--</option>
-						<s:iterator value="items" var="item">
-							<option value="<s:property value='#item.id'/>">
-								<s:property value="#item.desc" escapeHtml="false" />
-							</option>
-						</s:iterator>
-					</select>
-				</div>
-			</div>
-			<div style="clear: both;"></div>
+
 			<div class="fieldwrapper" id="currency-field" style="width: 500px">
 				<div class="fieldlabel">
 					<label><s:property
 							value="getText('report.report.currency')" escapeHtml="false" /></label>
 				</div>
-				<div class="fieldinput" style="width: 500px">
-					<input style="float: right;" type="radio"
-						name="fld_reports_currency" checked="checked" value="1"> <label
-						style="width: 90px"><s:property
+				<div class="input_area" style="width: 500px">
+					<input style="float: right;" type="radio" name="currencyId"
+						checked="checked" value="3"> <label style="width: 90px"><s:property
 							value="getText('report.report.both.currencies')"
 							escapeHtml="false" /></label>
 					<div style="clear: both;"></div>
-					<input style="float: right;" type="radio"
-						name="fld_reports_currency" value="2"> <label><s:property
+					<input style="float: right;" type="radio" name="currencyId"
+						value="1"> <label><s:property
 							value="getText('report.report.dollar')" escapeHtml="false" /></label>
 					<div style="clear: both;"></div>
-					<input style="float: right;" type="radio"
-						name="fld_reports_currency" value="3"> <label><s:property
+					<input style="float: right;" type="radio" name="currencyId"
+						value="2"> <label><s:property
 							value="getText('report.report.shekel')" escapeHtml="false" /></label>
 				</div>
 			</div>
+			<div style="clear: both;"></div>
+			<div class="fieldwrapper" id="status-field">
+				<!-- 				<div class="fieldlabel"> -->
+				<%-- 					<label><s:property value="getText('report.vat')" --%>
+				<%-- 							escapeHtml="false" /></label> --%>
+				<!-- 				</div> -->
+				<div class="input_area">
+					<input style="float: right;" type="checkbox" checked="checked"
+						name="invoicePaid" value="true"> <label><s:property
+							value="getText('report.invoice.report.show.paid')"
+							escapeHtml="false" /></label>
+					<div style="clear: both;"></div>
+					<input style="float: right;" type="checkbox" checked="checked"
+						name="invoiceUnPaid" value="true"> <label><s:property
+							value="getText('report.invoice.report.show.unpaid')"
+							escapeHtml="false" /></label>
+					<div style="clear: both;"></div>
+					<input style="float: right;" type="checkbox" checked="checked"
+						name="invoiceDeleted" value="true"> <label><s:property
+							value="getText('report.invoice.report.show.deleted')"
+							escapeHtml="false" /></label>
+				</div>
+			</div>
+			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
 			<div class="fieldwrapper" id="vat-field">
 				<div class="fieldlabel">

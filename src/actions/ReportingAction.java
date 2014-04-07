@@ -51,12 +51,13 @@ public class ReportingAction extends ActionSupport implements UserAware {
 	private boolean vatSelect;
 
 	public ReportingAction() {
-		prepareCities();
-		items = ListProvider.getItemList();
-		customers = ListProvider.getCustomerList();
+		
 	}
 
 	public String execute() throws Exception {
+		prepareCities();
+		items = ListProvider.getItemList();
+		customers = ListProvider.getCustomerList();
 		return SUCCESS;
 	}
 

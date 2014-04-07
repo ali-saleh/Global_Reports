@@ -59,14 +59,12 @@
 
 		<action name="invoice_report" class="actions.reports.InvoiceReportAction">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
-			<result name="success" type="tiles">invoice-report.tiles</result>
+			<result name="success" type="tiles">invoice-print.tiles</result>
 		</action>
 
-
 		<!-- Separator -->
 		<!-- Separator -->
 		<!-- Separator -->
-
 
 		<action name="user" class="actions.ReportingAction">
 			<interceptor-ref name="defaultStack"></interceptor-ref>

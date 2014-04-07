@@ -8,20 +8,7 @@
 	href="${pageContext.request.contextPath}/resources/css/print.css" />
 </head>
 
-<body dir="rtl">
-	<div class="report_results_page balance_results_report">
-		<div class="report_main_title">
-			<tiles:insertAttribute name="title" />
-		</div>
-		<div class="report_logo">
-			<img alt="logo"
-				src="${pageContext.request.contextPath}/resources/images/logobw.png">
-		</div>
-		<div style="clear: both;"></div>
-		<div class="seperator"></div>
-		<div class="seperator"></div>
-
-		<tiles:insertAttribute name="body" />
-	</div>
+<body>
+	<tiles:insertAttribute name="body" />
 </body>
 </html>
