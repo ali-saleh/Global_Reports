@@ -4,24 +4,20 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.StringUtils;
-
+import actions.BaseAction;
 import actions.ListProvider;
-
-import com.opensymphony.xwork2.ActionSupport;
 
 import db.billingdb.dao.custom.impl.InvoiceReportDAO;
 import db.billingdb.model.custom.InvoiceCondition;
 import db.billingdb.model.custom.InvoiceReport;
 import db.billingdb.model.custom.Item;
 
-public class InvoiceReportAction extends ActionSupport {
+public class InvoiceReportAction extends BaseAction {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -3666037000009359327L;
+	private static final long serialVersionUID = -6342410377606008436L;
 
 	private static final String CITY_PREFIX = "city.";
 
@@ -100,6 +96,38 @@ public class InvoiceReportAction extends ActionSupport {
 	
 	public List<InvoiceReport> getInvoicesShekelDeleted() {
 		return invoicesShekelDeleted;
+	}
+
+	public double getInvoiceDollarSum() {
+		double sum = 0.0;
+		for(InvoiceReport i : invoicesDollar) {
+			sum += i.getTotal();
+		}
+		return sum;
+	}
+
+	public double getInvoiceDollarDeletedSum() {
+		double sum = 0.0;
+		for(InvoiceReport i : invoicesDollarDeleted) {
+			sum += i.getTotal();
+		}
+		return sum;
+	}
+
+	public double getInvoiceShekelSum() {
+		double sum = 0.0;
+		for(InvoiceReport i : invoicesShekel) {
+			sum += i.getTotal();
+		}
+		return sum;
+	}
+
+	public double getInvoiceShekelDeletedSum() {
+		double sum = 0.0;
+		for(InvoiceReport i : invoicesShekelDeleted) {
+			sum += i.getTotal();
+		}
+		return sum;
 	}
 
 	public int getSelectedCity() {
@@ -219,14 +247,6 @@ public class InvoiceReportAction extends ActionSupport {
 
 	public void setInvoiceDeleted(boolean invoiceDeleted) {
 		this.invoiceDeleted = invoiceDeleted;
-	}
-
-	private String convertDateFormat(String date) {
-		String[] parts = date.split("/");
-
-		ArrayUtils.reverse(parts);
-
-		return StringUtils.join(parts, '-');
 	}
 	
 //	void test() {

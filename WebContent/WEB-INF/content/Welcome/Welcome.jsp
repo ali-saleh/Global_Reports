@@ -6,8 +6,7 @@
 	<div class="accordionContent">
 		<form action="invoice_report" method="post">
 			<div class="field_wrapper" id="city-field">
-				<label><s:property value="getText('users.customer.city')"
-						escapeHtml="false" /> </label>
+				<label><s:text name="users.customer.city" /> </label>
 				<div class="input_area">
 					<select name="selectedCity">
 						<s:set id="i" value="0" />
@@ -23,15 +22,13 @@
 			<div style="clear: both;"></div>
 
 			<div class="subscription_period">
-				<label><s:property value="getText('report.report.period')"
-						escapeHtml="false" /></label>
+				<label><s:text name="report.report.period" /></label>
 			</div>
 			<div style="clear: both;"></div>
 
 			<div class="fieldwrapper" id="from-date-field">
 				<div class="fieldlabel">
-					<s:property value="getText('report.report.date.from')"
-						escapeHtml="false" />
+					<s:text name="report.report.date.from" />
 				</div>
 				<div class="fieldinput">
 					<input class="date-pick" readonly="readonly" type="text"
@@ -42,8 +39,7 @@
 
 			<div class="fieldwrapper" id="to-date-field">
 				<div class="fieldlabel">
-					<s:property value="getText('report.report.date.to')"
-						escapeHtml="false" />
+					<s:text name="report.report.date.to" />
 				</div>
 				<div class="fieldinput">
 					<input class="date-pick" readonly="readonly" type="text"
@@ -55,8 +51,7 @@
 			<div style="clear: both;"></div>
 
 			<div class="field_wrapper" id="user-field" style="width: 370px;">
-				<label><s:property value="getText('report.report.user')"
-						escapeHtml="false" /></label>
+				<label><s:text name="report.report.user" /></label>
 				<div class="fieldinput">
 					<select name="selectedItems" class="chosen-select chosen-rtl">
 						<option value="0">--</option>
@@ -71,8 +66,7 @@
 			<div style="clear: both;"></div>
 
 			<div class="field_wrapper" id="item-field" style="width: 370px;">
-				<label><s:property value="getText('report.report.items')"
-						escapeHtml="false" /></label>
+				<label><s:text name="report.report.items" /></label>
 				<div class="input_area">
 					<select name="selectedItems" multiple
 						class="chosen-select chosen-rtl">
@@ -89,30 +83,27 @@
 
 			<div class="fieldwrapper" id="currency-field" style="width: 500px">
 				<div class="fieldlabel">
-					<label><s:property
-							value="getText('report.report.currency')" escapeHtml="false" /></label>
+					<label><s:text name="report.report.currency" /></label>
 				</div>
 				<div class="fieldinput" style="width: 500px">
 					<input style="float: right;" type="radio" name="currencyId"
-						checked="checked" value="1"> <label style="width: 90px"><s:property
-							value="getText('report.report.both.currencies')"
-							escapeHtml="false" /></label>
+						checked="checked" value="1"> <label style="width: 90px"><s:text
+							name="report.report.both.currencies" /></label>
 					<div style="clear: both;"></div>
 					<input style="float: right;" type="radio" name="currencyId"
-						value="2"> <label><s:property
-							value="getText('report.report.dollar')" escapeHtml="false" /></label>
+						value="2"> <label><s:text
+							name="report.report.dollar" /></label>
 					<div style="clear: both;"></div>
 					<input style="float: right;" type="radio" name="currencyId"
-						value="3"> <label><s:property
-							value="getText('report.report.shekel')" escapeHtml="false" /></label>
+						value="3"> <label><s:text
+							name="report.report.shekel" /></label>
 				</div>
 			</div>
 			<div style="clear: both;"></div>
 
 			<div class="fieldwrapper" id="vat-field">
 				<div class="fieldlabel">
-					<label><s:property value="getText('report.vat')"
-							escapeHtml="false" /></label>
+					<label><s:text name="report.vat" /></label>
 				</div>
 				<div class="fieldinput">
 					<input type="checkbox" checked="checked" name="vatSelect"
@@ -127,7 +118,7 @@
 				<div class="button">
 					<input onclick="this.form.target='_blank';return true;"
 						style="margin: 0" type="submit"
-						value="<s:property value="getText('find.submit')" escapeHtml="false" />">
+						value="<s:text name="find.submit" />">
 				</div>
 				<div class="button_right"></div>
 			</div>
@@ -136,8 +127,7 @@
 	</div>
 
 	<div class="accordionButton">
-		<s:property value="getText('reports.invoice.reports.title')"
-			escapeHtml="false" />
+		<s:text name="reports.invoice.reports.title" />
 	</div>
 	<div class="accordionContent">
 		<form action="invoice_report" method="post">
@@ -145,7 +135,7 @@
 			<%-- 			<s:if test=""> --%>
 			<%-- 			</s:if> --%>
 			<div class="field_wrapper" id="city-field">
-				<s:text name="users.customer.city"></s:text>
+				<label> <s:text name="users.customer.city" /></label>
 				<div class="input_area">
 					<select name="selectedCity">
 						<s:set id="i" value="0" />
@@ -160,14 +150,12 @@
 			</div>
 			<div style="clear: both;"></div>
 			<div class="subscription_period">
-				<label><s:property value="getText('report.report.period')"
-						escapeHtml="false" /></label>
+				<label><s:text name="report.report.period" /></label>
 			</div>
 			<div style="clear: both;"></div>
 			<div class="fieldwrapper" id="from-date-field">
 				<div class="fieldlabel">
-					<s:property value="getText('report.report.date.from')"
-						escapeHtml="false" />
+					<s:text name="report.report.date.from" />
 				</div>
 				<div class="fieldinput">
 					<input class="date-pick" readonly="readonly" type="text"
@@ -178,8 +166,7 @@
 
 			<div class="fieldwrapper" id="to-date-field">
 				<div class="fieldlabel">
-					<s:property value="getText('report.report.date.to')"
-						escapeHtml="false" />
+					<s:text name="report.report.date.to" />
 				</div>
 				<div class="fieldinput">
 					<input class="date-pick" readonly="readonly" type="text"
@@ -192,57 +179,47 @@
 
 			<div class="fieldwrapper" id="currency-field" style="width: 500px">
 				<div class="fieldlabel">
-					<label><s:property
-							value="getText('report.report.currency')" escapeHtml="false" /></label>
+					<label><s:text name="report.report.currency" /></label>
 				</div>
 				<div class="input_area" style="width: 500px">
 					<input style="float: right;" type="radio" name="currencyId"
-						checked="checked" value="3"> <label style="width: 90px"><s:property
-							value="getText('report.report.both.currencies')"
-							escapeHtml="false" /></label>
+						checked="checked" value="3"> <label style="width: 90px"><s:text
+							name="report.report.both.currencies" /></label>
 					<div style="clear: both;"></div>
 					<input style="float: right;" type="radio" name="currencyId"
-						value="1"> <label><s:property
-							value="getText('report.report.dollar')" escapeHtml="false" /></label>
+						value="1"> <label><s:text
+							name="report.report.dollar" /></label>
 					<div style="clear: both;"></div>
 					<input style="float: right;" type="radio" name="currencyId"
-						value="2"> <label><s:property
-							value="getText('report.report.shekel')" escapeHtml="false" /></label>
+						value="2"> <label><s:text
+							name="report.report.shekel" /></label>
 				</div>
 			</div>
 			<div style="clear: both;"></div>
 			<div class="fieldwrapper" id="status-field">
-				<!-- 				<div class="fieldlabel"> -->
-				<%-- 					<label><s:property value="getText('report.vat')" --%>
-				<%-- 							escapeHtml="false" /></label> --%>
-				<!-- 				</div> -->
 				<div class="input_area">
 					<input style="float: right;" type="checkbox" checked="checked"
-						name="invoicePaid" value="true"> <label><s:property
-							value="getText('report.invoice.report.show.paid')"
-							escapeHtml="false" /></label>
+						name="invoicePaid" value="true"> <label><s:text
+							name="report.invoice.report.show.paid" /></label>
 					<div style="clear: both;"></div>
 					<input style="float: right;" type="checkbox" checked="checked"
-						name="invoiceUnPaid" value="true"> <label><s:property
-							value="getText('report.invoice.report.show.unpaid')"
-							escapeHtml="false" /></label>
+						name="invoiceUnPaid" value="true"> <label><s:text
+							name="report.invoice.report.show.unpaid" /></label>
 					<div style="clear: both;"></div>
 					<input style="float: right;" type="checkbox" checked="checked"
-						name="invoiceDeleted" value="true"> <label><s:property
-							value="getText('report.invoice.report.show.deleted')"
-							escapeHtml="false" /></label>
+						name="invoiceDeleted" value="true"> <label><s:text
+							name="report.invoice.report.show.deleted" /></label>
 				</div>
 			</div>
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
 			<div class="fieldwrapper" id="vat-field">
-				<div class="fieldlabel">
-					<label><s:property value="getText('report.vat')"
-							escapeHtml="false" /></label>
-				</div>
 				<div class="fieldinput">
-					<input type="checkbox" checked="checked" name="vatSelect"
-						value="true">
+					<input style="float: right;" type="checkbox" checked="checked"
+						name="vatSelect" value="true">
+				</div>
+				<div class="fieldlabel">
+					<label><s:text name="report.vat" /></label>
 				</div>
 			</div>
 
@@ -253,7 +230,7 @@
 				<div class="button">
 					<input onclick="this.form.target='_blank';return true;"
 						style="margin: 0" type="submit"
-						value="<s:property value="getText('find.submit')" escapeHtml="false" />">
+						value="<s:text name="find.submit" />">
 				</div>
 				<div class="button_right"></div>
 			</div>
@@ -261,12 +238,16 @@
 		</form>
 	</div>
 
-	<div class="accordionButton">Section 3</div>
+	<div class="accordionButton">
+		<s:text name="reports.payment.reports.title" />
+	</div>
 	<div class="accordionContent">
-		<form action="reporting-invoices" method="post">
-			<input type="hidden" name="action" value="balance_report">
-			<div class="field_wrapper">
-				<label>Label</label>
+		<form action="payment_report" method="post">
+			<!-- 		if user does not have previlege to change city, do not show this -->
+			<%-- 			<s:if test=""> --%>
+			<%-- 			</s:if> --%>
+			<div class="field_wrapper" id="city-field">
+				<label> <s:text name="users.customer.city" /></label>
 				<div class="input_area">
 					<select name="selectedCity">
 						<s:set id="i" value="0" />
@@ -279,28 +260,96 @@
 					</select>
 				</div>
 			</div>
-			<div class="fieldwrapper" style="width: 500px">
-				<div class="fieldlabel">
-					<s:property value="getText('report.report.currency')"
-						escapeHtml="false" />
-				</div>
-				<div class="fieldinput" style="width: 500px">
-					<input style="float: right;" type="radio"
-						name="fld_reports_currency" checked="checked" value="1"> <label
-						style="width: 90px"><s:property
-							value="getText('report.report.both.currencies')"
-							escapeHtml="false" /></label>
-					<div style="clear: both;"></div>
-					<input style="float: right;" type="radio"
-						name="fld_reports_currency" value="2"> <label><s:property
-							value="getText('report.report.dollar')" escapeHtml="false" /></label>
-					<div style="clear: both;"></div>
-					<input style="float: right;" type="radio"
-						name="fld_reports_currency" value="3"> <label><s:property
-							value="getText('report.report.shekel')" escapeHtml="false" /></label>
-				</div>
-				<div style="clear: both;"></div>
+			<div style="clear: both;"></div>
+			<div class="subscription_period">
+				<label><s:text name="report.report.period" /></label>
 			</div>
+			<div style="clear: both;"></div>
+			<div class="fieldwrapper" id="from-date-field">
+				<div class="fieldlabel">
+					<s:text name="report.report.date.from" />
+				</div>
+				<div class="fieldinput">
+					<input class="date-pick" readonly="readonly" type="text"
+						id="order_fromdate" name="fromDate" value="" /> <span
+						class="empty_date"></span>
+				</div>
+			</div>
+
+			<div class="fieldwrapper" id="to-date-field">
+				<div class="fieldlabel">
+					<s:text name="report.report.date.to" />
+				</div>
+				<div class="fieldinput">
+					<input class="date-pick" readonly="readonly" type="text"
+						id="order_todate" name="toDate" value="" /> <span
+						class="empty_date"></span>
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+			<div style="clear: both;"></div>
+
+			<div class="fieldwrapper" id="currency-field" style="width: 500px">
+				<div class="fieldlabel">
+					<label><s:text name="report.report.currency" /></label>
+				</div>
+				<div class="input_area" style="width: 500px">
+					<input style="float: right;" type="radio" name="currencyId"
+						checked="checked" value="3"> <label style="width: 90px"><s:text
+							name="report.report.both.currencies" /></label>
+					<div style="clear: both;"></div>
+					<input style="float: right;" type="radio" name="currencyId"
+						value="1"> <label><s:text
+							name="report.report.dollar" /></label>
+					<div style="clear: both;"></div>
+					<input style="float: right;" type="radio" name="currencyId"
+						value="2"> <label><s:text
+							name="report.report.shekel" /></label>
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+			<div class="fieldwrapper" id="payment-method">
+				<div class="fieldlabel">
+					<label><s:text name="report.report.payway" /></label>
+				</div>
+				<div class="input_area">
+					<input style="float: right;" type="radio" name="paymentMethodId"
+						checked="checked" value="3"> <label style="width: 90px"><s:text
+							name="reports.both" /></label>
+					<div style="clear: both;"></div>
+					<input style="float: right;" type="radio" name="paymentMethodId"
+						value="1"> <label><s:text
+							name="reports.cheque" /></label>
+					<div style="clear: both;"></div>
+					<input style="float: right;" type="radio" name="paymentMethodId"
+						value="2"><label><s:text
+							name="reports.cash" /></label>
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+			<div style="clear: both;"></div>
+
+			<div class="fieldwrapper" id="deleted-field">
+				<div class="fieldinput">
+					<input style="float: right;" type="checkbox" checked="checked"
+						name="showDeleted" value="true">
+				</div>
+				<div class="fieldlabel">
+					<label><s:text name="report.payment.report.show.deleted" /></label>
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+
+			<div class="fieldwrapper" id="vat-field">
+				<div class="fieldinput">
+					<input style="float: right;" type="checkbox" checked="checked"
+						name="vatSelect" value="true">
+				</div>
+				<div class="fieldlabel">
+					<label><s:text name="report.vat" /></label>
+				</div>
+			</div>
+
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
 			<div class="button_container" style="float: left;">
@@ -308,7 +357,7 @@
 				<div class="button">
 					<input onclick="this.form.target='_blank';return true;"
 						style="margin: 0" type="submit"
-						value="<s:property value="getText('find.submit')" escapeHtml="false" />">
+						value="<s:text name="find.submit" />">
 				</div>
 				<div class="button_right"></div>
 			</div>
@@ -336,23 +385,21 @@
 			</div>
 			<div class="fieldwrapper" style="width: 500px">
 				<div class="fieldlabel">
-					<s:property value="getText('report.report.currency')"
-						escapeHtml="false" />
+					<s:text name="report.report.currency" />
 				</div>
 				<div class="fieldinput" style="width: 500px">
 					<input style="float: right;" type="radio"
 						name="fld_reports_currency" checked="checked" value="1"> <label
-						style="width: 90px"><s:property
-							value="getText('report.report.both.currencies')"
-							escapeHtml="false" /></label>
+						style="width: 90px"><s:text
+							name="report.report.both.currencies" /></label>
 					<div style="clear: both;"></div>
 					<input style="float: right;" type="radio"
-						name="fld_reports_currency" value="2"> <label><s:property
-							value="getText('report.report.dollar')" escapeHtml="false" /></label>
+						name="fld_reports_currency" value="2"> <label><s:text
+							name="report.report.dollar" /></label>
 					<div style="clear: both;"></div>
 					<input style="float: right;" type="radio"
-						name="fld_reports_currency" value="3"> <label><s:property
-							value="getText('report.report.shekel')" escapeHtml="false" /></label>
+						name="fld_reports_currency" value="3"> <label><s:text
+							name="report.report.shekel" /></label>
 				</div>
 				<div style="clear: both;"></div>
 			</div>
@@ -363,7 +410,7 @@
 				<div class="button">
 					<input onclick="this.form.target='_blank';return true;"
 						style="margin: 0" type="submit"
-						value="<s:property value="getText('find.submit')" escapeHtml="false" />">
+						value="<s:text name="find.submit" />">
 				</div>
 				<div class="button_right"></div>
 			</div>
@@ -390,23 +437,21 @@
 			</div>
 			<div class="fieldwrapper" style="width: 500px">
 				<div class="fieldlabel">
-					<s:property value="getText('report.report.currency')"
-						escapeHtml="false" />
+					<s:text name="report.report.currency" />
 				</div>
 				<div class="fieldinput" style="width: 500px">
 					<input style="float: right;" type="radio"
 						name="fld_reports_currency" checked="checked" value="1"> <label
-						style="width: 90px"><s:property
-							value="getText('report.report.both.currencies')"
-							escapeHtml="false" /></label>
+						style="width: 90px"><s:text
+							name="report.report.both.currencies" /></label>
 					<div style="clear: both;"></div>
 					<input style="float: right;" type="radio"
-						name="fld_reports_currency" value="2"> <label><s:property
-							value="getText('report.report.dollar')" escapeHtml="false" /></label>
+						name="fld_reports_currency" value="2"> <label><s:text
+							name="report.report.dollar" /></label>
 					<div style="clear: both;"></div>
 					<input style="float: right;" type="radio"
-						name="fld_reports_currency" value="3"> <label><s:property
-							value="getText('report.report.shekel')" escapeHtml="false" /></label>
+						name="fld_reports_currency" value="3"> <label><s:text
+							name="report.report.shekel" /></label>
 				</div>
 				<div style="clear: both;"></div>
 			</div>
@@ -417,7 +462,7 @@
 				<div class="button">
 					<input onclick="this.form.target='_blank';return true;"
 						style="margin: 0" type="submit"
-						value="<s:property value="getText('find.submit')" escapeHtml="false" />">
+						value="<s:text name="find.submit" />">
 				</div>
 				<div class="button_right"></div>
 			</div>

@@ -88,4 +88,9 @@
 			value="/WEB-INF/content/reports/print/invoiceReport.jsp" />
 	</definition>
 
+	<definition name="payment-print.tiles" extends="printLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/content/reports/print/paymentReport.jsp" />
+	</definition>
+
 </tiles-definitions>

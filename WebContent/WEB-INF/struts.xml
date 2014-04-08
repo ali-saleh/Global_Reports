@@ -56,10 +56,14 @@
 			<result type="tiles">admin.tiles</result>
 		</action>
 
-
 		<action name="invoice_report" class="actions.reports.InvoiceReportAction">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<result name="success" type="tiles">invoice-print.tiles</result>
+		</action>
+
+		<action name="payment_report" class="actions.reports.PaymentReportAction">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">payment-print.tiles</result>
 		</action>
 
 		<!-- Separator -->

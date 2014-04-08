@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type"
 	content="text/html; charset=windows-1256">
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/css/print.css" />
+	href="${pageContext.request.contextPath}/resources/css/reports.css" />
 </head>
 
 <body>

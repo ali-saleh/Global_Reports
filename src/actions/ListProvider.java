@@ -1,6 +1,5 @@
 package actions;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import db.billingdb.dao.custom.impl.ItemReportDAO;

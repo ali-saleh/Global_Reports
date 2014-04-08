@@ -1,0 +1,898 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0039)http://localhost:8090/globalcom/reports -->
+<html><head dir="ltr"><meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
+
+<title>Reports Page</title>
+<link rel="stylesheet" type="text/css" href="./Reports Page_files/globalcom.css">
+<link rel="stylesheet" media="screen" type="text/css" href="./Reports Page_files/date_input.css">
+<script type="text/javascript" src="./Reports Page_files/jquery.js"></script>
+<script type="text/javascript" src="./Reports Page_files/date_methods.js"></script>	
+<script type="text/javascript" src="./Reports Page_files/jquery.date_input.js"></script>
+<script type="text/javascript" src="./Reports Page_files/mask.js"></script>	
+<script type="text/javascript" src="./Reports Page_files/globalcom.js"></script>
+</head>
+<body>
+
+<div id="header">
+	
+
+
+<div id="headerbg">
+<div id="logo"></div>
+<div class="header_text">
+	
+	نظام الفوترة والمبيعات/ Billing System
+</div>
+</div>
+</div>
+ 
+<div id="wrapper">
+	<div id="navigation">
+		
+
+
+
+
+
+
+
+<div class="navigation_item">
+
+	<a href="http://localhost:8090/globalcom/admin?action=user">المشتركين</a>	
+</div>
+
+<div class="navigation_item">
+
+	<a href="http://localhost:8090/globalcom/admin?action=order">الطلبات</a>
+</div>
+
+<div class="navigation_item">
+
+	<a href="http://localhost:8090/globalcom/admin?action=invoice">الفواتير</a>
+</div>
+
+<div class="navigation_item">
+
+	<a href="http://localhost:8090/globalcom/admin?action=payment">سندات القبض</a>
+</div>
+
+
+	
+ 	<div class="navigation_item active_navigation_item"> 
+	
+		<a href="http://localhost:8090/globalcom/admin?action=reports">التقارير</a>
+	</div> 
+
+
+<div class="navigation_item_left">
+	<a href="http://localhost:8090/globalcom/logout">تسجيل الخروج</a>
+</div>
+ 
+	</div>
+	<div style="clear:both;"></div>
+	<div id="page_title">
+		
+
+<div style="display:block;float: right;">
+التقارير
+</div> 
+	</div>
+	
+	
+	<div id="content">
+		
+
+
+
+
+
+<div class="reports_page">
+	<div class="report_area" id="order_report">
+		<div class="report_title">
+			<div onclick="indicationChange(&#39;order&#39;)" class="indication plus"></div>
+			<div class="report_title_text">
+				تقرير الطلبات
+			</div>
+		</div>
+		<div style="clear: both;"></div>
+		<div class="collapseable">
+			<form action="./Reports Page_files/Reports Page.htm" method="post">
+				<input type="hidden" name="action" value="order_report">
+				<div class="field_wrapper">
+					<label>المدينة</label>
+					<div class="input_area">
+						<select name="fld_city">
+							
+								<option value="0">-------</option>
+							
+								<option value="1">رام الله</option>
+							
+								<option value="2">قلقيلية</option>
+							
+								<option value="3">نابلس</option>
+							
+								<option value="4">بيت لحم</option>
+							
+								<option value="5">الخليل</option>
+							
+								<option value="6">جنين</option>
+							
+								<option value="7">طولكرم</option>
+							
+								<option value="8">سلفيت</option>
+								
+						</select>			
+					</div>
+				</div>
+				<div style="clear: both;"></div>
+				<div class="subscription_period">
+					<label>الفترة</label>
+				</div>
+				<div style="clear: both;"></div>
+				<div class="fieldwrapper">
+					<div class="fieldlabel">من تاريخ</div>
+						<div class="fieldinput">
+							<input class="date-pick dp-applied" readonly="readonly" type="text" id="order_fromdate" name="fld_reports_date_from" value=""><a href="http://localhost:8090/globalcom/reports#" class="dp-choose-date" title="Choose date">Choose date</a>
+							<span class="empty_date"></span>
+						</div>
+						<div style="clear: both;"></div>
+				</div>
+				
+				<div class="fieldwrapper">
+					<div class="fieldlabel">حتى تاريخ</div>
+						<div class="fieldinput">
+							<input class="date-pick dp-applied" readonly="readonly" type="text" id="order_todate" name="fld_reports_date_to" value=""><a href="http://localhost:8090/globalcom/reports#" class="dp-choose-date" title="Choose date">Choose date</a>
+							<span class="empty_date"></span>
+						</div>
+						<div style="clear: both;"></div>
+				</div>
+				<div style="clear: both;"></div>
+				<div class="field_wrapper" style="width: 370px;">
+					<label>الصنف</label>
+					<div class="input_area">
+						<select name="fld_reports_item">
+							<option value="0">--</option>
+							
+								<option value="811">2 ميجابيت - انترنت عادي - شهرين*</option>
+							
+								<option value="829">4 ميجابيت - انترنت ممتاز - سنة*</option>
+							
+								<option value="805">1 ميجابيت - انترنت ممتاز - شهر*</option>
+							
+								<option value="1351">4 ميجابيت - انترنت ممتاز - شهرين - 2012</option>
+							
+								<option value="1334">1 ميجابيت - انترنت ممتاز - شهر - 2012</option>
+							
+								<option value="1324">أجور صيانة - 2012</option>
+							
+								<option value="1348">4 ميجابيت - انترنت عادي - 3 شهور - 2012</option>
+							
+								<option value="122">2 ميجابيت - انترنت ممتاز - شهرين</option>
+							
+								<option value="1318">انترنت سيمتركال - 100 ميجابيت - 2012</option>
+							
+								<option value="113">4 ميجابيت - انترنت عادي - 6 شهور</option>
+							
+								<option value="903">فويب - كرت 400 شيكل</option>
+							
+								<option value="148">إديني ألو - كرت 50 شيكل</option>
+							
+								<option value="821">4 ميجابيت - انترنت عادي - شهرين*</option>
+							
+								<option value="1307">انترنت سيمتركال - 7 ميجابيت - 2012</option>
+							
+								<option value="119">1 ميجابيت - انترنت ممتاز - 6 شهور</option>
+							
+								<option value="1331">1 ميجابيت - انترنت عادي - شهرين - 2012</option>
+							
+								<option value="1309">انترنت سيمتركال - 9 ميجابيت - 2012</option>
+							
+								<option value="804">1 ميجابيت - انترنت عادي - سنة*</option>
+							
+								<option value="103">1 ميجابيت - انترنت عادي - 6 شهور</option>
+							
+								<option value="1100">رسوم صيانة</option>
+							
+								<option value="1200">1 ميجابيت - انترنت عادي - شهر **</option>
+							
+								<option value="109">2 ميجابيت - انترنت عادي - 6 شهور</option>
+							
+								<option value="1335">1 ميجابيت - انترنت ممتاز - شهرين - 2012</option>
+							
+								<option value="815">2 ميجابيت - انترنت ممتاز - شهر*</option>
+							
+								<option value="701">2 ميجابيت - انترنت عادي إشتراك قديم - سنة 	</option>
+							
+								<option value="131">انترنت سيمتركال - 1 ميجابيت</option>
+							
+								<option value="1201">2 ميجابيت - انترنت عادي - شهر **</option>
+							
+								<option value="115">1 ميجابيت - انترنت ممتاز - شهر</option>
+							
+								<option value="1327">راوتر ترند نت 300 ميجابيت - 2012</option>
+							
+								<option value="135">انترنت سيمتركال - 5 ميجابيت</option>
+							
+								<option value="303">1 ميجابيت - انترنت عادي إشتراك قديم - شهرين</option>
+							
+								<option value="106">2 ميجابيت - انترنت عادي - سنة</option>
+							
+								<option value="1401">1 ميجابيت - انترنت عادي - 6 شهور - 2012</option>
+							
+								<option value="833">انترنت سيمتركال* - 3 ميجابيت</option>
+							
+								<option value="1001">5 ميجا انترنت سميتريكال** </option>
+							
+								<option value="1347">4 ميجابيت - انترنت عادي - شهرين - 2012</option>
+							
+								<option value="1341">2 ميجابيت - انترنت عادي - سنة - 2012</option>
+							
+								<option value="506">رسوم تركيب - انترنت سيمتركال - 1 ميجابيت بولت</option>
+							
+								<option value="1326">راوتر - لينكسيس - 2012</option>
+							
+								<option value="140">رسوم تركيب - انترنت سيمتركال - لينك</option>
+							
+								<option value="1311">انترنت سيمتركال - 11 ميجابيت - 2012</option>
+							
+								<option value="1350">4 ميجابيت - انترنت ممتاز - شهر - 2012</option>
+							
+								<option value="502">1/2 ميجابيت - انترنت عادي - شهرين</option>
+							
+								<option value="1330">1 ميجابيت - انترنت عادي - 2012</option>
+							
+								<option value="102">1 ميجابيت - انترنت عادي - 3 شهور</option>
+							
+								<option value="700">رسوم تركيب - انترنت عادي حملة</option>
+							
+								<option value="1343">2 ميجابيت - انترنت ممتاز - شهرين - 2012</option>
+							
+								<option value="1315">انترنت سيمتركال - 15 ميجابيت - 2012</option>
+							
+								<option value="118">1 ميجابيت - انترنت ممتاز - 3 شهور</option>
+							
+								<option value="831">انترنت سيمتركال* - 1 ميجابيت</option>
+							
+								<option value="1402">1 ميجابيت - انترنت ممتاز - 6 شهور - 2012</option>
+							
+								<option value="823">4 ميجابيت - انترنت عادي - 6 شهور*</option>
+							
+								<option value="129">4 ميجابيت - انترنت ممتاز - 3 شهور</option>
+							
+								<option value="123">2 ميجابيت - انترنت ممتاز - 3 شهور</option>
+							
+								<option value="1204">2 ميجابيت - انترنت ممتاز - شهر**</option>
+							
+								<option value="1349">4 ميجابيت - انترنت عادي - سنة - 2012</option>
+							
+								<option value="1353">4 ميجابيت - انترنت ممتاز - سنة - 2012</option>
+							
+								<option value="500">1 - متر كابل إيثرنت</option>
+							
+								<option value="1305">انترنت سيمتركال - 5 ميجابيت - 2012</option>
+							
+								<option value="1306">انترنت سيمتركال - 6 ميجابيت - 2012</option>
+							
+								<option value="813">2 ميجابيت - انترنت عادي - 6 شهور*</option>
+							
+								<option value="200">إديني ألو - رسوم إشتراك - 3 شهور</option>
+							
+								<option value="101">1 ميجابيت - انترنت عادي - شهرين</option>
+							
+								<option value="1322">رسوم تركيب - انترنت سيمتركال - لينك رادوين - 2012</option>
+							
+								<option value="900">فويب - رسوم فتح خط فويب</option>
+							
+								<option value="1320">رسوم تركيب - انترنت سيمتركال - 2 ميجابيت بولت - 2012</option>
+							
+								<option value="503">1/2 ميجابيت - انترنت عادي - 3 شهور</option>
+							
+								<option value="1317">انترنت سيمتركال - 50 ميجابيت - 2012</option>
+							
+								<option value="400">راوتر ترندز نت 300 Mbps </option>
+							
+								<option value="816">2 ميجابيت - انترنت ممتاز - شهرين*</option>
+							
+								<option value="133">انترنت سيمتركال - 3 ميجابيت</option>
+							
+								<option value="136">انترنت سيمتركال - 6 ميجابيت</option>
+							
+								<option value="1332">1 ميجابيت - انترنت عادي - 3 شهور - 2012</option>
+							
+								<option value="302">4 ميجابيت - انترنت عادي إشتراك قديم - شهر</option>
+							
+								<option value="832">انترنت سيمتركال* - 2 ميجابيت</option>
+							
+								<option value="820">4 ميجابيت - انترنت عادي - شهر*</option>
+							
+								<option value="600">Real IP</option>
+							
+								<option value="1339">2 ميجابيت - انترنت عادي - شهرين</option>
+							
+								<option value="501">1/2 ميجابيت - انترنت عادي - شهر</option>
+							
+								<option value="1303">انترنت سيمتركال - 3 ميجابيت - 2012</option>
+							
+								<option value="146">رسوم تركيب - انترنت سيمتركال - 2 ميجابيت بولت</option>
+							
+								<option value="1308">انترنت سيمتركال - 8 ميجابيت - 2012</option>
+							
+								<option value="818">2 ميجابيت - انترنت ممتاز - 6 شهور*</option>
+							
+								<option value="906">فويب - جهاز سيب تيب أ </option>
+							
+								<option value="201">1 ميجابيت - انترنت عادي - شهر</option>
+							
+								<option value="1405">4 ميجابيت - انترنت عادي - 6 شهور - 2012</option>
+							
+								<option value="808">1 ميجابيت - انترنت ممتاز - 6 شهور*
+</option>
+							
+								<option value="1354">راوتر إنتلنت - 2012</option>
+							
+								<option value="105">2 ميجابيت - انترنت عادي - شهر</option>
+							
+								<option value="120">2 ميجابيت - انترنت ممتاز - شهر</option>
+							
+								<option value="301">2 ميجابيت - انترنت عادي إشتراك قديم - شهر</option>
+							
+								<option value="1338">2 ميجابيت - انترنت عادي - شهر - 2012</option>
+							
+								<option value="904">فويب - كرت 200 شيكل</option>
+							
+								<option value="112">4 ميجابيت - انترنت عادي - 3 شهور</option>
+							
+								<option value="306">1 ميجابيت - انترنت عادي إشتراك قديم - 3 شهور</option>
+							
+								<option value="810">2 ميجابيت - انترنت عادي - شهر*</option>
+							
+								<option value="836">انترنت سيمتركال* - 6 ميجابيت</option>
+							
+								<option value="1404">2 ميجابيت - انترنت ممتاز - 6 شهور- 2012</option>
+							
+								<option value="309">راوتر إنتلنت</option>
+							
+								<option value="1403">2 ميجابيت - انترنت عادي - 6 شهور - 2012</option>
+							
+								<option value="1337">1 ميجابيت - انترنت ممتاز - سنة - 2012</option>
+							
+								<option value="116">1 ميجابيت - انترنت ممتاز - سنة</option>
+							
+								<option value="121">2 ميجابيت - انترنت ممتاز - سنة</option>
+							
+								<option value="202">إديني ألو - كرت 100 شيكل</option>
+							
+								<option value="1329">رسوم صيانة - 2012</option>
+							
+								<option value="130">4 ميجابيت - انترنت ممتاز - 6 شهور</option>
+							
+								<option value="826">4 ميجابيت - انترنت ممتاز - شهرين*</option>
+							
+								<option value="824">4 ميجابيت - انترنت عادي - سنة*</option>
+							
+								<option value="803">1 ميجابيت - انترنت عادي - 6 شهور*</option>
+							
+								<option value="1336">1 ميجابيت - انترنت ممتاز - 3 شهور - 2012</option>
+							
+								<option value="1002">10 ميجا انترنت سميتريكال ** </option>
+							
+								<option value="1333">1 ميجابيت - انترنت عادي - سنة - 2012</option>
+							
+								<option value="126">4 ميجابيت - انترنت ممتاز - سنة</option>
+							
+								<option value="1000">1 ميجا انترنت سيميتريكال **</option>
+							
+								<option value="507">أجور صيانة</option>
+							
+								<option value="814">2 ميجابيت - انترنت عادي - سنة*</option>
+							
+								<option value="825">4 ميجابيت - انترنت ممتاز - شهر*</option>
+							
+								<option value="1344">2 ميجابيت - انترنت ممتاز - 3 شهور - 2012</option>
+							
+								<option value="305">4 ميجابيت - انترنت عادي إشتراك قديم - شهرين</option>
+							
+								<option value="835">انترنت سيمتركال* - 5 ميجابيت</option>
+							
+								<option value="1345">2 ميجابيت - انترنت ممتاز - سنة - 2012</option>
+							
+								<option value="1340">2 ميجابيت - انترنت عادي - 3 شهور - 2012</option>
+							
+								<option value="300">1 ميجابيت - انترنت عادي إشتراك قديم - شهر</option>
+							
+								<option value="822">4 ميجابيت - انترنت عادي - 3 شهور*</option>
+							
+								<option value="902">فويب - جهاز سيب تيب ب</option>
+							
+								<option value="1313">انترنت سيمتركال - 13 ميجابيت - 2012</option>
+							
+								<option value="1328">1 - متر كابل إيثرنت - 2012</option>
+							
+								<option value="104">1 ميجابيت - انترنت عادي - سنة</option>
+							
+								<option value="125">4 ميجابيت - انترنت ممتاز - شهر</option>
+							
+								<option value="505">1/2 ميجابيت - انترنت عادي - سنة</option>
+							
+								<option value="1203">1 ميجابيت - انترنت ممتاز - شهر**</option>
+							
+								<option value="1352">4 ميجابيت - انترنت ممتاز - 3 شهور - 2012</option>
+							
+								<option value="110">4 ميجابيت - انترنت عادي - شهر</option>
+							
+								<option value="134">انترنت سيمتركال - 4 ميجابيت</option>
+							
+								<option value="1304">انترنت سيمتركال - 4 ميجابيت - 2012</option>
+							
+								<option value="817">2 ميجابيت - انترنت ممتاز - 3 شهور*</option>
+							
+								<option value="801">1 ميجابيت - انترنت عادي - شهرين*</option>
+							
+								<option value="124">2 ميجابيت - انترنت ممتاز - 6 شهور</option>
+							
+								<option value="1302">انترنت سيمتركال - 2 ميجابيت - 2012</option>
+							
+								<option value="111">4 ميجابيت - انترنت عادي - شهرين</option>
+							
+								<option value="1310">انترنت سيمتركال - 10 ميجابيت - 2012</option>
+							
+								<option value="1406">4 ميجابيت - انترنت ممتاز - 6 شهور - 2012</option>
+							
+								<option value="800">1 ميجابيت - انترنت عادي - شهر*</option>
+							
+								<option value="1316">انترنت سيمتركال - 20 ميجابيت - 2012</option>
+							
+								<option value="1301">انترنت سيمتركال - 1 ميجابيت - 2012</option>
+							
+								<option value="304">2 ميجابيت - انترنت عادي إشتراك قديم - شهرين</option>
+							
+								<option value="114">4 ميجابيت - انترنت عادي - سنة</option>
+							
+								<option value="139">رسوم تركيب - انترنت ممتاز</option>
+							
+								<option value="1202">4 ميجابيت - انترنت عادي - شهر **</option>
+							
+								<option value="828">4 ميجابيت - انترنت ممتاز - 6 شهور*</option>
+							
+								<option value="827">4 ميجابيت - انترنت ممتاز - 3 شهور*</option>
+							
+								<option value="307">2 ميجابيت - انترنت عادي إشتراك قديم - 3 شهور</option>
+							
+								<option value="809">1 ميجابيت - انترنت ممتاز - سنة*</option>
+							
+								<option value="837">انترنت سيمتركال* - 10 ميجابيت</option>
+							
+								<option value="1314">انترنت سيمتركال - 14 ميجابيت - 2012</option>
+							
+								<option value="1323">Real IP - 2012</option>
+							
+								<option value="137">انترنت سيمتركال - 10 ميجابيت</option>
+							
+								<option value="308">4 ميجابيت - انترنت عادي إشتراك قديم - 3 شهور</option>
+							
+								<option value="107">2 ميجابيت - انترنت عادي - شهرين</option>
+							
+								<option value="819">2 ميجابيت - انترنت ممتاز - سنة*</option>
+							
+								<option value="132">انترنت سيمتركال - 2 ميجابيت</option>
+							
+								<option value="806">1 ميجابيت - انترنت ممتاز - شهرين*</option>
+							
+								<option value="117">1 ميجابيت - انترنت ممتاز - شهرين</option>
+							
+								<option value="802">1 ميجابيت - انترنت عادي - 3 شهور*</option>
+							
+								<option value="1342">2 ميجابيت - انترنت ممتاز - شهر - 2012</option>
+							
+								<option value="807">1 ميجابيت - انترنت ممتاز - 3 شهور*</option>
+							
+								<option value="834">انترنت سيمتركال* - 4 ميجابيت</option>
+							
+								<option value="812">2 ميجابيت - انترنت عادي - 3 شهور*</option>
+							
+								<option value="108">2 ميجابيت - انترنت عادي - 3 شهور</option>
+							
+								<option value="1319">رسوم تركيب - انترنت سيمتركال - 1 ميجابيت بولت - 2012</option>
+							
+								<option value="149">إديني ألو - كرت 20 شيكل</option>
+							
+								<option value="504">1/2 ميجابيت - انترنت عادي - 6 شهور</option>
+							
+								<option value="138">رسوم تركيب - انترنت عادي</option>
+							
+								<option value="151">راوتر - لينكسيس</option>
+							
+								<option value="1321">رسوم تركيب - انترنت سيمتركال - لينك - 2012</option>
+							
+								<option value="1312">انترنت سيمتركال - 12 ميجابيت - 2012</option>
+							
+								<option value="1346">4 ميجابيت - انترنت عادي - شهر - 2012</option>
+							
+								<option value="128">4 ميجابيت - انترنت ممتاز - شهرين</option>
+								
+						</select>			
+					</div>
+				</div>
+				<div style="clear: both;"></div>
+				<div class="fieldwrapper" style="width: 500px">
+					<div class="fieldlabel">العملة</div>
+						<div class="fieldinput" style="width: 500px">
+							<input style="float: right;" type="radio" name="fld_reports_currency" checked="checked" value="1">
+							<label style="width: 90px">دولار و شيكل</label>
+							<div style="clear: both;"></div>
+							<input style="float: right;" type="radio" name="fld_reports_currency" value="2">
+							<label>دولار</label>
+							<div style="clear: both;"></div>
+							<input style="float: right;" type="radio" name="fld_reports_currency" value="3">
+							<label>شيكل</label>
+						</div>
+						<div style="clear: both;"></div>
+				</div>
+				<div style="clear: both;"></div>
+				<div class="button_container" style="float: left;">
+					<div class="button_left"></div>
+					<div class="button">
+						<input onclick="this.form.target=&#39;_blank&#39;;return true;" style="margin: 0" type="submit" value="بحث">
+					</div>
+					<div class="button_right"></div>
+				</div>
+				<div style="clear: both;"></div>
+			</form>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+	<div class="report_area" id="invoice_report">
+		<div class="report_title">
+			<div onclick="indicationChange(&#39;invoice&#39;)" class="indication plus"></div>
+			<div class="report_title_text">
+				تقرير الفواتير
+			</div>
+		</div>
+		<div class="collapseable">
+			<form action="./Reports Page_files/Reports Page.htm" method="post">
+				<input type="hidden" name="action" value="invoice_report">
+				<div class="field_wrapper">
+					<label>المدينة</label>
+					<div class="input_area">
+						<select name="fld_city">
+							
+								<option value="0">-------</option>
+							
+								<option value="1">رام الله</option>
+							
+								<option value="2">قلقيلية</option>
+							
+								<option value="3">نابلس</option>
+							
+								<option value="4">بيت لحم</option>
+							
+								<option value="5">الخليل</option>
+							
+								<option value="6">جنين</option>
+							
+								<option value="7">طولكرم</option>
+							
+								<option value="8">سلفيت</option>
+								
+						</select>			
+					</div>
+				</div>
+				<div style="clear: both;"></div>
+				<div class="subscription_period">
+					<label>الفترة</label>
+				</div>
+				<div style="clear: both;"></div>
+				<div class="fieldwrapper">
+					<div class="fieldlabel">من تاريخ</div>
+						<div class="fieldinput">
+							<input class="date-pick dp-applied" readonly="readonly" type="text" id="order_fromdate" name="fld_reports_date_from" value=""><a href="http://localhost:8090/globalcom/reports#" class="dp-choose-date" title="Choose date">Choose date</a>
+							<span class="empty_date"></span>
+						</div>
+						<div style="clear: both;"></div>
+				</div>
+				
+				<div class="fieldwrapper">
+					<div class="fieldlabel">حتى تاريخ</div>
+						<div class="fieldinput">
+							<input class="date-pick dp-applied" readonly="readonly" type="text" id="order_todate" name="fld_reports_date_to" value=""><a href="http://localhost:8090/globalcom/reports#" class="dp-choose-date" title="Choose date">Choose date</a>
+							<span class="empty_date"></span>
+						</div>
+						<div style="clear: both;"></div>
+				</div>
+				<div style="clear: both;"></div>
+				<div class="fieldwrapper checkboxes">
+					<input type="checkbox" name="fld_report_paid" checked="checked">
+					<label>إظهار الفواتير المدفوعة</label>
+					<div style="clear: both;"></div>
+					<input type="checkbox" name="fld_report_unpaid" checked="checked">
+					<label>إظهار الفواتير غير المدفوعة</label>
+					<div style="clear: both;"></div>
+					<input type="checkbox" name="fld_report_deleted" checked="checked">
+					<label>إظهار الفواتير المحذوفة</label>
+				</div>
+				<div style="clear: both;"></div>
+				<div class="fieldwrapper" style="width: 500px">
+					<div class="fieldlabel">العملة</div>
+						<div class="fieldinput" style="width: 500px">
+							<input style="float: right;" type="radio" name="fld_reports_currency" checked="checked" value="1">
+							<label style="width: 90px">دولار و شيكل</label>
+							<div style="clear: both;"></div>
+							<input style="float: right;" type="radio" name="fld_reports_currency" value="2">
+							<label>دولار</label>
+							<div style="clear: both;"></div>
+							<input style="float: right;" type="radio" name="fld_reports_currency" value="3">
+							<label>شيكل</label>
+						</div>
+						<div style="clear: both;"></div>
+				</div>
+				<div style="clear: both;"></div>
+				<div class="button_container" style="float: left;">
+					<div class="button_left"></div>
+					<div class="button">
+						<input onclick="this.form.target=&#39;_blank&#39;;return true;" style="margin: 0" type="submit" value="بحث">
+					</div>
+					<div class="button_right"></div>
+				</div>
+				<div style="clear: both;"></div>
+			</form>
+		</div>
+	</div>
+	<div class="report_area" id="payment_report">
+		<div class="report_title">
+			<div onclick="indicationChange(&#39;payment&#39;)" class="indication plus"></div>
+			<div class="report_title_text">
+				تقرير سندات القبض
+			</div>
+		</div>
+		<div class="collapseable">
+			<form action="./Reports Page_files/Reports Page.htm" method="post">
+					<input type="hidden" name="action" value="payment_report">
+					<div class="field_wrapper">
+						<label>المدينة</label>
+						<div class="input_area">
+							<select name="fld_city">
+								
+									<option value="0">-------</option>
+								
+									<option value="1">رام الله</option>
+								
+									<option value="2">قلقيلية</option>
+								
+									<option value="3">نابلس</option>
+								
+									<option value="4">بيت لحم</option>
+								
+									<option value="5">الخليل</option>
+								
+									<option value="6">جنين</option>
+								
+									<option value="7">طولكرم</option>
+								
+									<option value="8">سلفيت</option>
+									
+							</select>			
+						</div>
+					</div>
+					<div style="clear: both;"></div>
+					<div class="subscription_period">
+						<label>الفترة</label>
+					</div>
+					<div style="clear: both;"></div>
+					<div class="fieldwrapper">
+						<div class="fieldlabel">من تاريخ</div>
+							<div class="fieldinput">
+								<input class="date-pick dp-applied" readonly="readonly" type="text" id="order_fromdate" name="fld_reports_date_from" value=""><a href="http://localhost:8090/globalcom/reports#" class="dp-choose-date" title="Choose date">Choose date</a>
+								<span class="empty_date"></span>
+							</div>
+							<div style="clear: both;"></div>
+					</div>
+					
+					<div class="fieldwrapper">
+						<div class="fieldlabel">حتى تاريخ</div>
+							<div class="fieldinput">
+								<input class="date-pick dp-applied" readonly="readonly" type="text" id="order_todate" name="fld_reports_date_to" value=""><a href="http://localhost:8090/globalcom/reports#" class="dp-choose-date" title="Choose date">Choose date</a>
+								<span class="empty_date"></span>
+							</div>
+							<div style="clear: both;"></div>
+					</div>
+					<div class="fieldwrapper">
+						<div class="fieldlabel">طريقة الدفع</div>
+							<div class="fieldinput">
+								<input style="float: right;" type="radio" checked="checked" name="fld_reports_payway" value="69">
+								<label>نقداً و شيك</label>
+								<input style="float: right;" type="radio" name="fld_reports_payway" value="10">
+								<label>نقداً</label>
+								<input style="float: right;" type="radio" name="fld_reports_payway" value="1">
+								<label>شيك</label>
+							</div>
+							<div style="clear: both;"></div>
+					</div>
+					<div class="fieldwrapper" style="width: 500px">
+					<div class="fieldlabel">العملة</div>
+						<div class="fieldinput" style="width: 500px">
+							<input style="float: right;" type="radio" name="fld_reports_currency" checked="checked" value="1">
+							<label style="width: 90px">دولار و شيكل</label>
+							<div style="clear: both;"></div>
+							<input style="float: right;" type="radio" name="fld_reports_currency" value="2">
+							<label>دولار</label>
+							<div style="clear: both;"></div>
+							<input style="float: right;" type="radio" name="fld_reports_currency" value="3">
+							<label>شيكل</label>
+						</div>
+						<div style="clear: both;"></div>
+				</div>
+				<div style="clear: both;"></div>
+					<div style="clear: both;"></div>
+					<div class="button_container" style="float: left;">
+						<div class="button_left"></div>
+						<div class="button">
+							<input onclick="this.form.target=&#39;_blank&#39;;return true;" style="margin: 0" type="submit" value="بحث">
+						</div>
+						<div class="button_right"></div>
+					</div>
+					<div style="clear: both;"></div>
+			</form>
+		</div>
+	</div>
+	<div class="report_area" id="balance_report">
+		<div class="report_title">
+			<div onclick="indicationChange(&#39;balance&#39;)" class="indication plus"></div>
+			<div class="report_title_text">
+				تقرير الذمم المدينة
+			</div>
+		</div>
+		<div class="collapseable">
+		<form action="./Reports Page_files/Reports Page.htm" method="post">
+					<input type="hidden" name="action" value="balance_report">
+					<div class="field_wrapper">
+						<label>المدينة</label>
+						<div class="input_area">
+							<select name="fld_city">
+								
+									<option value="0">-------</option>
+								
+									<option value="1">رام الله</option>
+								
+									<option value="2">قلقيلية</option>
+								
+									<option value="3">نابلس</option>
+								
+									<option value="4">بيت لحم</option>
+								
+									<option value="5">الخليل</option>
+								
+									<option value="6">جنين</option>
+								
+									<option value="7">طولكرم</option>
+								
+									<option value="8">سلفيت</option>
+									
+							</select>			
+						</div>
+					</div>
+					<div class="fieldwrapper" style="width: 500px">
+					<div class="fieldlabel">العملة</div>
+						<div class="fieldinput" style="width: 500px">
+							<input style="float: right;" type="radio" name="fld_reports_currency" checked="checked" value="1">
+							<label style="width: 90px">دولار و شيكل</label>
+							<div style="clear: both;"></div>
+							<input style="float: right;" type="radio" name="fld_reports_currency" value="2">
+							<label>دولار</label>
+							<div style="clear: both;"></div>
+							<input style="float: right;" type="radio" name="fld_reports_currency" value="3">
+							<label>شيكل</label>
+						</div>
+						<div style="clear: both;"></div>
+				</div>
+				<div style="clear: both;"></div>
+					<div style="clear: both;"></div>
+					<div class="button_container" style="float: left;">
+						<div class="button_left"></div>
+						<div class="button">
+							<input onclick="this.form.target=&#39;_blank&#39;;return true;" style="margin: 0" type="submit" value="بحث">
+						</div>
+						<div class="button_right"></div>
+					</div>
+					<div style="clear: both;"></div>
+				</form>
+		</div>
+	</div>
+	<div class="report_area" id="accounting_report">
+		<div class="report_title">
+			<div onclick="indicationChange(&#39;accounting&#39;)" class="indication plus"></div>
+			<div class="report_title_text">
+				تقرير المحاسبة
+			</div>
+		</div>
+		<div style="clear: both;"></div>
+		<div class="collapseable">
+			<form action="./Reports Page_files/Reports Page.htm" method="post">
+				<input type="hidden" name="action" value="accounting_report">
+				<div class="field_wrapper">
+					<label>المدينة</label>
+					<div class="input_area">
+						<select name="fld_city">
+							
+								<option value="0">-------</option>
+							
+								<option value="1">رام الله</option>
+							
+								<option value="2">قلقيلية</option>
+							
+								<option value="3">نابلس</option>
+							
+								<option value="4">بيت لحم</option>
+							
+								<option value="5">الخليل</option>
+							
+								<option value="6">جنين</option>
+							
+								<option value="7">طولكرم</option>
+							
+								<option value="8">سلفيت</option>
+								
+						</select>			
+					</div>
+				</div>
+				<div style="clear: both;"></div>
+				<div class="subscription_period">
+					<label>الفترة</label>
+				</div>
+				<div style="clear: both;"></div>
+				<div class="fieldwrapper">
+					<div class="fieldlabel">من تاريخ</div>
+						<div class="fieldinput">
+							<input class="date-pick dp-applied" readonly="readonly" type="text" id="order_fromdate" name="fld_reports_date_from" value=""><a href="http://localhost:8090/globalcom/reports#" class="dp-choose-date" title="Choose date">Choose date</a>
+							<span class="empty_date"></span>
+						</div>
+						<div style="clear: both;"></div>
+				</div>
+				
+				<div class="fieldwrapper">
+					<div class="fieldlabel">حتى تاريخ</div>
+						<div class="fieldinput">
+							<input class="date-pick dp-applied" readonly="readonly" type="text" id="order_todate" name="fld_reports_date_to" value=""><a href="http://localhost:8090/globalcom/reports#" class="dp-choose-date" title="Choose date">Choose date</a>
+							<span class="empty_date"></span>
+						</div>
+						<div style="clear: both;"></div>
+				</div>
+				<div class="fieldwrapper" style="width: 500px">
+					<div class="fieldlabel">العملة</div>
+						<div class="fieldinput" style="width: 500px">
+							<input style="float: right;" type="radio" name="fld_reports_currency" checked="checked" value="1">
+							<label style="width: 90px">دولار و شيكل</label>
+							<div style="clear: both;"></div>
+							<input style="float: right;" type="radio" name="fld_reports_currency" value="2">
+							<label>دولار</label>
+							<div style="clear: both;"></div>
+							<input style="float: right;" type="radio" name="fld_reports_currency" value="3">
+							<label>شيكل</label>
+						</div>
+						<div style="clear: both;"></div>
+				</div>
+				<div style="clear: both;"></div>
+				<div style="clear: both;"></div>
+				<div class="button_container" style="float: left;">
+					<div class="button_left"></div>
+					<div class="button">
+						<input onclick="this.form.target=&#39;_blank&#39;;return true;" style="margin: 0" type="submit" value="بحث">
+					</div>
+					<div class="button_right"></div>
+				</div>
+				<div style="clear: both;"></div>
+			</form>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+</div>
+	</div>
+</div> 
+
+<div id="footer">
+	
+
+
+جميع الحقوق محفوظة لدى شركة جلوبال كوم للإتصالات المساهمة العامة © 2010
+</div>	
+
+</body></html>
