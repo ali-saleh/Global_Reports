@@ -26,7 +26,6 @@ public class UserReportAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
-	
 	public String test() throws UnsupportedEncodingException {
 
 		setGreeting("Searching for: " + search);
@@ -66,11 +65,9 @@ public class UserReportAction extends ActionSupport {
 		this.res = res;
 	}
 
-
 	public String getGreeting() {
 		return greeting;
 	}
-
 
 	public void setGreeting(String greeting) {
 		this.greeting = greeting;
