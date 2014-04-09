@@ -6,8 +6,10 @@
 	<div class="accordionContent">
 		<form action="invoice_report" method="post">
 			<div class="field_wrapper" id="city-field">
-				<label><s:text name="users.customer.city" /> </label>
-				<div class="input_area">
+				<div class="fieldlabel">
+					<s:text name="users.customer.city" />
+				</div>
+				<div class="fieldinput">
 					<select name="selectedCity">
 						<s:set id="i" value="0" />
 						<s:iterator value="cities" var="city">
@@ -102,13 +104,9 @@
 			<div style="clear: both;"></div>
 
 			<div class="fieldwrapper" id="vat-field">
-				<div class="fieldlabel">
-					<label><s:text name="report.vat" /></label>
-				</div>
-				<div class="fieldinput">
-					<input type="checkbox" checked="checked" name="vatSelect"
-						value="true">
-				</div>
+				<input style="float: right;" type="checkbox" checked="checked"
+					name="vatSelect" value="true"><label><s:text
+						name="report.vat" /></label>
 			</div>
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
@@ -135,8 +133,10 @@
 			<%-- 			<s:if test=""> --%>
 			<%-- 			</s:if> --%>
 			<div class="field_wrapper" id="city-field">
-				<label> <s:text name="users.customer.city" /></label>
-				<div class="input_area">
+				<div class="fieldlabel">
+					<s:text name="users.customer.city" />
+				</div>
+				<div class="fieldinput">
 					<select name="selectedCity">
 						<s:set id="i" value="0" />
 						<s:iterator value="cities" var="city">
@@ -213,13 +213,13 @@
 			</div>
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
+			<div style="clear: both;"></div>
+
 			<div class="fieldwrapper" id="vat-field">
-				<div class="fieldinput">
+				<div class="input_area">
 					<input style="float: right;" type="checkbox" checked="checked"
-						name="vatSelect" value="true">
-				</div>
-				<div class="fieldlabel">
-					<label><s:text name="report.vat" /></label>
+						name="vatSelect" value="true"> <label><s:text
+							name="report.vat" /></label>
 				</div>
 			</div>
 
@@ -247,8 +247,10 @@
 			<%-- 			<s:if test=""> --%>
 			<%-- 			</s:if> --%>
 			<div class="field_wrapper" id="city-field">
-				<label> <s:text name="users.customer.city" /></label>
-				<div class="input_area">
+				<div class="fieldlabel">
+					<s:text name="users.customer.city" />
+				</div>
+				<div class="fieldinput">
 					<select name="selectedCity">
 						<s:set id="i" value="0" />
 						<s:iterator value="cities" var="city">
@@ -318,36 +320,29 @@
 							name="reports.both" /></label>
 					<div style="clear: both;"></div>
 					<input style="float: right;" type="radio" name="paymentMethodId"
-						value="1"> <label><s:text
-							name="reports.cheque" /></label>
+						value="1"> <label><s:text name="reports.cheque" /></label>
 					<div style="clear: both;"></div>
 					<input style="float: right;" type="radio" name="paymentMethodId"
-						value="2"><label><s:text
-							name="reports.cash" /></label>
+						value="2"><label><s:text name="reports.cash" /></label>
 				</div>
 			</div>
+			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
 
 			<div class="fieldwrapper" id="deleted-field">
-				<div class="fieldinput">
-					<input style="float: right;" type="checkbox" checked="checked"
-						name="showDeleted" value="true">
-				</div>
-				<div class="fieldlabel">
-					<label><s:text name="report.payment.report.show.deleted" /></label>
-				</div>
+				<input style="float: right;" type="checkbox" checked="checked"
+					name="showDeleted" value="true"> <label><s:text
+						name="report.payment.report.show.deleted" /></label>
+
 			</div>
+			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
 
 			<div class="fieldwrapper" id="vat-field">
-				<div class="fieldinput">
-					<input style="float: right;" type="checkbox" checked="checked"
-						name="vatSelect" value="true">
-				</div>
-				<div class="fieldlabel">
-					<label><s:text name="report.vat" /></label>
-				</div>
+				<input style="float: right;" type="checkbox" checked="checked"
+					name="vatSelect" value="true"> <label><s:text
+						name="report.vat" /></label>
 			</div>
 
 			<div style="clear: both;"></div>
@@ -367,11 +362,12 @@
 
 	<div class="accordionButton">Section 4</div>
 	<div class="accordionContent">
-		<form action="reporting-invoices" method="post">
-			<input type="hidden" name="action" value="balance_report">
+		<form action="not-working" method="post">
 			<div class="field_wrapper">
-				<label>Label</label>
-				<div class="input_area">
+				<div class="fieldlabel">
+					<s:text name="users.customer.city" />
+				</div>
+				<div class="fieldinput">
 					<select name="selectedCity">
 						<s:set id="i" value="0" />
 						<s:iterator value="cities" var="city">
@@ -417,13 +413,16 @@
 			<div style="clear: both;"></div>
 		</form>
 	</div>
+
 	<div class="accordionButton">Section 5</div>
 	<div class="accordionContent">
-		<form action="reporting-invoices" method="post">
+		<form action="not-working" method="post">
 			<input type="hidden" name="action" value="balance_report">
 			<div class="field_wrapper">
-				<label>Label</label>
-				<div class="input_area">
+				<div class="fieldlabel">
+					<s:text name="users.customer.city" />
+				</div>
+				<div class="fieldinput">
 					<select name="selectedCity">
 						<s:set id="i" value="0" />
 						<s:iterator value="cities" var="city">

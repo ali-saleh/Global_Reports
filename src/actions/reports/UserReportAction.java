@@ -12,7 +12,9 @@ public class UserReportAction extends ActionSupport {
 	 * 
 	 */
 	private static final long serialVersionUID = -9010796324682946356L;
-
+	
+	private String page = "user";
+	
 	private InputStream inputStream;
 	private String search;
 	private String res;
@@ -21,8 +23,7 @@ public class UserReportAction extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
-		// TODO Auto-generated method stub
-		return super.execute();
+		return SUCCESS;
 	}
 	
 	
@@ -73,5 +74,9 @@ public class UserReportAction extends ActionSupport {
 
 	public void setGreeting(String greeting) {
 		this.greeting = greeting;
+	}
+	
+	public String getPage() {
+		return this.page;
 	}
 }

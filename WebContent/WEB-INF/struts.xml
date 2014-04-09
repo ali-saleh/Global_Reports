@@ -70,7 +70,7 @@
 		<!-- Separator -->
 		<!-- Separator -->
 
-		<action name="user" class="actions.ReportingAction">
+		<action name="user" class="actions.reports.UserReportAction">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<result name="success" type="tiles">user.tiles</result>
 		</action>

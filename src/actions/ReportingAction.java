@@ -30,7 +30,8 @@ public class ReportingAction extends ActionSupport implements UserAware {
 	private static final long serialVersionUID = 866767945016267932L;
 
 	private static final String CITY_PREFIX = "city.";
-
+	private String page = "reporting";
+	
 	private List<InvoiceReport> invoices;
 	private List<ItemReport> services;
 
@@ -226,6 +227,10 @@ public class ReportingAction extends ActionSupport implements UserAware {
 
 	public void setVatSelect(boolean vatSelect) {
 		this.vatSelect = vatSelect;
+	}
+	
+	public String getPage() {
+		return this.page;
 	}
 
 	private void prepareCities() {

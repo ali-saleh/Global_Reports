@@ -3,14 +3,14 @@
 <div id="navigation">
 
 	<div class="navigation_item 
-	<s:if test="#{ page == 'user'}">
+	<s:if test="%{ page == 'reporting'}">
 		active_navigation_item
 	</s:if>
 	">
 		<a href="<s:url action="reporting"/>">Reports</a>
 	</div>
 	<div class="navigation_item 
-		<s:if test="#{ page == 'reports'}">
+		<s:if test="%{ page == 'user'}">
 		active_navigation_item
 	</s:if>
 	">
