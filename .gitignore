@@ -216,3 +216,4 @@ pip-log.txt
 
 #removing all SVN files
 *.svn*
+WebContent/WEB-INF/lib/DataAccessor.jar
