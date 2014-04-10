@@ -37,18 +37,31 @@
 					<s:property value="toDate" />
 				</s:if>
 			</div>
-			<div class="report_payway"></div>
+			<div class="report_payway">
+				<s:text name="report.report.payway" />
+				:&nbsp;
+				<s:if test="%{ paymentMethodId == 3 }">
+					<s:text name="reports.both" />
+				</s:if>
+				<s:elseif test="%{ paymentMethodId == 2 }">
+					<s:text name="reports.cash" />
+				</s:elseif>
+				<s:elseif test="%{ paymentMethodId == 1 }">
+					<s:text name="reports.cheque" />
+				</s:elseif>
+			</div>
 		</div>
 		<div class="seperator"></div>
 		<div class="seperator"></div>
 		<div style="clear: both;"></div>
 	</div>
-<!--  
-	<s:if test="%{invoicesDollar != null}">
+
+	<s:if
+		test="%{paymentsDollarCash != null && paymentsDollarCash.size > 0}">
 		<s:set id="i" value="1" />
 
 		<div class="report_title">
-			<s:text name="report.invoice.name.dollar" />
+			<s:text name="report.payment.name.dollar.cash" />
 		</div>
 		<div style="clear: both;"></div>
 		<table>
@@ -56,60 +69,57 @@
 				<tr>
 					<th style="width: 20px"><%="#"%></th>
 					<th style="width: 40px"><s:text
-							name="report.invoice.invoice.number" /></th>
+							name="report.payment.payment.number" /></th>
 					<th style="width: 90px"><s:text
-							name="report.invoice.customer.number" /></th>
+							name="report.payment.customer.number" /></th>
 					<th style="width: 130px"><s:text
-							name="report.invoice.customer.name" /></th>
+							name="report.payment.customer.name" /></th>
 					<th style="width: 80px"><s:text
-							name="report.invoice.invoice.date" /></th>
-					<th style="width: 60px"><s:text
-							name="report.invoice.invoice.status" /></th>
+							name="report.payment.payment.date" /></th>
 					<th style="width: 100px"><s:text
-							name="report.invoice.invoice.payments" /></th>
+							name="report.payment.payment.invoices" /></th>
 					<th style="width: 100px"><s:text
-							name="report.invoice.customer.balance" /><br /> <s:text
+							name="report.payment.payment.amount" /><br /> <s:text
 							name="currency3.1" /></th>
 				</tr>
 			</thead>
 			<tbody>
-				<s:iterator value="invoicesDollar" var="invoice">
+				<s:iterator value="paymentsDollarCash" var="payment">
 					<tr>
-						<td>${i}</td>
-						<td><s:property value="#invoice.invoiceId" />
-						<td><s:property value="#invoice.userNumber" />
-						<td><s:property value="#invoice.userFullName"
+						<td style="text-align: center;">${i}</td>
+						<td><s:property value="#payment.paymentId" /></td>
+						<td><s:property value="#payment.userNumber" /></td>
+						<td><s:property value="#payment.userFullName"
 								escapeHtml="false" /></td>
-						<td><s:property value="#invoice.createDate" /></td>
-						<s:set id="tmp" value="%{'invoice.status.'+#invoice.status}" />
-						<td><s:text name="%{tmp}" /></td>
-						<td><s:iterator value="#invoice.payments" var="payment">
-								<s:property value="#payment" />
-								<br>
+						<td><s:property value="#payment.paymentDate" /></td>
+						<td><s:iterator value="#payment.invoices" var="invoice">
+								<s:property value="#invoice" />&nbsp;
 							</s:iterator></td>
-						<td><s:property value="#invoice.total" /></td>
+
+						<td><s:property value="#payment.amount" /></td>
 					</tr>
 					<s:set id="i" value="#i+1" />
 				</s:iterator>
 				<tr>
-					<td style="border: 0" colspan="6"></td>
+					<td style="border: 0" colspan="5"></td>
 					<td style="border: 0; text-align: center; font-weight: bold;">
-						<s:text name="report.invoice.customer.sum" />&nbsp; <s:text
+						<s:text name="report.payment.customer.sum" />&nbsp; <s:text
 							name="currency3.1" />
 					</td>
 					<td style="font-weight: bold;"><s:property
-							value="invoiceDollarSum" /></td>
+							value="paymentsDollarCashSum" /></td>
 				</tr>
 			</tbody>
 		</table>
 		<div style="clear: both;"></div>
 	</s:if>
 
-	<s:if test="%{invoicesShekel != null}">
+	<s:if
+		test="%{paymentsDollarCheque != null && paymentsDollarCheque.size > 0}">
 		<s:set id="i" value="1" />
 
 		<div class="report_title">
-			<s:text name="report.invoice.name.shekel" />
+			<s:text name="report.payment.name.dollar.cheque" />
 		</div>
 		<div style="clear: both;"></div>
 		<table>
@@ -117,123 +127,70 @@
 				<tr>
 					<th style="width: 20px"><%="#"%></th>
 					<th style="width: 40px"><s:text
-							name="report.invoice.invoice.number" /></th>
+							name="report.payment.payment.number" /></th>
 					<th style="width: 90px"><s:text
-							name="report.invoice.customer.number" /></th>
+							name="report.payment.customer.number" /></th>
 					<th style="width: 130px"><s:text
-							name="report.invoice.customer.name" /></th>
+							name="report.payment.customer.name" /></th>
 					<th style="width: 80px"><s:text
-							name="report.invoice.invoice.date" /></th>
-					<th style="width: 60px"><s:text
-							name="report.invoice.invoice.status" /></th>
+							name="report.payment.payment.date" /></th>
 					<th style="width: 100px"><s:text
-							name="report.invoice.invoice.payments" /></th>
+							name="report.payment.payment.invoices" /></th>
 					<th style="width: 100px"><s:text
-							name="report.invoice.customer.balance" /><br /> <s:text
-							name="currency3.12" /></th>
-				</tr>
-			</thead>
-			<tbody>
-				<s:iterator value="invoicesShekel" var="invoice">
-					<tr>
-						<td>${i}</td>
-						<td><s:property value="#invoice.invoiceId" />
-						<td><s:property value="#invoice.userNumber" />
-						<td><s:property value="#invoice.userFullName"
-								escapeHtml="false" /></td>
-						<td><s:property value="#invoice.createDate" /></td>
-						<s:set id="tmp" value="%{'invoice.status.'+#invoice.status}" />
-						<td><s:text name="%{tmp}" /></td>
-						<td><s:iterator value="#invoice.payments" var="payment">
-								<s:property value="#payment" />
-								<br>
-							</s:iterator></td>
-						<td><s:property value="#invoice.total" /></td>
-					</tr>
-					<s:set id="i" value="#i+1" />
-				</s:iterator>
-				<tr>
-					<td style="border: 0" colspan="6"></td>
-					<td style="border: 0; text-align: center; font-weight: bold;">
-						<s:text name="report.invoice.customer.sum" />&nbsp; <s:text
-							name="currency3.12" />
-					</td>
-					<td style="font-weight: bold;"><s:property
-							value="invoiceShekelSum" /></td>
-				</tr>
-			</tbody>
-		</table>
-		<div style="clear: both;"></div>
-	</s:if>
-
-	<s:if test="%{invoicesDollarDeleted != null}">
-		<s:set id="i" value="1" />
-
-		<div class="report_title">
-			<s:text name="report.invoice.name.deleted" />&nbsp;
-			<s:text name="currency.1" />
-		</div>
-		<div style="clear: both;"></div>
-		<table>
-			<thead>
-				<tr>
-					<th style="width: 20px"><%="#"%></th>
-					<th style="width: 40px"><s:text
-							name="report.invoice.invoice.number" /></th>
-					<th style="width: 90px"><s:text
-							name="report.invoice.customer.number" /></th>
-					<th style="width: 130px"><s:text
-							name="report.invoice.customer.name" /></th>
-					<th style="width: 80px"><s:text
-							name="report.invoice.invoice.date" /></th>
-					<th style="width: 60px"><s:text
-							name="report.invoice.invoice.status" /></th>
-					<th style="width: 100px"><s:text
-							name="report.invoice.invoice.payments" /></th>
-					<th style="width: 100px"><s:text
-							name="report.invoice.customer.balance" /><br /> <s:text
+							name="report.payment.payment.amount" /><br /> <s:text
 							name="currency3.1" /></th>
 				</tr>
 			</thead>
 			<tbody>
-				<s:iterator value="invoicesDollarDeleted" var="invoice">
+				<s:iterator value="paymentsDollarCheque" var="payment">
 					<tr>
-						<td>${i}</td>
-						<td><s:property value="#invoice.invoiceId" />
-						<td><s:property value="#invoice.userNumber" />
-						<td><s:property value="#invoice.userFullName"
+						<td style="text-align: center;" rowspan="2">${i}</td>
+						<td><s:property value="#payment.paymentId" /></td>
+						<td><s:property value="#payment.userNumber" /></td>
+						<td><s:property value="#payment.userFullName"
 								escapeHtml="false" /></td>
-						<td><s:property value="#invoice.createDate" /></td>
-						<s:set id="tmp" value="%{'invoice.status.'+#invoice.status}" />
-						<td><s:text name="%{tmp}" /></td>
-						<td><s:iterator value="#invoice.payments" var="payment">
-								<s:property value="#payment" />
-								<br>
+						<td><s:property value="#payment.paymentDate" /></td>
+						<td><s:iterator value="#payment.invoices" var="invoice">
+								<s:property value="#invoice" />&nbsp;
 							</s:iterator></td>
-						<td><s:property value="#invoice.total" /></td>
+						<td><s:property value="#payment.amount" /></td>
 					</tr>
+					<tr style="font-size: 9px; font-style: italic;">
+						<td style="font-weight: bold;"><s:text
+								name="report.payment.cheque.number" /></td>
+						<td><s:property value="#payment.chequeInfo.chequeId"
+								escapeHtml="false" /></td>
+						<td style="font-weight: bold;"><s:text
+								name="report.payment.cheque.bank" /></td>
+						<td><s:property value="#payment.chequeInfo.bankName"
+								escapeHtml="false" /></td>
+						<td style="font-weight: bold;"><s:text
+								name="report.payment.cheque.date" /></td>
+						<td><s:property value="#payment.chequeInfo.chequeDate" /></td>
+					</tr>
+
 					<s:set id="i" value="#i+1" />
 				</s:iterator>
 				<tr>
-					<td style="border: 0" colspan="6"></td>
+					<td style="border: 0" colspan="5"></td>
 					<td style="border: 0; text-align: center; font-weight: bold;">
-						<s:text name="report.invoice.customer.sum" />&nbsp; <s:text
+						<s:text name="report.payment.customer.sum" />&nbsp; <s:text
 							name="currency3.1" />
 					</td>
 					<td style="font-weight: bold;"><s:property
-							value="invoicesDollarDeletedSum" /></td>
+							value="paymentsDollarChequeSum" /></td>
 				</tr>
 			</tbody>
 		</table>
 		<div style="clear: both;"></div>
 	</s:if>
 
-	<s:if test="%{invoicesShekelDeleted != null}">
+	<s:if
+		test="%{paymentsShekelCash != null && paymentsShekelCash.size > 0}">
 		<s:set id="i" value="1" />
 
 		<div class="report_title">
-			<s:text name="report.invoice.name.deleted" />&nbsp;
-			<s:text name="currency.12" />
+			<s:text name="report.payment.name.shekel.cash" />
 		</div>
 		<div style="clear: both;"></div>
 		<table>
@@ -241,75 +198,386 @@
 				<tr>
 					<th style="width: 20px"><%="#"%></th>
 					<th style="width: 40px"><s:text
-							name="report.invoice.invoice.number" /></th>
+							name="report.payment.payment.number" /></th>
 					<th style="width: 90px"><s:text
-							name="report.invoice.customer.number" /></th>
+							name="report.payment.customer.number" /></th>
 					<th style="width: 130px"><s:text
-							name="report.invoice.customer.name" /></th>
+							name="report.payment.customer.name" /></th>
 					<th style="width: 80px"><s:text
-							name="report.invoice.invoice.date" /></th>
-					<th style="width: 60px"><s:text
-							name="report.invoice.invoice.status" /></th>
+							name="report.payment.payment.date" /></th>
 					<th style="width: 100px"><s:text
-							name="report.invoice.invoice.payments" /></th>
+							name="report.payment.payment.invoices" /></th>
 					<th style="width: 100px"><s:text
-							name="report.invoice.customer.balance" /><br /> <s:text
+							name="report.payment.payment.amount" /><br /> <s:text
 							name="currency3.12" /></th>
 				</tr>
 			</thead>
 			<tbody>
-				<s:iterator value="invoicesShekelDeleted" var="invoice">
+				<s:iterator value="paymentsShekelCash" var="payment">
 					<tr>
-						<td>${i}</td>
-						<td><s:property value="#invoice.invoiceId" /> <td><s:property value="#invoice.userNumber" />
-						
-						<td><s:property value="#invoice.userFullName"
+						<td style="text-align: center;">${i}</td>
+						<td><s:property value="#payment.paymentId" /></td>
+						<td><s:property value="#payment.userNumber" /></td>
+						<td><s:property value="#payment.userFullName"
 								escapeHtml="false" /></td>
-						<td><s:property value="#invoice.createDate" /></td>
-						<s:set id="tmp" value="%{'invoice.status.'+#invoice.status}" />
-						<td><s:text name="%{tmp}" /></td>
-						<td><s:iterator value="#invoice.payments" var="payment">
-								<s:property value="#payment" />
-								<br>
+						<td><s:property value="#payment.paymentDate" /></td>
+						<td><s:iterator value="#payment.invoices" var="invoice">
+								<s:property value="#invoice" />&nbsp;
 							</s:iterator></td>
-						<td><s:property value="#invoice.total" /></td>
+
+						<td><s:property value="#payment.amount" /></td>
 					</tr>
 					<s:set id="i" value="#i+1" />
 				</s:iterator>
 				<tr>
-					<td style="border: 0" colspan="6"></td>
+					<td style="border: 0" colspan="5"></td>
 					<td style="border: 0; text-align: center; font-weight: bold;">
-						<s:text name="report.invoice.customer.sum" />&nbsp; <s:text
+						<s:text name="report.payment.customer.sum" />&nbsp; <s:text
 							name="currency3.12" />
 					</td>
 					<td style="font-weight: bold;"><s:property
-							value="invoiceShekelDeletedSum" /></td>
+							value="paymentsShekelCashSum" /></td>
 				</tr>
 			</tbody>
 		</table>
 		<div style="clear: both;"></div>
 	</s:if>
 
-	
-	-->
-	<%-- 			<% if(dollarPaidInvoices!=null && !dollarPaidInvoices.isEmpty()){ %> --%>
-							<%-- 			<% number=1; %> --%>
-	<%-- 			<% customerBalance = BigDecimal.ZERO; %> --%>
-	<!-- 			<div class="report_title"> -->
-	<%-- 				<%= prop.get(GCConstants.MSG_REPORTS_INVOICE_NAME_DOLLAR) %> --%>
-	<!-- 			</div> -->
-	<!-- 			<div style="clear: both;"></div> -->
-	<!-- 				<table> -->
-	<!-- 					<tr> -->
-	<%-- 						<th style="width: 20px"><%= "#" %></th> --%>
-	<%-- 						<th style="width: 40px"><%= prop.get(GCConstants.MSG_REPORTS_INVOICES_REPORT_INVOICE_NUMBER) %></th> --%>
-	<%-- 						<th style="width: 90px"><%= prop.get(GCConstants.MSG_REPORTS_INVOICES_REPORT_CUSTOMER_NUMBER) %></th> --%>
-	<%-- 						<th style="width: 130px"><%= prop.get(GCConstants.MSG_REPORTS_INVOICES_REPORT_CUSTOMER_NAME) %></th> --%>
-	<%-- 						<th style="width: 80px"><%= prop.get(GCConstants.MSG_REPORTS_INVOICES_REPORT_INVOICE_DATE) %></th> --%>
-	<%-- 						<th style="width: 60px"><%= prop.get(GCConstants.MSG_REPORTS_INVOICES_REPORT_INVOICE_STATUS) %></th> --%>
-	<%-- 						<th style="width: 100px"><%= prop.get(GCConstants.MSG_REPORTS_INVOICES_REPORT_INVOICE_PAYMENTS) %></th> --%>
-	<%-- 						<th style="width: 100px"><%= prop.get(GCConstants.MSG_REPORTS_INVOICES_REPORT_BALANCE)+"<br /> "+prop.get(GCConstants.PROP_CURRENCY_PREFIX3+"1", null) %></th> --%>
-	<!-- 					</tr> -->
+	<s:if
+		test="%{paymentsShekelCheque != null && paymentsShekelCheque.size > 0}">
+		<s:set id="i" value="1" />
+
+		<div class="report_title">
+			<s:text name="report.payment.name.shekel.cheque" />
+		</div>
+		<div style="clear: both;"></div>
+		<table>
+			<thead>
+				<tr>
+					<th style="width: 20px"><%="#"%></th>
+					<th style="width: 40px"><s:text
+							name="report.payment.payment.number" /></th>
+					<th style="width: 90px"><s:text
+							name="report.payment.customer.number" /></th>
+					<th style="width: 130px"><s:text
+							name="report.payment.customer.name" /></th>
+					<th style="width: 80px"><s:text
+							name="report.payment.payment.date" /></th>
+					<th style="width: 100px"><s:text
+							name="report.payment.payment.invoices" /></th>
+					<th style="width: 100px"><s:text
+							name="report.payment.payment.amount" /><br /> <s:text
+							name="currency3.12" /></th>
+				</tr>
+			</thead>
+			<tbody>
+				<s:iterator value="paymentsShekelCheque" var="payment">
+					<tr>
+						<td style="text-align: center;" rowspan="2">${i}</td>
+						<td><s:property value="#payment.paymentId" /></td>
+						<td><s:property value="#payment.userNumber" /></td>
+						<td><s:property value="#payment.userFullName"
+								escapeHtml="false" /></td>
+						<td><s:property value="#payment.paymentDate" /></td>
+						<td><s:iterator value="#payment.invoices" var="invoice">
+								<s:property value="#invoice" />&nbsp;
+							</s:iterator></td>
+						<td><s:property value="#payment.amount" /></td>
+					</tr>
+					<tr style="font-size: 9px; font-style: italic;">
+						<td style="font-weight: bold;"><s:text
+								name="report.payment.cheque.number" /></td>
+						<td><s:property value="#payment.chequeInfo.chequeId"
+								escapeHtml="false" /></td>
+						<td style="font-weight: bold;"><s:text
+								name="report.payment.cheque.bank" /></td>
+						<td><s:property value="#payment.chequeInfo.bankName"
+								escapeHtml="false" /></td>
+						<td style="font-weight: bold;"><s:text
+								name="report.payment.cheque.date" /></td>
+						<td><s:property value="#payment.chequeInfo.chequeDate" /></td>
+					</tr>
+
+					<s:set id="i" value="#i+1" />
+				</s:iterator>
+				<tr>
+					<td style="border: 0" colspan="5"></td>
+					<td style="border: 0; text-align: center; font-weight: bold;">
+						<s:text name="report.payment.customer.sum" />&nbsp; <s:text
+							name="currency3.12" />
+					</td>
+					<td style="font-weight: bold;"><s:property
+							value="paymentsShekelChequeSum" /></td>
+				</tr>
+			</tbody>
+		</table>
+		<div style="clear: both;"></div>
+	</s:if>
 
 
-						</div>
+	<s:if
+		test="%{paymentsDollarCashDeleted != null && paymentsDollarCashDeleted.size > 0}">
+		<s:set id="i" value="1" />
+
+		<div class="report_title">
+			<s:text name="report.payment.name.dollar.cash" />
+			&nbsp;
+			<s:text name="report.deleted" />
+		</div>
+		<div style="clear: both;"></div>
+		<table>
+			<thead>
+				<tr>
+					<th style="width: 20px"><%="#"%></th>
+					<th style="width: 40px"><s:text
+							name="report.payment.payment.number" /></th>
+					<th style="width: 90px"><s:text
+							name="report.payment.customer.number" /></th>
+					<th style="width: 130px"><s:text
+							name="report.payment.customer.name" /></th>
+					<th style="width: 80px"><s:text
+							name="report.payment.payment.date" /></th>
+					<th style="width: 100px"><s:text
+							name="report.payment.payment.invoices" /></th>
+					<th style="width: 100px"><s:text
+							name="report.payment.payment.amount" /><br /> <s:text
+							name="currency3.1" /></th>
+				</tr>
+			</thead>
+			<tbody>
+				<s:iterator value="paymentsDollarCashDeleted" var="payment">
+					<tr>
+						<td style="text-align: center;">${i}</td>
+						<td><s:property value="#payment.paymentId" /></td>
+						<td><s:property value="#payment.userNumber" /></td>
+						<td><s:property value="#payment.userFullName"
+								escapeHtml="false" /></td>
+						<td><s:property value="#payment.paymentDate" /></td>
+						<td><s:iterator value="#payment.invoices" var="invoice">
+								<s:property value="#invoice" />&nbsp;
+							</s:iterator></td>
+
+						<td><s:property value="#payment.amount" /></td>
+					</tr>
+					<s:set id="i" value="#i+1" />
+				</s:iterator>
+				<tr>
+					<td style="border: 0" colspan="5"></td>
+					<td style="border: 0; text-align: center; font-weight: bold;">
+						<s:text name="report.payment.customer.sum" />&nbsp; <s:text
+							name="currency3.1" />
+					</td>
+					<td style="font-weight: bold;"><s:property
+							value="paymentsDollarCashDeletedSum" /></td>
+				</tr>
+			</tbody>
+		</table>
+		<div style="clear: both;"></div>
+	</s:if>
+
+	<s:if
+		test="%{paymentsDollarChequeDeleted != null && paymentsDollarChequeDeleted.size > 0}">
+		<s:set id="i" value="1" />
+
+		<div class="report_title">
+			<s:text name="report.payment.name.dollar.cheque" />
+			&nbsp;
+			<s:text name="report.deleted" />
+		</div>
+		<div style="clear: both;"></div>
+		<table>
+			<thead>
+				<tr>
+					<th style="width: 20px"><%="#"%></th>
+					<th style="width: 40px"><s:text
+							name="report.payment.payment.number" /></th>
+					<th style="width: 90px"><s:text
+							name="report.payment.customer.number" /></th>
+					<th style="width: 130px"><s:text
+							name="report.payment.customer.name" /></th>
+					<th style="width: 80px"><s:text
+							name="report.payment.payment.date" /></th>
+					<th style="width: 100px"><s:text
+							name="report.payment.payment.invoices" /></th>
+					<th style="width: 100px"><s:text
+							name="report.payment.payment.amount" /><br /> <s:text
+							name="currency3.1" /></th>
+				</tr>
+			</thead>
+			<tbody>
+				<s:iterator value="paymentsDollarChequeDeleted" var="payment">
+					<tr>
+						<td style="text-align: center;" rowspan="2">${i}</td>
+						<td><s:property value="#payment.paymentId" /></td>
+						<td><s:property value="#payment.userNumber" /></td>
+						<td><s:property value="#payment.userFullName"
+								escapeHtml="false" /></td>
+						<td><s:property value="#payment.paymentDate" /></td>
+						<td><s:iterator value="#payment.invoices" var="invoice">
+								<s:property value="#invoice" />&nbsp;
+							</s:iterator></td>
+						<td><s:property value="#payment.amount" /></td>
+					</tr>
+					<tr style="font-size: 9px; font-style: italic;">
+						<td style="font-weight: bold;"><s:text
+								name="report.payment.cheque.number" /></td>
+						<td><s:property value="#payment.chequeInfo.chequeId"
+								escapeHtml="false" /></td>
+						<td style="font-weight: bold;"><s:text
+								name="report.payment.cheque.bank" /></td>
+						<td><s:property value="#payment.chequeInfo.bankName"
+								escapeHtml="false" /></td>
+						<td style="font-weight: bold;"><s:text
+								name="report.payment.cheque.date" /></td>
+						<td><s:property value="#payment.chequeInfo.chequeDate" /></td>
+					</tr>
+
+					<s:set id="i" value="#i+1" />
+				</s:iterator>
+				<tr>
+					<td style="border: 0" colspan="5"></td>
+					<td style="border: 0; text-align: center; font-weight: bold;">
+						<s:text name="report.payment.customer.sum" />&nbsp; <s:text
+							name="currency3.1" />
+					</td>
+					<td style="font-weight: bold;"><s:property
+							value="paymentsDollarChequeDeletedSum" /></td>
+				</tr>
+			</tbody>
+		</table>
+		<div style="clear: both;"></div>
+	</s:if>
+
+	<s:if
+		test="%{paymentsShekelCashDeleted != null && paymentsShekelCashDeleted.size > 0}">
+		<s:set id="i" value="1" />
+
+		<div class="report_title">
+			<s:text name="report.payment.name.shekel.cash" />
+			&nbsp;
+			<s:text name="report.deleted" />
+		</div>
+		<div style="clear: both;"></div>
+		<table>
+			<thead>
+				<tr>
+					<th style="width: 20px"><%="#"%></th>
+					<th style="width: 40px"><s:text
+							name="report.payment.payment.number" /></th>
+					<th style="width: 90px"><s:text
+							name="report.payment.customer.number" /></th>
+					<th style="width: 130px"><s:text
+							name="report.payment.customer.name" /></th>
+					<th style="width: 80px"><s:text
+							name="report.payment.payment.date" /></th>
+					<th style="width: 100px"><s:text
+							name="report.payment.payment.invoices" /></th>
+					<th style="width: 100px"><s:text
+							name="report.payment.payment.amount" /><br /> <s:text
+							name="currency3.12" /></th>
+				</tr>
+			</thead>
+			<tbody>
+				<s:iterator value="paymentsShekelCashDeleted" var="payment">
+					<tr>
+						<td style="text-align: center;">${i}</td>
+						<td><s:property value="#payment.paymentId" /></td>
+						<td><s:property value="#payment.userNumber" /></td>
+						<td><s:property value="#payment.userFullName"
+								escapeHtml="false" /></td>
+						<td><s:property value="#payment.paymentDate" /></td>
+						<td><s:iterator value="#payment.invoices" var="invoice">
+								<s:property value="#invoice" />&nbsp;
+							</s:iterator></td>
+
+						<td><s:property value="#payment.amount" /></td>
+					</tr>
+					<s:set id="i" value="#i+1" />
+				</s:iterator>
+				<tr>
+					<td style="border: 0" colspan="5"></td>
+					<td style="border: 0; text-align: center; font-weight: bold;">
+						<s:text name="report.payment.customer.sum" />&nbsp; <s:text
+							name="currency3.12" />
+					</td>
+					<td style="font-weight: bold;"><s:property
+							value="paymentsShekelCashDeletedSum" /></td>
+				</tr>
+			</tbody>
+		</table>
+		<div style="clear: both;"></div>
+	</s:if>
+
+	<s:if
+		test="%{paymentsShekelChequeDeleted != null && paymentsShekelChequeDeleted.size > 0}">
+		<s:set id="i" value="1" />
+
+		<div class="report_title">
+			<s:text name="report.payment.name.shekel.cheque" />
+			&nbsp;
+			<s:text name="report.deleted" />
+		</div>
+		<div style="clear: both;"></div>
+		<table>
+			<thead>
+				<tr>
+					<th style="width: 20px"><%="#"%></th>
+					<th style="width: 40px"><s:text
+							name="report.payment.payment.number" /></th>
+					<th style="width: 90px"><s:text
+							name="report.payment.customer.number" /></th>
+					<th style="width: 130px"><s:text
+							name="report.payment.customer.name" /></th>
+					<th style="width: 80px"><s:text
+							name="report.payment.payment.date" /></th>
+					<th style="width: 100px"><s:text
+							name="report.payment.payment.invoices" /></th>
+					<th style="width: 100px"><s:text
+							name="report.payment.payment.amount" /><br /> <s:text
+							name="currency3.12" /></th>
+				</tr>
+			</thead>
+			<tbody>
+				<s:iterator value="paymentsShekelChequeDeleted" var="payment">
+					<tr>
+						<td style="text-align: center;" rowspan="2">${i}</td>
+						<td><s:property value="#payment.paymentId" /></td>
+						<td><s:property value="#payment.userNumber" /></td>
+						<td><s:property value="#payment.userFullName"
+								escapeHtml="false" /></td>
+						<td><s:property value="#payment.paymentDate" /></td>
+						<td><s:iterator value="#payment.invoices" var="invoice">
+								<s:property value="#invoice" />&nbsp;
+							</s:iterator></td>
+						<td><s:property value="#payment.amount" /></td>
+					</tr>
+					<tr style="font-size: 9px; font-style: italic;">
+						<td style="font-weight: bold;"><s:text
+								name="report.payment.cheque.number" /></td>
+						<td><s:property value="#payment.chequeInfo.chequeId"
+								escapeHtml="false" /></td>
+						<td style="font-weight: bold;"><s:text
+								name="report.payment.cheque.bank" /></td>
+						<td><s:property value="#payment.chequeInfo.bankName"
+								escapeHtml="false" /></td>
+						<td style="font-weight: bold;"><s:text
+								name="report.payment.cheque.date" /></td>
+						<td><s:property value="#payment.chequeInfo.chequeDate" /></td>
+					</tr>
+
+					<s:set id="i" value="#i+1" />
+				</s:iterator>
+				<tr>
+					<td style="border: 0" colspan="5"></td>
+					<td style="border: 0; text-align: center; font-weight: bold;">
+						<s:text name="report.payment.customer.sum" />&nbsp; <s:text
+							name="currency3.12" />
+					</td>
+					<td style="font-weight: bold;"><s:property
+							value="paymentsShekelChequeDeletedSum" /></td>
+				</tr>
+			</tbody>
+		</table>
+		<div style="clear: both;"></div>
+	</s:if>
+</div>

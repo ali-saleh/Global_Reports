@@ -75,18 +75,16 @@
 			<tbody>
 				<s:iterator value="invoicesDollar" var="invoice">
 					<tr>
-						<td>${i}</td>
-						<td><s:property value="#invoice.invoiceId" />
-						<td><s:property value="#invoice.userNumber" />
-						<td><s:property value="#invoice.userFullName"
+						<td style="text-align: center;">${i}</td>
+						<td><s:property value="#invoice.invoiceId" /><td><s:property value="#invoice.userNumber" /><td><s:property value="#invoice.userFullName"
 								escapeHtml="false" /></td>
 						<td><s:property value="#invoice.createDate" /></td>
 						<s:set id="tmp" value="%{'invoice.status.'+#invoice.status}" />
 						<td><s:text name="%{tmp}" /></td>
 						<td><s:iterator value="#invoice.payments" var="payment">
-								<s:property value="#payment" />
-								<br>
+								<s:property value="#payment" />&nbsp;
 							</s:iterator></td>
+						
 						<td><s:property value="#invoice.total" /></td>
 					</tr>
 					<s:set id="i" value="#i+1" />
@@ -136,9 +134,11 @@
 			<tbody>
 				<s:iterator value="invoicesShekel" var="invoice">
 					<tr>
-						<td>${i}</td>
+						<td style="text-align: center;">${i}</td>
 						<td><s:property value="#invoice.invoiceId" />
+						
 						<td><s:property value="#invoice.userNumber" />
+						
 						<td><s:property value="#invoice.userFullName"
 								escapeHtml="false" /></td>
 						<td><s:property value="#invoice.createDate" /></td>
@@ -198,9 +198,11 @@
 			<tbody>
 				<s:iterator value="invoicesDollarDeleted" var="invoice">
 					<tr>
-						<td>${i}</td>
+						<td style="text-align: center;">${i}</td>
 						<td><s:property value="#invoice.invoiceId" />
+						
 						<td><s:property value="#invoice.userNumber" />
+						
 						<td><s:property value="#invoice.userFullName"
 								escapeHtml="false" /></td>
 						<td><s:property value="#invoice.createDate" /></td>
@@ -221,7 +223,7 @@
 							name="currency3.1" />
 					</td>
 					<td style="font-weight: bold;"><s:property
-							value="invoicesDollarDeletedSum" /></td>
+							value="invoiceDollarDeletedSum" /></td>
 				</tr>
 			</tbody>
 		</table>
@@ -260,8 +262,10 @@
 			<tbody>
 				<s:iterator value="invoicesShekelDeleted" var="invoice">
 					<tr>
-						<td>${i}</td>
-						<td><s:property value="#invoice.invoiceId" /> <td><s:property value="#invoice.userNumber" />
+						<td style="text-align: center;">${i}</td>
+						<td><s:property value="#invoice.invoiceId" /> 
+						<td><s:property value="#invoice.userNumber" />
+						
 						
 						<td><s:property value="#invoice.userFullName"
 								escapeHtml="false" /></td>

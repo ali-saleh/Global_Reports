@@ -1,6 +1,7 @@
-html{
+html {
 	background-color: #C2C2C2;
 }
+
 body {
 	margin: 0;
 	direction: rtl;
@@ -9,74 +10,80 @@ body {
 	color: #454C43;
 }
 
-.report_results_page{
+.report_results_page {
 	width: 600px;
 	display: block;
-	margin:auto;
-	padding:20px;
+	margin: auto;
+	padding: 20px;
 	background-color: white;
 }
 
-table{
+table {
+	white-space: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	font-style: normal;
+	text-align: start;
 	border-collapse: collapse;
 	font-size: 12px;
 }
 
-table th{
+table th {
 	border: 1px solid black;
-	padding:10px;
+	padding: 10px;
 	text-align: center;
 }
 
-table td{
+table td {
 	border: 1px solid black;
 	padding: 4px 2px;
 }
 
-.report_logo{
-	float:left;
+.report_logo {
+	float: left;
 	display: inline-block;
 	padding: 0 0 20px 0;
 }
 
-.report_title{
+.report_title {
 	font-size: 16px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    text-decoration: underline;
-    font-weight: bold;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	text-decoration: underline;
+	font-weight: bold;
 }
 
-.report_main_title{
+.report_main_title {
 	display: inline-block;
-    font-size: 24px;
-    font-weight: bold;
-    padding: 51px;
-    text-align: center;
+	font-size: 24px;
+	font-weight: bold;
+	padding: 51px;
+	text-align: center;
 }
 
-.report_from_date{
+.report_from_date {
 	float: right;
-	margin-left: 50px;	
+	margin-left: 50px;
 }
 
-.seperator{
+.seperator {
 	width: 600px;
 	height: 1px;
 	line-height: 1px;
 	background-color: #fff;
-	border-top:1px solid #000;
+	border-top: 1px solid #000;
 	display: inline-block;
 }
 
-.report_info{
+.report_info {
 	padding: 10px;
 }
 
-.deletedreport_note{
-	color:red;
+.deletedreport_note {
+	color: red;
 }
 
-.report_city{
+.report_city {
 	font-weight: bold;
 }

@@ -19,12 +19,12 @@ public class PaymentReportAction extends BaseAction{
 	private static final String CITY_PREFIX = "city.";
 	
 	private List<PaymentReport> paymentsDollarCash;
-	private List<PaymentReport> paymentsShekelCash;
-	private List<PaymentReport> paymentsDollarCashDeleted;
-	private List<PaymentReport> paymentsShekelCashDeleted;
 	private List<PaymentReport> paymentsDollarCheque;
+	private List<PaymentReport> paymentsShekelCash;
 	private List<PaymentReport> paymentsShekelCheque;
+	private List<PaymentReport> paymentsDollarCashDeleted;
 	private List<PaymentReport> paymentsDollarChequeDeleted;
+	private List<PaymentReport> paymentsShekelCashDeleted;
 	private List<PaymentReport> paymentsShekelChequeDeleted;
 	
 	private int selectedCity;
@@ -112,28 +112,28 @@ public class PaymentReportAction extends BaseAction{
 		return paymentsDollarCash;
 	}
 
-	public List<PaymentReport> getPaymentsShekelCash() {
-		return paymentsShekelCash;
-	}
-
-	public List<PaymentReport> getPaymentsDollarCashDeleted() {
-		return paymentsDollarCashDeleted;
-	}
-
-	public List<PaymentReport> getPaymentsShekelCashDeleted() {
-		return paymentsShekelCashDeleted;
-	}
-
 	public List<PaymentReport> getPaymentsDollarCheque() {
 		return paymentsDollarCheque;
+	}
+
+	public List<PaymentReport> getPaymentsShekelCash() {
+		return paymentsShekelCash;
 	}
 
 	public List<PaymentReport> getPaymentsShekelCheque() {
 		return paymentsShekelCheque;
 	}
 
+	public List<PaymentReport> getPaymentsDollarCashDeleted() {
+		return paymentsDollarCashDeleted;
+	}
+
 	public List<PaymentReport> getPaymentsDollarChequeDeleted() {
 		return paymentsDollarChequeDeleted;
+	}
+
+	public List<PaymentReport> getPaymentsShekelCashDeleted() {
+		return paymentsShekelCashDeleted;
 	}
 
 	public List<PaymentReport> getPaymentsShekelChequeDeleted() {
@@ -148,33 +148,17 @@ public class PaymentReportAction extends BaseAction{
 		return sum;
 	}
 	
-	public double getPaymentsShekelCashSum() {
-		double sum = 0;
-		for(PaymentReport p : this.paymentsShekelCash) {
-			sum += p.getAmount();
-		}
-		return sum;
-	}
-	
-	public double getPaymentsDollarCashDeletedSum() {
-		double sum = 0;
-		for(PaymentReport p : this.paymentsDollarCashDeleted) {
-			sum += p.getAmount();
-		}
-		return sum;
-	}
-	
-	public double getPaymentsShekelCashDeletedSum() {
-		double sum = 0;
-		for(PaymentReport p : this.paymentsShekelCashDeleted) {
-			sum += p.getAmount();
-		}
-		return sum;
-	}
-	
 	public double getPaymentsDollarChequeSum() {
 		double sum = 0;
 		for(PaymentReport p : this.paymentsDollarCheque) {
+			sum += p.getAmount();
+		}
+		return sum;
+	}
+
+	public double getPaymentsShekelCashSum() {
+		double sum = 0;
+		for(PaymentReport p : this.paymentsShekelCash) {
 			sum += p.getAmount();
 		}
 		return sum;
@@ -187,10 +171,26 @@ public class PaymentReportAction extends BaseAction{
 		}
 		return sum;
 	}
+
+	public double getPaymentsDollarCashDeletedSum() {
+		double sum = 0;
+		for(PaymentReport p : this.paymentsDollarCashDeleted) {
+			sum += p.getAmount();
+		}
+		return sum;
+	}
 	
 	public double getPaymentsDollarChequeDeletedSum() {
 		double sum = 0;
 		for(PaymentReport p : this.paymentsDollarChequeDeleted) {
+			sum += p.getAmount();
+		}
+		return sum;
+	}
+
+	public double getPaymentsShekelCashDeletedSum() {
+		double sum = 0;
+		for(PaymentReport p : this.paymentsShekelCashDeleted) {
 			sum += p.getAmount();
 		}
 		return sum;
