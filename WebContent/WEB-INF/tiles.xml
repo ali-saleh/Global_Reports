@@ -93,4 +93,14 @@
 			value="/WEB-INF/content/reports/print/paymentReport.jsp" />
 	</definition>
 
+	<definition name="item-print.tiles" extends="printLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/content/reports/print/itemReport.jsp" />
+	</definition>
+
+	<definition name="outstanding-print.tiles" extends="printLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/content/reports/print/outstandingReport.jsp" />
+	</definition>
+
 </tiles-definitions>

@@ -2,6 +2,7 @@
 
 <div style="clear: both;"></div>
 <div id="accordion_wrapper">
+
 	<div class="accordionButton">Test</div>
 	<div class="accordionContent">
 		<form action="invoice_report" method="post">
@@ -334,7 +335,6 @@
 				<input style="float: right;" type="checkbox" checked="checked"
 					name="showDeleted" value="true"> <label><s:text
 						name="report.payment.report.show.deleted" /></label>
-
 			</div>
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
@@ -360,10 +360,12 @@
 		</form>
 	</div>
 
-	<div class="accordionButton">Section 4</div>
+	<div class="accordionButton">
+		<s:text name="reports.balance.reports.title" />
+	</div>
 	<div class="accordionContent">
-		<form action="not-working" method="post">
-			<div class="field_wrapper">
+		<form action="outstanding_report" method="post">
+			<div class="field_wrapper" id="city-field">
 				<div class="fieldlabel">
 					<s:text name="users.customer.city" />
 				</div>
@@ -379,26 +381,34 @@
 					</select>
 				</div>
 			</div>
-			<div class="fieldwrapper" style="width: 500px">
+			<div class="fieldwrapper" id="currency-field" style="width: 500px">
 				<div class="fieldlabel">
-					<s:text name="report.report.currency" />
+					<label><s:text name="report.report.currency" /></label>
 				</div>
-				<div class="fieldinput" style="width: 500px">
-					<input style="float: right;" type="radio"
-						name="fld_reports_currency" checked="checked" value="1"> <label
-						style="width: 90px"><s:text
+				<div class="input_area" style="width: 500px">
+					<input style="float: right;" type="radio" name="currencyId"
+						checked="checked" value="3"> <label style="width: 90px"><s:text
 							name="report.report.both.currencies" /></label>
 					<div style="clear: both;"></div>
-					<input style="float: right;" type="radio"
-						name="fld_reports_currency" value="2"> <label><s:text
+					<input style="float: right;" type="radio" name="currencyId"
+						value="1"> <label><s:text
 							name="report.report.dollar" /></label>
 					<div style="clear: both;"></div>
-					<input style="float: right;" type="radio"
-						name="fld_reports_currency" value="3"> <label><s:text
+					<input style="float: right;" type="radio" name="currencyId"
+						value="2"> <label><s:text
 							name="report.report.shekel" /></label>
 				</div>
-				<div style="clear: both;"></div>
 			</div>
+
+			<div style="clear: both;"></div>
+			<div style="clear: both;"></div>
+
+			<div class="fieldwrapper" id="deleted-field">
+				<input style="float: right;" type="checkbox" checked="checked"
+					name="showDeletedUsers" value="true"> <label><s:text
+						name="report.balance.report.show.deleted" /></label>
+			</div>
+
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
 			<div class="button_container" style="float: left;">
@@ -414,11 +424,12 @@
 		</form>
 	</div>
 
-	<div class="accordionButton">Section 5</div>
+	<div class="accordionButton">
+		<s:text name="reports.service.reports.title" />
+	</div>
 	<div class="accordionContent">
-		<form action="not-working" method="post">
-			<input type="hidden" name="action" value="balance_report">
-			<div class="field_wrapper">
+		<form action="item_report" method="post">
+			<div class="field_wrapper" id="city-field">
 				<div class="fieldlabel">
 					<s:text name="users.customer.city" />
 				</div>
@@ -434,28 +445,96 @@
 					</select>
 				</div>
 			</div>
-			<div class="fieldwrapper" style="width: 500px">
+			<div style="clear: both;"></div>
+
+			<div class="subscription_period">
+				<label><s:text name="report.report.period" /></label>
+			</div>
+			<div style="clear: both;"></div>
+
+			<div class="fieldwrapper" id="from-date-field">
 				<div class="fieldlabel">
-					<s:text name="report.report.currency" />
+					<s:text name="report.report.date.from" />
 				</div>
-				<div class="fieldinput" style="width: 500px">
-					<input style="float: right;" type="radio"
-						name="fld_reports_currency" checked="checked" value="1"> <label
-						style="width: 90px"><s:text
-							name="report.report.both.currencies" /></label>
-					<div style="clear: both;"></div>
-					<input style="float: right;" type="radio"
-						name="fld_reports_currency" value="2"> <label><s:text
-							name="report.report.dollar" /></label>
-					<div style="clear: both;"></div>
-					<input style="float: right;" type="radio"
-						name="fld_reports_currency" value="3"> <label><s:text
-							name="report.report.shekel" /></label>
+				<div class="fieldinput">
+					<input class="date-pick" readonly="readonly" type="text"
+						id="order_fromdate" name="fromDate" value="" /> <span
+						class="empty_date"></span>
 				</div>
-				<div style="clear: both;"></div>
+			</div>
+
+			<div class="fieldwrapper" id="to-date-field">
+				<div class="fieldlabel">
+					<s:text name="report.report.date.to" />
+				</div>
+				<div class="fieldinput">
+					<input class="date-pick" readonly="readonly" type="text"
+						id="order_todate" name="toDate" value="" /> <span
+						class="empty_date"></span>
+				</div>
 			</div>
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
+
+			<div class="field_wrapper" id="user-field" style="width: 370px;">
+				<label><s:text name="report.report.user" /></label>
+				<div class="fieldinput">
+					<select name="selectedUser" class="chosen-select chosen-rtl">
+						<option value="0">--</option>
+						<s:iterator value="customers" var="cust">
+							<option value="<s:property value='#cust.id'/>">
+								<s:property value="#cust.combinedName" escapeHtml="false" />
+							</option>
+						</s:iterator>
+					</select>
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+
+			<div class="field_wrapper" id="item-field" style="width: 370px;">
+				<label><s:text name="report.report.items" /></label>
+				<div class="input_area">
+					<select name="selectedItems" multiple
+						class="chosen-select chosen-rtl">
+						<option value="0">--</option>
+						<s:iterator value="items" var="item">
+							<option value="<s:property value='#item.id'/>">
+								<s:property value="#item.desc" escapeHtml="false" />
+							</option>
+						</s:iterator>
+					</select>
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+
+			<div class="fieldwrapper" id="currency-field" style="width: 500px">
+				<div class="fieldlabel">
+					<label><s:text name="report.report.currency" /></label>
+				</div>
+				<div class="fieldinput" style="width: 500px">
+					<input style="float: right;" type="radio" name="currencyId"
+						checked="checked" value="3"> <label style="width: 90px"><s:text
+							name="report.report.both.currencies" /></label>
+					<div style="clear: both;"></div>
+					<input style="float: right;" type="radio" name="currencyId"
+						value="1"> <label><s:text
+							name="report.report.dollar" /></label>
+					<div style="clear: both;"></div>
+					<input style="float: right;" type="radio" name="currencyId"
+						value="2"> <label><s:text
+							name="report.report.shekel" /></label>
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+
+			<div class="fieldwrapper" id="vat-field">
+				<input style="float: right;" type="checkbox" checked="checked"
+					name="vatSelect" value="true"><label><s:text
+						name="report.vat" /></label>
+			</div>
+			<div style="clear: both;"></div>
+			<div style="clear: both;"></div>
+
 			<div class="button_container" style="float: left;">
 				<div class="button_left"></div>
 				<div class="button">
@@ -470,4 +549,3 @@
 	</div>
 
 </div>
-

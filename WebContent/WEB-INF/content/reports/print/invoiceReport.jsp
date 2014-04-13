@@ -2,8 +2,7 @@
 
 <div class="report_results_page balance_results_report">
 	<div class="report_main_title">
-		<s:text name="reports.invoice.reports.title"></s:text>
-
+		<s:text name="reports.invoice.reports.title" />
 	</div>
 	<div class="report_logo">
 		<img alt="logo"
@@ -37,14 +36,13 @@
 					<s:property value="toDate" />
 				</s:if>
 			</div>
-			<div class="report_payway"></div>
 		</div>
 		<div class="seperator"></div>
 		<div class="seperator"></div>
 		<div style="clear: both;"></div>
 	</div>
 
-	<s:if test="%{invoicesDollar != null}">
+	<s:if test="%{invoicesDollar != null && invoicesDollar.size > 0}">
 		<s:set id="i" value="1" />
 
 		<div class="report_title">
@@ -76,7 +74,10 @@
 				<s:iterator value="invoicesDollar" var="invoice">
 					<tr>
 						<td style="text-align: center;">${i}</td>
-						<td><s:property value="#invoice.invoiceId" /><td><s:property value="#invoice.userNumber" /><td><s:property value="#invoice.userFullName"
+						<td><s:property value="#invoice.invoiceId" />
+						<td><s:property value="#invoice.userNumber"
+								escapeHtml="false" />
+						<td><s:property value="#invoice.userFullName"
 								escapeHtml="false" /></td>
 						<td><s:property value="#invoice.createDate" /></td>
 						<s:set id="tmp" value="%{'invoice.status.'+#invoice.status}" />
@@ -84,7 +85,7 @@
 						<td><s:iterator value="#invoice.payments" var="payment">
 								<s:property value="#payment" />&nbsp;
 							</s:iterator></td>
-						
+
 						<td><s:property value="#invoice.total" /></td>
 					</tr>
 					<s:set id="i" value="#i+1" />
@@ -103,7 +104,7 @@
 		<div style="clear: both;"></div>
 	</s:if>
 
-	<s:if test="%{invoicesShekel != null}">
+	<s:if test="%{invoicesShekel != null && invoicesShekel.size > 0}">
 		<s:set id="i" value="1" />
 
 		<div class="report_title">
@@ -136,9 +137,8 @@
 					<tr>
 						<td style="text-align: center;">${i}</td>
 						<td><s:property value="#invoice.invoiceId" />
-						
-						<td><s:property value="#invoice.userNumber" />
-						
+						<td><s:property value="#invoice.userNumber"
+								escapeHtml="false" />
 						<td><s:property value="#invoice.userFullName"
 								escapeHtml="false" /></td>
 						<td><s:property value="#invoice.createDate" /></td>
@@ -166,11 +166,12 @@
 		<div style="clear: both;"></div>
 	</s:if>
 
-	<s:if test="%{invoicesDollarDeleted != null}">
+	<s:if test="%{invoicesDollarDeleted != null && invoicesDollarDeleted.size > 0}">
 		<s:set id="i" value="1" />
 
 		<div class="report_title">
-			<s:text name="report.invoice.name.deleted" />&nbsp;
+			<s:text name="report.invoice.name.deleted" />
+			&nbsp;
 			<s:text name="currency.1" />
 		</div>
 		<div style="clear: both;"></div>
@@ -200,9 +201,8 @@
 					<tr>
 						<td style="text-align: center;">${i}</td>
 						<td><s:property value="#invoice.invoiceId" />
-						
-						<td><s:property value="#invoice.userNumber" />
-						
+						<td><s:property value="#invoice.userNumber"
+								escapeHtml="false" />
 						<td><s:property value="#invoice.userFullName"
 								escapeHtml="false" /></td>
 						<td><s:property value="#invoice.createDate" /></td>
@@ -230,11 +230,12 @@
 		<div style="clear: both;"></div>
 	</s:if>
 
-	<s:if test="%{invoicesShekelDeleted != null}">
+	<s:if test="%{invoicesShekelDeleted != null && invoicesShekelDeleted.size > 0}">
 		<s:set id="i" value="1" />
 
 		<div class="report_title">
-			<s:text name="report.invoice.name.deleted" />&nbsp;
+			<s:text name="report.invoice.name.deleted" />
+			&nbsp;
 			<s:text name="currency.12" />
 		</div>
 		<div style="clear: both;"></div>
@@ -263,10 +264,9 @@
 				<s:iterator value="invoicesShekelDeleted" var="invoice">
 					<tr>
 						<td style="text-align: center;">${i}</td>
-						<td><s:property value="#invoice.invoiceId" /> 
-						<td><s:property value="#invoice.userNumber" />
-						
-						
+						<td><s:property value="#invoice.invoiceId" />
+						<td><s:property value="#invoice.userNumber"
+								escapeHtml="false" />
 						<td><s:property value="#invoice.userFullName"
 								escapeHtml="false" /></td>
 						<td><s:property value="#invoice.createDate" /></td>
@@ -293,25 +293,4 @@
 		</table>
 		<div style="clear: both;"></div>
 	</s:if>
-
-	<%-- 			<% if(dollarPaidInvoices!=null && !dollarPaidInvoices.isEmpty()){ %> --%>
-							<%-- 			<% number=1; %> --%>
-	<%-- 			<% customerBalance = BigDecimal.ZERO; %> --%>
-	<!-- 			<div class="report_title"> -->
-	<%-- 				<%= prop.get(GCConstants.MSG_REPORTS_INVOICE_NAME_DOLLAR) %> --%>
-	<!-- 			</div> -->
-	<!-- 			<div style="clear: both;"></div> -->
-	<!-- 				<table> -->
-	<!-- 					<tr> -->
-	<%-- 						<th style="width: 20px"><%= "#" %></th> --%>
-	<%-- 						<th style="width: 40px"><%= prop.get(GCConstants.MSG_REPORTS_INVOICES_REPORT_INVOICE_NUMBER) %></th> --%>
-	<%-- 						<th style="width: 90px"><%= prop.get(GCConstants.MSG_REPORTS_INVOICES_REPORT_CUSTOMER_NUMBER) %></th> --%>
-	<%-- 						<th style="width: 130px"><%= prop.get(GCConstants.MSG_REPORTS_INVOICES_REPORT_CUSTOMER_NAME) %></th> --%>
-	<%-- 						<th style="width: 80px"><%= prop.get(GCConstants.MSG_REPORTS_INVOICES_REPORT_INVOICE_DATE) %></th> --%>
-	<%-- 						<th style="width: 60px"><%= prop.get(GCConstants.MSG_REPORTS_INVOICES_REPORT_INVOICE_STATUS) %></th> --%>
-	<%-- 						<th style="width: 100px"><%= prop.get(GCConstants.MSG_REPORTS_INVOICES_REPORT_INVOICE_PAYMENTS) %></th> --%>
-	<%-- 						<th style="width: 100px"><%= prop.get(GCConstants.MSG_REPORTS_INVOICES_REPORT_BALANCE)+"<br /> "+prop.get(GCConstants.PROP_CURRENCY_PREFIX3+"1", null) %></th> --%>
-	<!-- 					</tr> -->
-
-
-						</div>
+</div>

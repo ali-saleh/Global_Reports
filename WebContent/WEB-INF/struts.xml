@@ -66,6 +66,17 @@
 			<result name="success" type="tiles">payment-print.tiles</result>
 		</action>
 
+		<action name="item_report" class="actions.reports.ItemReportAction">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">item-print.tiles</result>
+		</action>
+
+		<action name="outstanding_report" class="actions.reports.UserReportAction"
+			method="outstandingReport">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">outstanding-print.tiles</result>
+		</action>
+
 		<!-- Separator -->
 		<!-- Separator -->
 		<!-- Separator -->

@@ -29,9 +29,9 @@ public class ReportingAction extends ActionSupport implements UserAware {
 	 */
 	private static final long serialVersionUID = 866767945016267932L;
 
-	private static final String CITY_PREFIX = "city.";
+	public static final String CITY_PREFIX = "city.";
 	private String page = "reporting";
-	
+
 	private List<InvoiceReport> invoices;
 	private List<ItemReport> services;
 
@@ -39,7 +39,6 @@ public class ReportingAction extends ActionSupport implements UserAware {
 	private List<Item> items;
 	private List<Customer> customers;
 	private int selectedCity;
-
 	private String city;
 
 	private int currencyId;
@@ -50,10 +49,6 @@ public class ReportingAction extends ActionSupport implements UserAware {
 	private String fromDate;
 	private String toDate;
 	private boolean vatSelect;
-
-	public ReportingAction() {
-		
-	}
 
 	public String execute() throws Exception {
 		prepareCities();
@@ -78,8 +73,6 @@ public class ReportingAction extends ActionSupport implements UserAware {
 			condition.setStartDate(Date.valueOf(convertDateFormat(fromDate)));
 		if (toDate != null && !toDate.isEmpty())
 			condition.setEndDate(Date.valueOf(convertDateFormat(toDate)));
-		// if (selectedItem != 0)
-		// condition.setItemId(selectedItem);
 		if (!vatSelect)
 			condition.setVatRate(1.0); // Note: this value is just !0 and will
 										// be overridden
@@ -99,8 +92,6 @@ public class ReportingAction extends ActionSupport implements UserAware {
 			condition.setStartDate(Date.valueOf(convertDateFormat(fromDate)));
 		if (toDate != null && !toDate.isEmpty())
 			condition.setEndDate(Date.valueOf(convertDateFormat(toDate)));
-		// if (selectedItem != 0)
-		// condition.setItemId(selectedItem);
 		if (!vatSelect)
 			condition.setVatRate(1.0); // Note: this value is just !0 and will
 										// be overridden
@@ -228,7 +219,7 @@ public class ReportingAction extends ActionSupport implements UserAware {
 	public void setVatSelect(boolean vatSelect) {
 		this.vatSelect = vatSelect;
 	}
-	
+
 	public String getPage() {
 		return this.page;
 	}
