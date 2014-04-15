@@ -3,7 +3,10 @@ package actions.reports;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import actions.ReportingAction;
 
@@ -12,6 +15,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import db.billingdb.dao.custom.impl.UserReportDAO;
 import db.billingdb.model.custom.OutstandingUser;
 import db.billingdb.model.custom.OutstandingUserCondition;
+import db.billingdb.model.custom.info.UserInfo;
 
 public class UserReportAction extends ActionSupport {
 
@@ -57,19 +61,19 @@ public class UserReportAction extends ActionSupport {
 		// Currency setting
 		if ((this.currencyId & 1) == 1) {
 			condition.setCurrencyId(1);
-			this.outstandingDollar = dao.getOutstandingUsers(condition);
+			this.outstandingDollar = fillUserInfo(dao, dao.getOutstandingUsers(condition));
 			if (showDeletedUsers) {
 				condition.setDeleted(true);
-				this.outstandingDollarDeleted = dao.getOutstandingUsers(condition);
+				this.outstandingDollarDeleted = fillUserInfo(dao, dao.getOutstandingUsers(condition));
 			}
 		}
 		condition.setDeleted(false);
 		if ((this.currencyId & 2) == 2) {
 			condition.setCurrencyId(12);
-			this.outstandingShekel = dao.getOutstandingUsers(condition);
+			this.outstandingShekel = fillUserInfo(dao, dao.getOutstandingUsers(condition));
 			if (showDeletedUsers) {
 				condition.setDeleted(true);
-				this.outstandingShekelDeleted = dao.getOutstandingUsers(condition);
+				this.outstandingShekelDeleted = fillUserInfo(dao, dao.getOutstandingUsers(condition));
 			}
 		}
 
@@ -233,5 +237,24 @@ public class UserReportAction extends ActionSupport {
 
 	public String getPage() {
 		return this.page;
+	}
+
+	private List<OutstandingUser> fillUserInfo(UserReportDAO dao,
+			List<OutstandingUser> outstandingUsers) {
+		
+		Map<Integer, OutstandingUser> m = new HashMap<Integer, OutstandingUser>();
+		for (OutstandingUser outstandingUser : outstandingUsers) {
+			m.put(outstandingUser.getId(), outstandingUser);
+		}
+		
+		List <Integer> lst = new ArrayList<Integer>();
+		lst.addAll(m.keySet());
+		List<UserInfo> infos = dao.getUserInfoByIDs(lst);
+		
+		for (UserInfo userInfo : infos) {
+			m.get(userInfo.getId()).setUserInfo(userInfo);
+		}
+		
+		return outstandingUsers;
 	}
 }

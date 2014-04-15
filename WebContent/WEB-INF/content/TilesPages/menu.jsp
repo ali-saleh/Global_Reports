@@ -7,14 +7,14 @@
 		active_navigation_item
 	</s:if>
 	">
-		<a href="<s:url action="reporting"/>">Reports</a>
+		<a href="<s:url action="reporting"/>"><s:text name="navigation.other.reports" /></a>
 	</div>
 	<div class="navigation_item 
 		<s:if test="%{ page == 'user'}">
 		active_navigation_item
 	</s:if>
 	">
-		<a href="<s:url action="user"/>">User</a><br>
+		<a href="<s:url action="user"/>"><s:text name="navigation.customer.reports" /></a><br>
 	</div>
 	<div class="navigation_item_left">
 		<a href="<s:url action="logout"/>">
