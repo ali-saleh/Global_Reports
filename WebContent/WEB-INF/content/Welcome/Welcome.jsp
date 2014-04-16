@@ -112,6 +112,11 @@
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
 
+			<div style="float: left;">
+				<input type="checkbox" checked="checked" name="showTable"
+					value="true"><label>Test</label>
+			</div>
+
 			<div class="button_container" style="float: left;">
 				<div class="button_left"></div>
 				<div class="button">
@@ -222,6 +227,11 @@
 						name="vatSelect" value="true"> <label><s:text
 							name="report.vat" /></label>
 				</div>
+			</div>
+
+			<div style="float: left;">
+				<input type="checkbox" checked="checked" name="showTable"
+					value="true"><label>Test</label>
 			</div>
 
 			<div style="clear: both;"></div>

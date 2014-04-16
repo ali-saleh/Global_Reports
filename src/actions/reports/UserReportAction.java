@@ -242,6 +242,10 @@ public class UserReportAction extends ActionSupport {
 	private List<OutstandingUser> fillUserInfo(UserReportDAO dao,
 			List<OutstandingUser> outstandingUsers) {
 		
+		if(outstandingUsers.size() <= 0) {
+			return null;
+		}
+		
 		Map<Integer, OutstandingUser> m = new HashMap<Integer, OutstandingUser>();
 		for (OutstandingUser outstandingUser : outstandingUsers) {
 			m.put(outstandingUser.getId(), outstandingUser);

@@ -36,9 +36,18 @@ public class InvoiceReportAction extends BaseAction {
 	private String fromDate;
 	private String toDate;
 	private boolean vatSelect;
+	private boolean showTable;
 	private boolean invoicePaid;
 	private boolean invoiceUnPaid;
 	private boolean invoiceDeleted;
+
+	public boolean isShowTable() {
+		return showTable;
+	}
+
+	public void setShowTable(boolean showTable) {
+		this.showTable = showTable;
+	}
 
 	@Override
 	public String execute() throws Exception {
@@ -78,6 +87,9 @@ public class InvoiceReportAction extends BaseAction {
 				this.invoicesShekelDeleted = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
 			}
 		}
+		
+		if(showTable)
+			return "print";
 		
 		return SUCCESS;
 	}
