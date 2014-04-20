@@ -49,6 +49,18 @@
 			value="/WEB-INF/content/Welcome/Welcome.jsp" />
 	</definition>
 
+	<definition name="main.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Home" />
+		<put-attribute name="menu" value="" />
+		<put-attribute name="body" value="/WEB-INF/content/main_page.jsp" />
+	</definition>
+
+	<definition name="user.tiles" extends="baseLayout">
+		<put-attribute name="title" value="User page (property)" />
+		<put-attribute name="body"
+			value="/WEB-INF/content/userpage/usersearch.jsp" />
+	</definition>
+
 	<definition name="item-report.tiles" extends="baseLayout">
 		<put-attribute name="title" value="Use properties" />
 		<put-attribute name="body"
@@ -67,16 +79,10 @@
 			value="/WEB-INF/content/reports/serviceReport.jsp" />
 	</definition>
 
-	<definition name="main.tiles" extends="baseLayout">
-		<put-attribute name="title" value="Home" />
-		<put-attribute name="menu" value="" />
-		<put-attribute name="body" value="/WEB-INF/content/main_page.jsp" />
-	</definition>
-
-	<definition name="user.tiles" extends="baseLayout">
-		<put-attribute name="title" value="User page (property)" />
+	<definition name="user-service-report.tiles" extends="baseLayout">
+		<put-attribute name="title" value="User-services" />
 		<put-attribute name="body"
-			value="/WEB-INF/content/userpage/usersearch.jsp" />
+			value="/WEB-INF/content/reports/userService.jsp" />
 	</definition>
 
 	<!-- Separator -->
@@ -101,6 +107,12 @@
 	<definition name="outstanding-print.tiles" extends="printLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/content/reports/print/outstandingReport.jsp" />
+	</definition>
+
+	<definition name="user-service-print.tiles" extends="baseLayout">
+		<put-attribute name="title" value="User-services" />
+		<put-attribute name="body"
+			value="/WEB-INF/content/reports/print/userService.jsp" />
 	</definition>
 
 </tiles-definitions>

@@ -848,3 +848,15 @@ td {
 .checkboxes input {
 	float: right;
 }
+
+FIELDSET {
+	margin: 8px;
+	border: 1px solid silver;
+	padding: 8px;
+	border-radius: 4px;
+}
+
+LEGEND {
+	padding: 4px;
+	font-weight: bold;
+}

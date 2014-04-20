@@ -30,13 +30,17 @@ public class UserReportAction extends ActionSupport {
 	private static final long serialVersionUID = -9010796324682946356L;
 
 	private String page = "user";
+	private UserReportDAO userReportDAO;
+	private ItemReportDAO itemReportDAO;
+	
 
 	private List<OutstandingUser> outstandingDollar;
 	private List<OutstandingUser> outstandingShekel;
 	private List<OutstandingUser> outstandingDollarDeleted;
 	private List<OutstandingUser> outstandingShekelDeleted;
 	
-	List<ItemReport> serviceReport;
+	private List<ItemReport> serviceReport;
+	private UserInfo reportUser;
 
 	private int selectedCity;
 	private String city;
@@ -55,7 +59,12 @@ public class UserReportAction extends ActionSupport {
 	private String res;
 
 	private String greeting;
-
+	
+	public UserReportAction() {
+		userReportDAO = new UserReportDAO();
+		itemReportDAO = new ItemReportDAO();
+	}
+	
 	@Override
 	public String execute() throws Exception {
 		return SUCCESS;
@@ -64,7 +73,7 @@ public class UserReportAction extends ActionSupport {
 	public String outstandingReport() {
 
 		OutstandingUserCondition condition = new OutstandingUserCondition();
-		UserReportDAO dao = new UserReportDAO();
+
 		if (selectedCity != 0) {
 			condition.setCity(selectedCity);
 		}
@@ -72,19 +81,19 @@ public class UserReportAction extends ActionSupport {
 		// Currency setting
 		if ((this.currencyId & 1) == 1) {
 			condition.setCurrencyId(1);
-			this.outstandingDollar = fillUserInfo(dao, dao.getOutstandingUsers(condition));
+			this.outstandingDollar = fillUserInfo(userReportDAO, userReportDAO.getOutstandingUsers(condition));
 			if (showDeletedUsers) {
 				condition.setDeleted(true);
-				this.outstandingDollarDeleted = fillUserInfo(dao, dao.getOutstandingUsers(condition));
+				this.outstandingDollarDeleted = fillUserInfo(userReportDAO, userReportDAO.getOutstandingUsers(condition));
 			}
 		}
 		condition.setDeleted(false);
 		if ((this.currencyId & 2) == 2) {
 			condition.setCurrencyId(12);
-			this.outstandingShekel = fillUserInfo(dao, dao.getOutstandingUsers(condition));
+			this.outstandingShekel = fillUserInfo(userReportDAO, userReportDAO.getOutstandingUsers(condition));
 			if (showDeletedUsers) {
 				condition.setDeleted(true);
-				this.outstandingShekelDeleted = fillUserInfo(dao, dao.getOutstandingUsers(condition));
+				this.outstandingShekelDeleted = fillUserInfo(userReportDAO, userReportDAO.getOutstandingUsers(condition));
 			}
 		}
 
@@ -92,25 +101,26 @@ public class UserReportAction extends ActionSupport {
 	}
 
 	public String userServiceReport() {
-
-		ItemReportDAO dao = new ItemReportDAO();
 		ItemReportCondition condition = new ItemReportCondition();
+		
+		// Specific User
+		if (selectedUser != 0 ) {
+			condition.setUserId(selectedUser);
+			reportUser = userReportDAO.getUserInfoByID(selectedUser);
+		} else {
+			//TODO: some error must be added.
+		}
 		
 		// Item selection
 		if (selectedItems != null && selectedItems.size() > 0) {
 			condition.setItemIds(selectedItems);
 		}
 		
-		// Specific User
-		if (selectedUser != 0 ) {
-			condition.setUserId(selectedUser);
-		}
-		
 		if (!vatSelect)
 			condition.setVatRate(1.0); // Note: this value is just !0 and will
 										// be overridden
-		serviceReport = dao.getItemReport(condition);
-
+		serviceReport = itemReportDAO.getItemReport(condition);
+		
 		return SUCCESS;
 	}
 
@@ -166,6 +176,14 @@ public class UserReportAction extends ActionSupport {
 		return sum;
 	}
 
+	public List<ItemReport> getServiceReport() {
+		return this.serviceReport;
+	}
+	
+	public UserInfo getReportUser() {
+		return this.reportUser;
+	}
+	
 	// For testing
 	public String test() throws UnsupportedEncodingException {
 

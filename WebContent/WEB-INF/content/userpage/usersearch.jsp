@@ -60,8 +60,8 @@
 
 			<div class="field_wrapper" id="user-field" style="width: 370px;">
 				<label><s:text name="report.report.user" /></label>
-				<div class="fieldinput">
-					<select name="selectedItems" class="chosen-select chosen-rtl">
+				<div class="input_area">
+					<select name="selectedUser" class="chosen-select chosen-rtl">
 						<option value="0">--</option>
 						<s:iterator value="customers" var="cust">
 							<option value="<s:property value='#cust.id'/>">

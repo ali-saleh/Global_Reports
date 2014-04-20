@@ -1,109 +1,89 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-<div class="page_title">
-	<s:property value="getText('reports.invoice.reports.title')"
-		escapeHtml="false" />
+<div id="page_title">
+	<s:text name="reports.invoice.reports.title"/>
 </div>
 
 <div style="clear: both;"></div>
-<div class="seperator"></div>
-<div class="seperator"></div>
 
-<!-- <div id="filter_fields"> -->
-<%-- 	<s:if test="city != null"> --%>
-<%-- 		<s:textfield label="city" name="city" readonly="true" /> --%>
-<!-- 		<br> -->
-<%-- 	</s:if> --%>
-<%-- 	<s:if test="currency != null"> --%>
-<%-- 		<s:textfield label="currency" name="curruncy" readonly="true" /> --%>
-<!-- 		<br> -->
-<%-- 	</s:if> --%>
-<%-- 	<s:if test="fromDate != null"> --%>
-<%-- 		<s:textfield label="Start Date" name="fromDate" readonly="true" /> --%>
-<!-- 		<br> -->
-<%-- 	</s:if> --%>
+<fieldset>
+	<legend>Report Info</legend>
 
-<%-- 	<s:if test="fromDate != null"> --%>
-<%-- 		<s:textfield label="End Date" name="toDate" readonly="true" /> --%>
-<!-- 		<br> -->
-<%-- 	</s:if> --%>
-<!-- 	<br> -->
-<!-- </div> -->
-
-<div class="report_info">
-	<div class="report_city">
-		<s:if test="%{selectedCity != 0}">
-			<s:text name="report.city.one.city" />
-			<s:property value="city" escapeHtml="false" />
-			<br>
-		</s:if>
-		<s:else>
-			<s:text name="report.city.all.cities" />
-		</s:else>
-	</div>
-	<div class="report_date">
-		<div class="report_from_date">
-			<s:if test="%{fromDate != null}">
-				<s:text name="report.from.date" />
-				<s:property value="fromDate" />
+	<div class="report_info">
+		<div class="report_city">
+			<s:if test="%{selectedCity != 0}">
+				<s:text name="report.city.one.city" />
+				<s:property value="city" escapeHtml="false" />
+				<br>
 			</s:if>
+			<s:else>
+				<s:text name="report.city.all.cities" />
+			</s:else>
 		</div>
-		<div class="report_to_date">
-			<s:if test="%{toDate != null}">
-				<s:text name="report.to.date" />
-				<s:property value="toDate" />
-			</s:if>
+		<div class="report_date">
+			<div class="report_from_date">
+				<s:if test="%{fromDate != null}">
+					<s:text name="report.from.date" />
+					<s:property value="fromDate" />
+				</s:if>
+			</div>
+			<div class="report_to_date">
+				<s:if test="%{toDate != null}">
+					<s:text name="report.to.date" />
+					<s:property value="toDate" />
+				</s:if>
+			</div>
 		</div>
+		<div class="seperator"></div>
+		<div class="seperator"></div>
+		<div style="clear: both;"></div>
 	</div>
-	<div class="seperator"></div>
-	<div class="seperator"></div>
-	<div style="clear: both;"></div>
-</div>
+</fieldset>
+<div id="accordion_wrapper">
+	<s:if test="%{invoicesDollar != null && invoicesDollar.size > 0}">
+		<s:set id="i" value="1" />
 
-<s:if test="%{invoicesDollar != null && invoicesDollar.size > 0}">
-	<s:set id="i" value="1" />
-
-	<div class="report_title accordionButton">
-		<s:text name="report.invoice.name.dollar" />
-	</div>
-	<div class="accordionContent">
-		<div id="invoice_res" class="result_table">
-			<table class="report_table" style="display: none;">
-				<thead>
-					<tr>
-						<th><s:text name="report.invoice.invoice.number" /></th>
-						<th><s:text name="report.invoice.customer.number" /></th>
-						<th><s:text name="report.invoice.customer.name" /></th>
-						<th><s:text name="report.invoice.invoice.date" /></th>
-						<th><s:text name="report.invoice.invoice.status" /></th>
-						<th><s:text name="report.invoice.invoice.payments" /></th>
-						<th><s:text name="report.invoice.customer.balance" /><br />
-							<s:text name="currency3.1" /></th>
-					</tr>
-				</thead>
-				<tbody>
-					<s:iterator value="invoicesDollar" var="invoice">
+		<div class="accordionButton">
+			<s:text name="report.invoice.name.dollar" />
+		</div>
+		<div class="accordionContent">
+			<div id="invoice_res" class="result_table">
+				<table class="report_table" style="display: none;">
+					<thead>
 						<tr>
-							<td><s:property value="#invoice.invoiceId" />
-							<td><s:property value="#invoice.userNumber"
-									escapeHtml="false" />
-							<td><s:property value="#invoice.userFullName"
-									escapeHtml="false" /></td>
-							<td><s:property value="#invoice.createDate" /></td>
-							<s:set id="tmp" value="%{'invoice.status.'+#invoice.status}" />
-							<td><s:text name="%{tmp}" /></td>
-							<td><s:iterator value="#invoice.payments" var="payment">
-									<s:property value="#payment" />&nbsp;
-								</s:iterator></td>
-							<td><s:property value="#invoice.total" /></td>
+							<th><s:text name="report.invoice.invoice.number" /></th>
+							<th><s:text name="report.invoice.customer.number" /></th>
+							<th><s:text name="report.invoice.customer.name" /></th>
+							<th><s:text name="report.invoice.invoice.date" /></th>
+							<th><s:text name="report.invoice.invoice.status" /></th>
+							<th><s:text name="report.invoice.invoice.payments" /></th>
+							<th><s:text name="report.invoice.customer.balance" /><br />
+								<s:text name="currency3.1" /></th>
 						</tr>
-					</s:iterator>
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						<s:iterator value="invoicesDollar" var="invoice">
+							<tr>
+								<td><s:property value="#invoice.invoiceId" />
+								<td><s:property value="#invoice.userNumber"
+										escapeHtml="false" />
+								<td><s:property value="#invoice.userFullName"
+										escapeHtml="false" /></td>
+								<td><s:property value="#invoice.createDate" /></td>
+								<s:set id="tmp" value="%{'invoice.status.'+#invoice.status}" />
+								<td><s:text name="%{tmp}" /></td>
+								<td><s:iterator value="#invoice.payments" var="payment">
+										<s:property value="#payment" />&nbsp;
+								</s:iterator></td>
+								<td><s:property value="#invoice.total" /></td>
+							</tr>
+						</s:iterator>
+					</tbody>
+				</table>
+			</div>
 		</div>
-	</div>
-</s:if>
-
+	</s:if>
+</div>
 <!--  
 
 <s:if test="%{invoicesDollar != null && invoicesDollar.size > 0}">

@@ -1,6 +1,6 @@
 $(function() {
 	$(".report_table").dataTable({
-		"sSearch":       "ÇÈÍË:"
+		"sSearch":       "Ø¨Ø­Ø«:"
 	});
 	$(".report_table").slideDown();
 	$(".chosen-select").chosen({
