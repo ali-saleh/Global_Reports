@@ -78,11 +78,17 @@
 			<result name="success" type="tiles">outstanding-print.tiles</result>
 		</action>
 
+		<action name="user_service_report" class="actions.reports.UserReportAction"
+			method="userServiceReport">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">outstanding-print.tiles</result>
+		</action>
+
 		<!-- Separator -->
 		<!-- Separator -->
 		<!-- Separator -->
 
-		<action name="user" class="actions.reports.UserReportAction">
+		<action name="user" class="actions.ReportingAction" method="prepareUserPage">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<result name="success" type="tiles">user.tiles</result>
 		</action>

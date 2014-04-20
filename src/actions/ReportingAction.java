@@ -32,9 +32,6 @@ public class ReportingAction extends ActionSupport implements UserAware {
 	public static final String CITY_PREFIX = "city.";
 	private String page = "reporting";
 
-	private List<InvoiceReport> invoices;
-	private List<ItemReport> services;
-
 	private List<String> cities = new ArrayList<String>();
 	private List<Item> items;
 	private List<Customer> customers;
@@ -51,8 +48,17 @@ public class ReportingAction extends ActionSupport implements UserAware {
 	private boolean vatSelect;
 
 	public String execute() throws Exception {
+		page = "reporting";
 		prepareCities();
-		items = ListProvider.getItemList();
+		items = ListProvider.getItemList(true);
+		customers = ListProvider.getCustomerList();
+		return SUCCESS;
+	}
+	
+	public String prepareUserPage() {
+		this.page = "user";
+		prepareCities();
+		items = ListProvider.getItemList(true);
 		customers = ListProvider.getCustomerList();
 		return SUCCESS;
 	}
@@ -60,57 +66,6 @@ public class ReportingAction extends ActionSupport implements UserAware {
 	@Override
 	public void setUser(SessionUser user) {
 		// TODO Auto-generated method stub
-	}
-
-	public String getInvoiceReport() {
-
-		InvoiceReportDAO dao = new InvoiceReportDAO();
-		InvoiceCondition condition = new InvoiceCondition();
-
-		if (selectedCity != 0)
-			condition.setCity(selectedCity);
-		if (fromDate != null && !fromDate.isEmpty())
-			condition.setStartDate(Date.valueOf(convertDateFormat(fromDate)));
-		if (toDate != null && !toDate.isEmpty())
-			condition.setEndDate(Date.valueOf(convertDateFormat(toDate)));
-		if (!vatSelect)
-			condition.setVatRate(1.0); // Note: this value is just !0 and will
-										// be overridden
-
-		this.invoices = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
-
-		return SUCCESS;
-	}
-
-	public String getServiceReport() {
-		ItemReportDAO dao = new ItemReportDAO();
-		ItemReportCondition condition = new ItemReportCondition();
-
-		if (selectedCity != 0)
-			condition.setCity(selectedCity);
-		if (fromDate != null && !fromDate.isEmpty())
-			condition.setStartDate(Date.valueOf(convertDateFormat(fromDate)));
-		if (toDate != null && !toDate.isEmpty())
-			condition.setEndDate(Date.valueOf(convertDateFormat(toDate)));
-		if (!vatSelect)
-			condition.setVatRate(1.0); // Note: this value is just !0 and will
-										// be overridden
-
-		this.setServices(dao.getItemReport(condition));
-
-		return SUCCESS;
-	}
-
-	public List<InvoiceReport> getInvoices() {
-		return invoices;
-	}
-
-	public List<ItemReport> getServices() {
-		return services;
-	}
-
-	public void setServices(List<ItemReport> services) {
-		this.services = services;
 	}
 
 	public List<String> getCities() {
@@ -236,11 +191,4 @@ public class ReportingAction extends ActionSupport implements UserAware {
 		}
 	}
 
-	private String convertDateFormat(String date) {
-		String[] parts = date.split("/");
-
-		ArrayUtils.reverse(parts);
-
-		return StringUtils.join(parts, '-');
-	}
 }

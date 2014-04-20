@@ -8,11 +8,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import actions.ListProvider;
 import actions.ReportingAction;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import db.billingdb.dao.custom.impl.ItemReportDAO;
 import db.billingdb.dao.custom.impl.UserReportDAO;
+import db.billingdb.model.custom.Item;
+import db.billingdb.model.custom.ItemReport;
+import db.billingdb.model.custom.ItemReportCondition;
 import db.billingdb.model.custom.OutstandingUser;
 import db.billingdb.model.custom.OutstandingUserCondition;
 import db.billingdb.model.custom.info.UserInfo;
@@ -30,11 +35,17 @@ public class UserReportAction extends ActionSupport {
 	private List<OutstandingUser> outstandingShekel;
 	private List<OutstandingUser> outstandingDollarDeleted;
 	private List<OutstandingUser> outstandingShekelDeleted;
+	
+	List<ItemReport> serviceReport;
 
 	private int selectedCity;
 	private String city;
+	private List<Integer> selectedItems;
+	private List<String> itemNames = new ArrayList<String>();
 	private int currencyId;
 	private String currency;
+	private int selectedUser;
+	private boolean vatSelect;
 
 	private boolean showDeletedUsers;
 
@@ -76,6 +87,29 @@ public class UserReportAction extends ActionSupport {
 				this.outstandingShekelDeleted = fillUserInfo(dao, dao.getOutstandingUsers(condition));
 			}
 		}
+
+		return SUCCESS;
+	}
+
+	public String userServiceReport() {
+
+		ItemReportDAO dao = new ItemReportDAO();
+		ItemReportCondition condition = new ItemReportCondition();
+		
+		// Item selection
+		if (selectedItems != null && selectedItems.size() > 0) {
+			condition.setItemIds(selectedItems);
+		}
+		
+		// Specific User
+		if (selectedUser != 0 ) {
+			condition.setUserId(selectedUser);
+		}
+		
+		if (!vatSelect)
+			condition.setVatRate(1.0); // Note: this value is just !0 and will
+										// be overridden
+		serviceReport = dao.getItemReport(condition);
 
 		return SUCCESS;
 	}
@@ -186,6 +220,38 @@ public class UserReportAction extends ActionSupport {
 	public void setCurrency(String currency) {
 		this.currency = currency;
 	}
+	
+	public int getSelectedUser() {
+		return selectedUser;
+	}
+
+	public void setSelectedUser(int selectedUser) {
+		this.selectedUser = selectedUser;
+	}
+	
+	public List<Integer> getSelectedItems() {
+		return selectedItems;
+	}
+
+	public void setSelectedItems(List<Integer> selectedItems) {
+		this.selectedItems = selectedItems;
+		for (Integer x : this.selectedItems) {
+			for (Item i : ListProvider.getItemList(false)) {
+				if (i.getId() == x) {
+					this.getItemNames().add(i.getDesc());
+					break;
+				}
+			}
+		}
+	}
+
+	public List<String> getItemNames() {
+		return itemNames;
+	}
+
+	public void setItemNames(List<String> itemNames) {
+		this.itemNames = itemNames;
+	}
 
 	// public String test() throws UnsupportedEncodingException {
 	//
@@ -199,6 +265,14 @@ public class UserReportAction extends ActionSupport {
 	// return SUCCESS;
 	// }
 
+	public boolean isVatSelect() {
+		return vatSelect;
+	}
+
+	public void setVatSelect(boolean vatSelect) {
+		this.vatSelect = vatSelect;
+	}
+
 	public boolean isShowDeletedUsers() {
 		return showDeletedUsers;
 	}
@@ -206,7 +280,9 @@ public class UserReportAction extends ActionSupport {
 	public void setShowDeletedUsers(boolean showDeletedUsers) {
 		this.showDeletedUsers = showDeletedUsers;
 	}
-
+	
+	
+	// For Testing
 	public InputStream getInputStream() {
 		return inputStream;
 	}
@@ -239,26 +315,25 @@ public class UserReportAction extends ActionSupport {
 		return this.page;
 	}
 
-	private List<OutstandingUser> fillUserInfo(UserReportDAO dao,
-			List<OutstandingUser> outstandingUsers) {
-		
-		if(outstandingUsers.size() <= 0) {
+	private List<OutstandingUser> fillUserInfo(UserReportDAO dao, List<OutstandingUser> outstandingUsers) {
+
+		if (outstandingUsers.size() <= 0) {
 			return null;
 		}
-		
+
 		Map<Integer, OutstandingUser> m = new HashMap<Integer, OutstandingUser>();
 		for (OutstandingUser outstandingUser : outstandingUsers) {
 			m.put(outstandingUser.getId(), outstandingUser);
 		}
-		
-		List <Integer> lst = new ArrayList<Integer>();
+
+		List<Integer> lst = new ArrayList<Integer>();
 		lst.addAll(m.keySet());
 		List<UserInfo> infos = dao.getUserInfoByIDs(lst);
-		
+
 		for (UserInfo userInfo : infos) {
 			m.get(userInfo.getId()).setUserInfo(userInfo);
 		}
-		
+
 		return outstandingUsers;
 	}
 }

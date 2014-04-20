@@ -16,26 +16,25 @@ import com.opensymphony.xwork2.ModelDriven;
 import db.logindb.dao.custom.impl.LoginUserDAO;
 import db.logindb.model.User;
 
-public class LoginAction extends ActionSupport implements SessionAware,
-		ModelDriven<SessionUser> {
+public class LoginAction extends ActionSupport implements SessionAware, ModelDriven<SessionUser> {
 
 	private static final long serialVersionUID = -6190050699323786248L;
-    private InputStream inputStream;
-    private String username;
+	private InputStream inputStream;
+	private String username;
 	private String password;
 	private SessionUser user = new SessionUser();
 	private Map<String, Object> sessionAttributes = null;
-	
-	
+
 	public String test() throws UnsupportedEncodingException {
-		inputStream = new ByteArrayInputStream("Hello World! This is a text string response from a Struts 2 Action.".getBytes("UTF-8"));
-	    return SUCCESS;
+		inputStream = new ByteArrayInputStream(
+				"Hello World! This is a text string response from a Struts 2 Action.".getBytes("UTF-8"));
+		return SUCCESS;
 	}
 
 	public InputStream getInputStream() {
-        return inputStream;
-    }
-	
+		return inputStream;
+	}
+
 	public String getUsername() {
 		return username;
 	}
@@ -54,30 +53,34 @@ public class LoginAction extends ActionSupport implements SessionAware,
 
 	public String loginUser() {
 		LOG.info("User " + username + " is trying to log-in");
-		
+
+		if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
+			addActionError(getText("login.error.missingfields"));
+			return ERROR;
+		}
+
 		User u = authenticate(username, password);
 
 		if (u == null) {
-			LOG.info("User " + username + " failed to log-in");
+			LOG.error("User " + username + " failed to log-in");
 			addActionError(getText("login.error.invalid"));
-			return LOGIN;
+			return ERROR;
 		}
-		
+
 		LOG.debug("User " + username + " logged-in successfully");
-		
+
 		System.out.println();
 		this.user.setName(u.getUsername());
 		this.user.setRole(UserRoles.values()[u.getRole_id()]);
 
 		sessionAttributes.put("USER", this.user);
-		
-		
-		if(user.getRole() == UserRoles.Admin)
+
+		if (user.getRole() == UserRoles.Admin)
 			return "admin";
-		
+
 		return SUCCESS;
 	}
-	
+
 	public String logout() {
 		LOG.info("User " + user.getName() + " is logging-out");
 		sessionAttributes.remove("USER");
@@ -85,7 +88,6 @@ public class LoginAction extends ActionSupport implements SessionAware,
 	}
 
 	public String execute() throws Exception {
-		//LOG.info("This should be called on startup");
 		return SUCCESS;
 	}
 
@@ -105,9 +107,9 @@ public class LoginAction extends ActionSupport implements SessionAware,
 		try {
 			loggedUser = loginUser.authenticateUser(user, password);
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOG.error("Unauthorized access attempt");
 		}
-	
+
 		return loggedUser;
 	}
 }

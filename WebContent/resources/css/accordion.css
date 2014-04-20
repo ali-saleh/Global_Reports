@@ -42,13 +42,9 @@ DESCRIPTION: This document contains the structural formatting files for the acco
 ************************************************************************************************************************/
 
 .on {
-	background: #990000;
+	background-image: url(../images/MenuItem.png);
 	}
 	
 .over {
-	background: #CCCCCC;
+	background-image: url(../images/MenuItem.png);
 	}
-	
-.clear {
-	clear: 0 both;
-}

@@ -196,7 +196,7 @@ public class InvoiceReportAction extends BaseAction {
 	public void setSelectedItems(List<Integer> selectedItems) {
 		this.selectedItems = selectedItems;
 		for (Integer x : this.selectedItems) {
-			for (Item i : ListProvider.getItemList()) {
+			for (Item i : ListProvider.getItemList(false)) {
 				if (i.getId() == x) {
 					this.getItemNames().add(i.getDesc());
 					break;

@@ -12,8 +12,9 @@ public class ListProvider {
 	private static List<Item> items;
 	private static List<Customer> customrs;
 
-	public static List<Item> getItemList() {
+	public static List<Item> getItemList(boolean reload) {
 //		if (items == null) {
+		if(items != null || reload) {
 			System.out.println("ListProvider: Creating item list");
 			ItemReportDAO dao = new ItemReportDAO();
 			items = dao.listItems();
@@ -26,7 +27,7 @@ public class ListProvider {
 //				x.setDesc("Test Item" + i);
 //			}
 //		}
-
+		}
 		return items;
 	}
 
