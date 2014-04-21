@@ -2,7 +2,6 @@
 
 <div style="clear: both;"></div>
 <div id="accordion_wrapper">
-
 	<div class="accordionButton">Test</div>
 	<div class="accordionContent">
 		<form action="invoice_report" method="post">

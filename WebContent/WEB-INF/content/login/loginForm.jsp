@@ -1,5 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
+
+
 <div id="login">
 	<br></br> <br></br>
 	
@@ -12,8 +14,7 @@
 	<form action="loginUser" method="post">
 		<div class="rtl">
 			<div class="rtl">
-				<label><s:property value="getText('login.username')"
-						escapeHtml="false" /></label><input type="text" name="username">
+				<label><s:text name="login.username"/></label><input type="text" name="username">
 			</div>
 			<br>
 			<div class="rtl">
@@ -33,6 +34,8 @@
 		</div>
 	</form>
 </div>
+
+
 <%-- 	<s:form action="login" method="post" cssClass="rtl"> --%>
 <%-- 		<s:textfield name="username" key="login.username" cssClass="rtl" /> --%>
 <%-- 		<s:password name="password" key="login.password" cssClass="rtl" /> --%>

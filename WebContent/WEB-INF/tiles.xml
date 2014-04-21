@@ -33,7 +33,7 @@
 	</definition>
 
 	<definition name="login.tiles" extends="baseLayout">
-		<put-attribute name="title" value="login with tiles" />
+		<put-attribute name="title" value="page.title.login" />
 		<put-attribute name="menu" value="" />
 		<put-attribute name="body"
 			value="/WEB-INF/content/login/loginForm.jsp" />

@@ -47,6 +47,7 @@
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<result name="admin" type="redirect">/admin</result>
 			<result name="success" type="tiles">main.tiles</result>
+			<result name="error" type="tiles">login.tiles</result>
 		</action>
 
 		<action name="logout" class="actions.LoginAction" method="logout" />
