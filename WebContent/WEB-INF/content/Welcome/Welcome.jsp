@@ -55,7 +55,7 @@
 			<div class="field_wrapper" id="user-field" style="width: 370px;">
 				<label><s:text name="report.report.user" /></label>
 				<div class="fieldinput">
-					<select name="selectedItems" class="chosen-select chosen-rtl">
+					<select name="selectedUser" class="chosen-select chosen-rtl">
 						<option value="0">--</option>
 						<s:iterator value="customers" var="cust">
 							<option value="<s:property value='#cust.id'/>">
@@ -76,6 +76,38 @@
 						<s:iterator value="items" var="item">
 							<option value="<s:property value='#item.id'/>">
 								<s:property value="#item.desc" escapeHtml="false" />
+							</option>
+						</s:iterator>
+					</select>
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+
+			<div class="field_wrapper" id="partner-field" style="width: 370px;">
+				<label><s:text name="report.report.partner" /></label>
+				<div class="input_area">
+					<select name="selectedPartner"
+						class="chosen-select chosen-rtl">
+						<option value="0">--</option>
+						<s:iterator value="partners" var="partner">
+							<option value="<s:property value='#partner.id'/>">
+								<s:property value="#partner.fullname" escapeHtml="false" />
+							</option>
+						</s:iterator>
+					</select>
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+
+			<div class="field_wrapper" id="salesman-field" style="width: 370px;">
+				<label><s:text name="report.report.salesman" /></label>
+				<div class="input_area">
+					<select name="selectedSalesman"
+						class="chosen-select chosen-rtl">
+						<option value="0">--</option>
+						<s:iterator value="salesmen" var="salesman">
+							<option value="<s:property value='#salesman.id'/>">
+								<s:property value="#salesman.fullname" escapeHtml="false" />
 							</option>
 						</s:iterator>
 					</select>
@@ -114,6 +146,16 @@
 			<div style="float: left;">
 				<input type="checkbox" checked="checked" name="showTable"
 					value="true"><label>Test</label>
+			</div>
+
+			<div class="button_container" style="float: left;">
+				<div class="button_left"></div>
+				<div class="button">
+					<input name="isPrint"
+						onclick="this.form.target='_blank';return true;" style="margin: 0"
+						type="submit" value="<s:text name="find.print" />">
+				</div>
+				<div class="button_right"></div>
 			</div>
 
 			<div class="button_container" style="float: left;">
@@ -235,6 +277,17 @@
 
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
+
+			<div class="button_container" style="float: left;">
+				<div class="button_left"></div>
+				<div class="button">
+					<input name="isPrint"
+						onclick="this.form.target='_blank';return true;" style="margin: 0"
+						type="submit" value="<s:text name="find.print" />">
+				</div>
+				<div class="button_right"></div>
+			</div>
+
 			<div class="button_container" style="float: left;">
 				<div class="button_left"></div>
 				<div class="button">
@@ -356,6 +409,17 @@
 
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
+
+			<div class="button_container" style="float: left;">
+				<div class="button_left"></div>
+				<div class="button">
+					<input name="isPrint"
+						onclick="this.form.target='_blank';return true;" style="margin: 0"
+						type="submit" value="<s:text name="find.print" />">
+				</div>
+				<div class="button_right"></div>
+			</div>
+
 			<div class="button_container" style="float: left;">
 				<div class="button_left"></div>
 				<div class="button">
@@ -420,6 +484,17 @@
 
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
+
+			<div class="button_container" style="float: left;">
+				<div class="button_left"></div>
+				<div class="button">
+					<input name="isPrint"
+						onclick="this.form.target='_blank';return true;" style="margin: 0"
+						type="submit" value="<s:text name="find.print" />">
+				</div>
+				<div class="button_right"></div>
+			</div>
+
 			<div class="button_container" style="float: left;">
 				<div class="button_left"></div>
 				<div class="button">
@@ -543,6 +618,16 @@
 			</div>
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
+
+			<div class="button_container" style="float: left;">
+				<div class="button_left"></div>
+				<div class="button">
+					<input name="isPrint"
+						onclick="this.form.target='_blank';return true;" style="margin: 0"
+						type="submit" value="<s:text name="find.print" />">
+				</div>
+				<div class="button_right"></div>
+			</div>
 
 			<div class="button_container" style="float: left;">
 				<div class="button_left"></div>

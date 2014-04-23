@@ -3,23 +3,15 @@ package actions.reports;
 import interceptors.UserAware;
 
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
-
-import com.opensymphony.xwork2.ActionSupport;
-
-import actions.BaseAction;
-import actions.ListProvider;
-import actions.ReportingAction;
 
 import model.SessionUser;
 
 import db.billingdb.dao.custom.impl.ItemReportDAO;
-import db.billingdb.model.custom.Item;
 import db.billingdb.model.custom.ItemReport;
 import db.billingdb.model.custom.ItemReportCondition;
 
-public class ItemReportAction extends BaseAction implements UserAware {
+public class ItemReportAction extends BaseReportAction implements UserAware {
 
 	/**
 	 * 
@@ -33,19 +25,8 @@ public class ItemReportAction extends BaseAction implements UserAware {
 	
 	private int selectedUser;
 	
-	private int selectedCity;
-	private String city;
-
-	private int currencyId;
-	private String currency;
-	private List<Integer> selectedItems;
-	private List<String> itemNames = new ArrayList<String>();
-
-	private String fromDate;
-	private String toDate;
-	private boolean vatSelect;
 	private boolean showDeleted = true;
-
+	
 	@Override
 	public String execute() throws Exception {
 		ItemReportDAO dao = new ItemReportDAO();
@@ -93,7 +74,11 @@ public class ItemReportAction extends BaseAction implements UserAware {
 				this.itemsReportShekelDeleted = dao.getItemReport(condition);
 			}
 		}
-
+		
+		if (isPrint != null) {
+			return PRINT;
+		}
+		
 		return SUCCESS;
 	}
 
@@ -155,101 +140,6 @@ public class ItemReportAction extends BaseAction implements UserAware {
 
 	public void setSelectedUser(int selectedUser) {
 		this.selectedUser = selectedUser;
-	}
-
-	public int getSelectedCity() {
-		return selectedCity;
-	}
-
-	public void setSelectedCity(int selectedCity) {
-		this.selectedCity = selectedCity;
-		this.setCity(getText(ReportingAction.CITY_PREFIX + selectedCity, ""));
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public int getCurrencyId() {
-		return currencyId;
-	}
-
-	public void setCurrencyId(int currencyId) {
-		this.currencyId = currencyId;
-		switch (this.currencyId) {
-		case 1:
-			setCurrency(getText("report.report.both.currencies", ""));
-			break;
-		case 2:
-			setCurrency(getText("report.report.dollar", ""));
-			break;
-		case 3:
-			setCurrency(getText("report.report.shekel", ""));
-			break;
-
-		default:
-			break;
-		}
-	}
-
-	public String getCurrency() {
-		return currency;
-	}
-
-	public void setCurrency(String currency) {
-		this.currency = currency;
-	}
-
-	public List<Integer> getSelectedItems() {
-		return selectedItems;
-	}
-
-	public void setSelectedItems(List<Integer> selectedItems) {
-		this.selectedItems = selectedItems;
-		for (Integer x : this.selectedItems) {
-			for (Item i : ListProvider.getItemList(false)) {
-				if (i.getId() == x) {
-					this.getItemNames().add(i.getDesc());
-					break;
-				}
-			}
-		}
-	}
-
-	public List<String> getItemNames() {
-		return itemNames;
-	}
-
-	public void setItemNames(List<String> itemNames) {
-		this.itemNames = itemNames;
-	}
-
-	public String getFromDate() {
-		return fromDate;
-	}
-
-	public void setFromDate(String fromDate) {
-		this.fromDate = fromDate;
-	}
-
-	public String getToDate() {
-		return toDate;
-	}
-
-	public void setToDate(String toDate) {
-		this.toDate = toDate;
-	}
-
-	public boolean isVatSelect() {
-		return vatSelect;
-	}
-
-	public void setVatSelect(boolean vatSelect) {
-		this.vatSelect = vatSelect;
 	}
 
 	public boolean isShowDeleted() {

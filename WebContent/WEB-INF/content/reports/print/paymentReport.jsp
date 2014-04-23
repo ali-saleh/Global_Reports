@@ -2,8 +2,7 @@
 
 <div class="report_results_page balance_results_report">
 	<div class="report_main_title">
-		<s:text name="reports.payment.reports.title"></s:text>
-
+		<s:text name="reports.payment.reports.title" />
 	</div>
 	<div class="report_logo">
 		<img alt="logo"
@@ -25,18 +24,19 @@
 			</s:else>
 		</div>
 		<div class="report_date">
-			<div class="report_from_date">
-				<s:if test="%{fromDate != null}">
+			<s:if test="%{fromDate != null}">
+				<div class="report_from_date">
 					<s:text name="report.from.date" />
-					<s:property value="fromDate" />
-				</s:if>
-			</div>
-			<div class="report_to_date">
-				<s:if test="%{toDate != null}">
+					<s:property value="fromDate" escapeHtml="false"/>
+				</div>
+			</s:if>
+			<s:if test="%{toDate != null}">
+				<div class="report_to_date">
 					<s:text name="report.to.date" />
 					<s:property value="toDate" />
-				</s:if>
-			</div>
+				</div>
+			</s:if>
+			<div style="clear: both;"></div>
 			<div class="report_payway">
 				<s:text name="report.report.payway" />
 				:&nbsp;
@@ -88,7 +88,8 @@
 					<tr>
 						<td style="text-align: center;">${i}</td>
 						<td><s:property value="#payment.paymentId" /></td>
-						<td><s:property value="#payment.userNumber" escapeHtml="false" /></td>
+						<td><s:property value="#payment.userNumber"
+								escapeHtml="false" /></td>
 						<td><s:property value="#payment.userFullName"
 								escapeHtml="false" /></td>
 						<td><s:property value="#payment.paymentDate" /></td>
@@ -146,7 +147,8 @@
 					<tr>
 						<td style="text-align: center;" rowspan="2">${i}</td>
 						<td><s:property value="#payment.paymentId" /></td>
-						<td><s:property value="#payment.userNumber" escapeHtml="false" /></td>
+						<td><s:property value="#payment.userNumber"
+								escapeHtml="false" /></td>
 						<td><s:property value="#payment.userFullName"
 								escapeHtml="false" /></td>
 						<td><s:property value="#payment.paymentDate" /></td>
@@ -217,7 +219,8 @@
 					<tr>
 						<td style="text-align: center;">${i}</td>
 						<td><s:property value="#payment.paymentId" /></td>
-						<td><s:property value="#payment.userNumber" escapeHtml="false" /></td>
+						<td><s:property value="#payment.userNumber"
+								escapeHtml="false" /></td>
 						<td><s:property value="#payment.userFullName"
 								escapeHtml="false" /></td>
 						<td><s:property value="#payment.paymentDate" /></td>
@@ -275,7 +278,8 @@
 					<tr>
 						<td style="text-align: center;" rowspan="2">${i}</td>
 						<td><s:property value="#payment.paymentId" /></td>
-						<td><s:property value="#payment.userNumber" escapeHtml="false" /></td>
+						<td><s:property value="#payment.userNumber"
+								escapeHtml="false" /></td>
 						<td><s:property value="#payment.userFullName"
 								escapeHtml="false" /></td>
 						<td><s:property value="#payment.paymentDate" /></td>
@@ -349,7 +353,8 @@
 					<tr>
 						<td style="text-align: center;">${i}</td>
 						<td><s:property value="#payment.paymentId" /></td>
-						<td><s:property value="#payment.userNumber" escapeHtml="false" /></td>
+						<td><s:property value="#payment.userNumber"
+								escapeHtml="false" /></td>
 						<td><s:property value="#payment.userFullName"
 								escapeHtml="false" /></td>
 						<td><s:property value="#payment.paymentDate" /></td>
@@ -409,7 +414,8 @@
 					<tr>
 						<td style="text-align: center;" rowspan="2">${i}</td>
 						<td><s:property value="#payment.paymentId" /></td>
-						<td><s:property value="#payment.userNumber" escapeHtml="false" /></td>
+						<td><s:property value="#payment.userNumber"
+								escapeHtml="false" /></td>
 						<td><s:property value="#payment.userFullName"
 								escapeHtml="false" /></td>
 						<td><s:property value="#payment.paymentDate" /></td>
@@ -482,7 +488,8 @@
 					<tr>
 						<td style="text-align: center;">${i}</td>
 						<td><s:property value="#payment.paymentId" /></td>
-						<td><s:property value="#payment.userNumber" escapeHtml="false" /></td>
+						<td><s:property value="#payment.userNumber"
+								escapeHtml="false" /></td>
 						<td><s:property value="#payment.userFullName"
 								escapeHtml="false" /></td>
 						<td><s:property value="#payment.paymentDate" /></td>
@@ -542,7 +549,8 @@
 					<tr>
 						<td style="text-align: center;" rowspan="2">${i}</td>
 						<td><s:property value="#payment.paymentId" /></td>
-						<td><s:property value="#payment.userNumber" escapeHtml="false" /></td>
+						<td><s:property value="#payment.userNumber"
+								escapeHtml="false" /></td>
 						<td><s:property value="#payment.userFullName"
 								escapeHtml="false" /></td>
 						<td><s:property value="#payment.paymentDate" /></td>

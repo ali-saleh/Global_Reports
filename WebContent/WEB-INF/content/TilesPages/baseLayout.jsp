@@ -12,8 +12,8 @@
 <s:set var="title">
   <tiles:getAsString name="title" ignore="true"/>
 </s:set>
-
 <title><s:text name="%{#title}"/></title>
+
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/accordion.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/globalcom.css" />
 <link rel="stylesheet" media="screen" type="text/css"

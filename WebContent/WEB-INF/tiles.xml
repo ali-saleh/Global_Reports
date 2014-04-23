@@ -90,27 +90,31 @@
 	<!-- Separator -->
 
 	<definition name="invoice-print.tiles" extends="printLayout">
+		<put-attribute name="title" value="page.title.print" />
 		<put-attribute name="body"
 			value="/WEB-INF/content/reports/print/invoiceReport.jsp" />
 	</definition>
 
 	<definition name="payment-print.tiles" extends="printLayout">
+		<put-attribute name="title" value="page.title.print" />
 		<put-attribute name="body"
 			value="/WEB-INF/content/reports/print/paymentReport.jsp" />
 	</definition>
 
 	<definition name="item-print.tiles" extends="printLayout">
+		<put-attribute name="title" value="page.title.print" />
 		<put-attribute name="body"
 			value="/WEB-INF/content/reports/print/itemReport.jsp" />
 	</definition>
 
 	<definition name="outstanding-print.tiles" extends="printLayout">
+		<put-attribute name="title" value="page.title.print" />
 		<put-attribute name="body"
 			value="/WEB-INF/content/reports/print/outstandingReport.jsp" />
 	</definition>
 
-	<definition name="user-service-print.tiles" extends="baseLayout">
-		<put-attribute name="title" value="User-services" />
+	<definition name="user-service-print.tiles" extends="printLayout">
+		<put-attribute name="title" value="page.title.print" />
 		<put-attribute name="body"
 			value="/WEB-INF/content/reports/print/userService.jsp" />
 	</definition>

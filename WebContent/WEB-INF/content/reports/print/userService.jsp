@@ -20,7 +20,7 @@
 		
 		<s:if test="%{reportUser != null}">
 			<div class="userinfo">
-				<s:text name="reoprt.user.install.date" />
+				<s:text name="report.user.install.date" />
 				<s:property value="user.installationDate"/>
 			</div>
 		</s:if>

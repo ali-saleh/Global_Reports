@@ -76,7 +76,8 @@
 		<action name="outstanding_report" class="actions.reports.UserReportAction"
 			method="outstandingReport">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
-			<result name="success" type="tiles">outstanding-print.tiles</result>
+			<result name="print" type="tiles">outstanding-print.tiles</result>
+			<result name="success" type="tiles">outstanding-report.tiles</result>
 		</action>
 
 		<action name="user_service_report" class="actions.reports.UserReportAction"

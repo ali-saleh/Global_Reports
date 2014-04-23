@@ -1,53 +1,30 @@
 package actions.reports;
 
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
-
-import actions.BaseAction;
-import actions.ListProvider;
 
 import db.billingdb.dao.custom.impl.InvoiceReportDAO;
 import db.billingdb.model.custom.InvoiceCondition;
 import db.billingdb.model.custom.InvoiceReport;
-import db.billingdb.model.custom.Item;
 
-public class InvoiceReportAction extends BaseAction {
+
+public class InvoiceReportAction extends BaseReportAction {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -6342410377606008436L;
 
-	private static final String CITY_PREFIX = "city.";
-
-	private List<InvoiceReport> invoicesDollar;
-	private List<InvoiceReport> invoicesShekel;
+	private List<InvoiceReport> invoicesDollarPaid;
+	private List<InvoiceReport> invoicesDollarUnPaid;
+	private List<InvoiceReport> invoicesShekelPaid;
+	private List<InvoiceReport> invoicesShekelUnPaid;
 	private List<InvoiceReport> invoicesDollarDeleted;
 	private List<InvoiceReport> invoicesShekelDeleted;
 
-	private int selectedCity;
-	private String city;
-	private int currencyId;
-	private String currency;
-	private List<Integer> selectedItems;
-	private List<String> itemNames = new ArrayList<String>();
-
-	private String fromDate;
-	private String toDate;
-	private boolean vatSelect;
-	private boolean showTable;
 	private boolean invoicePaid;
 	private boolean invoiceUnPaid;
 	private boolean invoiceDeleted;
-
-	public boolean isShowTable() {
-		return showTable;
-	}
-
-	public void setShowTable(boolean showTable) {
-		this.showTable = showTable;
-	}
 
 	@Override
 	public String execute() throws Exception {
@@ -58,7 +35,7 @@ public class InvoiceReportAction extends BaseAction {
 		// City setting
 		if (selectedCity != 0)
 			condition.setCity(selectedCity);
-
+		
 		// From date validation
 		if (fromDate != null && !fromDate.isEmpty())
 			condition.setStartDate(Date.valueOf(convertDateFormat(fromDate)));
@@ -72,7 +49,14 @@ public class InvoiceReportAction extends BaseAction {
 		// Currency setting
 		if((this.currencyId & 1) == 1) {
 			condition.setCurrencyId(1);
-			this.invoicesDollar = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
+			if(invoicePaid) {
+				condition.setInvoiceState(26);
+				this.invoicesDollarPaid = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
+			}
+			if(invoiceUnPaid) { 
+				condition.setInvoiceState(27);
+				this.invoicesDollarUnPaid = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
+			}
 			if(invoiceDeleted) {
 				condition.setDeleted(true);
 				this.invoicesDollarDeleted = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
@@ -81,25 +65,40 @@ public class InvoiceReportAction extends BaseAction {
 		condition.setDeleted(false);
 		if((this.currencyId & 2) == 2) {
 			condition.setCurrencyId(12);
-			this.invoicesShekel = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
+			if(invoicePaid) {
+				condition.setInvoiceState(26);
+				this.invoicesDollarPaid = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
+			}
+			if(invoiceUnPaid) { 
+				condition.setInvoiceState(27);
+				this.invoicesDollarUnPaid = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
+			}
 			if(invoiceDeleted) {
 				condition.setDeleted(true);
 				this.invoicesShekelDeleted = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
 			}
 		}
 		
-		if(showTable)
-			return "print";
+		if(isPrint != null)
+			return PRINT;
 		
 		return SUCCESS;
 	}
 
-	public List<InvoiceReport> getInvoicesDollar() {
-		return invoicesDollar;
+	public List<InvoiceReport> getInvoicesDollarPaid() {
+		return invoicesDollarPaid;
 	}
 	
-	public List<InvoiceReport> getInvoicesShekel() {
-		return invoicesShekel;
+	public List<InvoiceReport> getInvoicesDollarUnPaid() {
+		return invoicesDollarUnPaid;
+	}
+	
+	public List<InvoiceReport> getInvoicesShekelPaid() {
+		return invoicesShekelPaid;
+	}
+	
+	public List<InvoiceReport> getInvoicesShekelUnPaid() {
+		return invoicesShekelUnPaid;
 	}
 	
 	public List<InvoiceReport> getInvoicesDollarDeleted() {
@@ -110,9 +109,17 @@ public class InvoiceReportAction extends BaseAction {
 		return invoicesShekelDeleted;
 	}
 
-	public double getInvoiceDollarSum() {
+	public double getInvoiceDollarPaidSum() {
 		double sum = 0.0;
-		for(InvoiceReport i : invoicesDollar) {
+		for(InvoiceReport i : invoicesDollarPaid) {
+			sum += i.getTotal();
+		}
+		return sum;
+	}
+	
+	public double getInvoiceDollarUnPaidSum() {
+		double sum = 0.0;
+		for(InvoiceReport i : invoicesDollarUnPaid) {
 			sum += i.getTotal();
 		}
 		return sum;
@@ -126,9 +133,17 @@ public class InvoiceReportAction extends BaseAction {
 		return sum;
 	}
 
-	public double getInvoiceShekelSum() {
+	public double getInvoiceShekelPaidSum() {
 		double sum = 0.0;
-		for(InvoiceReport i : invoicesShekel) {
+		for(InvoiceReport i : invoicesShekelPaid) {
+			sum += i.getTotal();
+		}
+		return sum;
+	}
+	
+	public double getInvoiceShekelUnPaidSum() {
+		double sum = 0.0;
+		for(InvoiceReport i : invoicesShekelUnPaid) {
 			sum += i.getTotal();
 		}
 		return sum;
@@ -140,101 +155,6 @@ public class InvoiceReportAction extends BaseAction {
 			sum += i.getTotal();
 		}
 		return sum;
-	}
-
-	public int getSelectedCity() {
-		return selectedCity;
-	}
-
-	public void setSelectedCity(int selectedCity) {
-		this.selectedCity = selectedCity;
-		this.setCity(getText(CITY_PREFIX + selectedCity, ""));
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public int getCurrencyId() {
-		return currencyId;
-	}
-
-	public void setCurrencyId(int currencyId) {
-		this.currencyId = currencyId;
-		switch (this.currencyId) {
-		case 1:
-			setCurrency(getText("report.report.both.currencies", ""));
-			break;
-		case 2:
-			setCurrency(getText("report.report.dollar", ""));
-			break;
-		case 3:
-			setCurrency(getText("report.report.shekel", ""));
-			break;
-
-		default:
-			break;
-		}
-	}
-
-	public String getCurrency() {
-		return currency;
-	}
-
-	public void setCurrency(String currency) {
-		this.currency = currency;
-	}
-
-	public List<Integer> getSelectedItems() {
-		return selectedItems;
-	}
-
-	public void setSelectedItems(List<Integer> selectedItems) {
-		this.selectedItems = selectedItems;
-		for (Integer x : this.selectedItems) {
-			for (Item i : ListProvider.getItemList(false)) {
-				if (i.getId() == x) {
-					this.getItemNames().add(i.getDesc());
-					break;
-				}
-			}
-		}
-	}
-
-	public List<String> getItemNames() {
-		return itemNames;
-	}
-
-	public void setItemNames(List<String> itemNames) {
-		this.itemNames = itemNames;
-	}
-
-	public String getFromDate() {
-		return fromDate;
-	}
-
-	public void setFromDate(String fromDate) {
-		this.fromDate = fromDate;
-	}
-
-	public String getToDate() {
-		return toDate;
-	}
-
-	public void setToDate(String toDate) {
-		this.toDate = toDate;
-	}
-
-	public boolean isVatSelect() {
-		return vatSelect;
-	}
-
-	public void setVatSelect(boolean vatSelect) {
-		this.vatSelect = vatSelect;
 	}
 	
 	public boolean isInvoicePaid() {

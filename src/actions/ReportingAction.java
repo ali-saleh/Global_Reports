@@ -10,6 +10,7 @@ import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 
 import model.SessionUser;
+import model.UserRoles;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -21,6 +22,7 @@ import db.billingdb.model.custom.InvoiceReport;
 import db.billingdb.model.custom.Item;
 import db.billingdb.model.custom.ItemReport;
 import db.billingdb.model.custom.ItemReportCondition;
+import db.billingdb.model.custom.SimpleUser;
 
 public class ReportingAction extends ActionSupport implements UserAware {
 
@@ -31,10 +33,14 @@ public class ReportingAction extends ActionSupport implements UserAware {
 
 	public static final String CITY_PREFIX = "city.";
 	private String page = "reporting";
+	private SessionUser sessionUser;
 
 	private List<String> cities = new ArrayList<String>();
 	private List<Item> items;
 	private List<Customer> customers;
+	private List<SimpleUser> partners;
+	private List<SimpleUser> salesmen;
+	
 	private int selectedCity;
 	private String city;
 
@@ -46,26 +52,29 @@ public class ReportingAction extends ActionSupport implements UserAware {
 	private String fromDate;
 	private String toDate;
 	private boolean vatSelect;
-
-	public String execute() throws Exception {
-		page = "reporting";
-		prepareCities();
-		items = ListProvider.getItemList(true);
-		customers = ListProvider.getCustomerList();
-		return SUCCESS;
+	
+	public ReportingAction() {
+		sessionUser = new SessionUser();
+		sessionUser.setRole(UserRoles.Admin);
+		sessionUser.setName("Ali");
+		sessionUser.setCity(1);
 	}
 	
+	public String execute() {
+		page = "reporting";
+		prepareLists();
+		return SUCCESS;
+	}
+
 	public String prepareUserPage() {
 		this.page = "user";
-		prepareCities();
-		items = ListProvider.getItemList(true);
-		customers = ListProvider.getCustomerList();
+		prepareLists();
 		return SUCCESS;
 	}
 
 	@Override
 	public void setUser(SessionUser user) {
-		// TODO Auto-generated method stub
+		this.sessionUser = user;
 	}
 
 	public List<String> getCities() {
@@ -78,6 +87,14 @@ public class ReportingAction extends ActionSupport implements UserAware {
 
 	public List<Customer> getCustomers() {
 		return customers;
+	}
+
+	public List<SimpleUser> getPartners() {
+		return partners;
+	}
+
+	public List<SimpleUser> getSalesmen() {
+		return salesmen;
 	}
 
 	public int getSelectedCity() {
@@ -178,6 +195,7 @@ public class ReportingAction extends ActionSupport implements UserAware {
 	public String getPage() {
 		return this.page;
 	}
+	
 
 	private void prepareCities() {
 		if (cities.size() == 0) {
@@ -191,4 +209,16 @@ public class ReportingAction extends ActionSupport implements UserAware {
 		}
 	}
 
+	private void prepareLists() {
+
+		boolean cityLimit = sessionUser.getRole() == UserRoles.Manager;
+
+		prepareCities();
+		items = ListProvider.getItemList(true);
+		customers = ListProvider.getCustomerList(
+				cityLimit ? sessionUser.getCity() : 0, true);
+		partners = ListProvider.getPartnerList(cityLimit ? sessionUser.getCity() : 0, true);
+		salesmen = ListProvider.getSalesmanList(cityLimit ? sessionUser.getCity() : 0, true);
+		
+	}
 }

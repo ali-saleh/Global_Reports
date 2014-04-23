@@ -3,20 +3,16 @@ package actions.reports;
 import java.sql.Date;
 import java.util.List;
 
-import actions.BaseAction;
-
 import db.billingdb.dao.custom.impl.PaymentReportDAO;
 import db.billingdb.model.custom.PaymentCondition;
 import db.billingdb.model.custom.PaymentReport;
 
-public class PaymentReportAction extends BaseAction{
+public class PaymentReportAction extends BaseReportAction {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -3658601084297768667L;
-	
-	private static final String CITY_PREFIX = "city.";
 	
 	private List<PaymentReport> paymentsDollarCash;
 	private List<PaymentReport> paymentsDollarCheque;
@@ -27,15 +23,8 @@ public class PaymentReportAction extends BaseAction{
 	private List<PaymentReport> paymentsShekelCashDeleted;
 	private List<PaymentReport> paymentsShekelChequeDeleted;
 	
-	private int selectedCity;
-	private String city;
-	private int currencyId;
-	private String currency;
 	private int paymentMethodId;
 	
-	private String fromDate;
-	private String toDate;
-	private boolean vatSelect;
 	private boolean showDeleted;
 	
 	@Override
@@ -103,6 +92,10 @@ public class PaymentReportAction extends BaseAction{
 					this.paymentsShekelCashDeleted = dao.getPayments(condition);
 				}
 			}
+		}
+		
+		if (isPrint != null) {
+			return PRINT;
 		}
 		
 		return SUCCESS;
@@ -204,83 +197,12 @@ public class PaymentReportAction extends BaseAction{
 		return sum;
 	}
 
-	public int getSelectedCity() {
-		return selectedCity;
-	}
-
-	public void setSelectedCity(int selectedCity) {
-		this.selectedCity = selectedCity;
-		this.setCity(getText(CITY_PREFIX + selectedCity, ""));
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public int getCurrencyId() {
-		return currencyId;
-	}
-
-	public void setCurrencyId(int currencyId) {
-		this.currencyId = currencyId;
-		switch (this.currencyId) {
-		case 1:
-			setCurrency(getText("report.report.both.currencies", ""));
-			break;
-		case 2:
-			setCurrency(getText("report.report.dollar", ""));
-			break;
-		case 3:
-			setCurrency(getText("report.report.shekel", ""));
-			break;
-
-		default:
-			break;
-		}
-	}
-
-	public String getCurrency() {
-		return currency;
-	}
-
-	public void setCurrency(String currency) {
-		this.currency = currency;
-	}
-	
 	public int getPaymentMethodId() {
 		return paymentMethodId;
 	}
 
 	public void setPaymentMethodId(int paymentMethodId) {
 		this.paymentMethodId = paymentMethodId;
-	}
-
-	public String getFromDate() {
-		return fromDate;
-	}
-
-	public void setFromDate(String fromDate) {
-		this.fromDate = fromDate;
-	}
-
-	public String getToDate() {
-		return toDate;
-	}
-
-	public void setToDate(String toDate) {
-		this.toDate = toDate;
-	}
-
-	public boolean isVatSelect() {
-		return vatSelect;
-	}
-
-	public void setVatSelect(boolean vatSelect) {
-		this.vatSelect = vatSelect;
 	}
 	
 	public boolean isShowDeleted() {

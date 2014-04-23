@@ -117,15 +117,25 @@
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
 
-			<div style="float: left;">
-				<input type="checkbox" checked="checked" name="showTable"
-					value="true"><label>Test</label>
+<!-- 			<div style="float: left;"> -->
+<!-- 				<input type="checkbox" checked="checked" name="showTable" -->
+<!-- 					value="true"><label>Test</label> -->
+<!-- 			</div> -->
+
+			<div class="button_container" style="float: left;">
+				<div class="button_left"></div>
+				<div class="button">
+					<input name="isPrint" onclick="this.form.target='_blank';return true;"
+						style="margin: 0" type="submit"
+						value="<s:text name="find.print" />">
+				</div>
+				<div class="button_right"></div>
 			</div>
 
 			<div class="button_container" style="float: left;">
 				<div class="button_left"></div>
 				<div class="button">
-					<input onclick="this.form.target='_blank';return true;"
+					<input 
 						style="margin: 0" type="submit"
 						value="<s:text name="find.submit" />">
 				</div>

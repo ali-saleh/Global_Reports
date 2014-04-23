@@ -8,31 +8,25 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import actions.ListProvider;
-import actions.ReportingAction;
-
 import com.opensymphony.xwork2.ActionSupport;
 
 import db.billingdb.dao.custom.impl.ItemReportDAO;
 import db.billingdb.dao.custom.impl.UserReportDAO;
-import db.billingdb.model.custom.Item;
 import db.billingdb.model.custom.ItemReport;
 import db.billingdb.model.custom.ItemReportCondition;
 import db.billingdb.model.custom.OutstandingUser;
 import db.billingdb.model.custom.OutstandingUserCondition;
 import db.billingdb.model.custom.info.UserInfo;
 
-public class UserReportAction extends ActionSupport {
+public class UserReportAction extends BaseReportAction {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -9010796324682946356L;
 
-	private String page = "user";
 	private UserReportDAO userReportDAO;
 	private ItemReportDAO itemReportDAO;
-	
 
 	private List<OutstandingUser> outstandingDollar;
 	private List<OutstandingUser> outstandingShekel;
@@ -40,17 +34,9 @@ public class UserReportAction extends ActionSupport {
 	private List<OutstandingUser> outstandingShekelDeleted;
 	
 	private List<ItemReport> serviceReport;
+	
 	private UserInfo reportUser;
-
-	private int selectedCity;
-	private String city;
-	private List<Integer> selectedItems;
-	private List<String> itemNames = new ArrayList<String>();
-	private int currencyId;
-	private String currency;
-	private int selectedUser;
-	private boolean vatSelect;
-
+	
 	private boolean showDeletedUsers;
 
 	// For Testing
@@ -87,7 +73,9 @@ public class UserReportAction extends ActionSupport {
 				this.outstandingDollarDeleted = fillUserInfo(userReportDAO, userReportDAO.getOutstandingUsers(condition));
 			}
 		}
+		
 		condition.setDeleted(false);
+		
 		if ((this.currencyId & 2) == 2) {
 			condition.setCurrencyId(12);
 			this.outstandingShekel = fillUserInfo(userReportDAO, userReportDAO.getOutstandingUsers(condition));
@@ -96,7 +84,11 @@ public class UserReportAction extends ActionSupport {
 				this.outstandingShekelDeleted = fillUserInfo(userReportDAO, userReportDAO.getOutstandingUsers(condition));
 			}
 		}
-
+		
+		if(isPrint != null) {
+			return PRINT;
+		}
+		
 		return SUCCESS;
 	}
 
@@ -109,6 +101,7 @@ public class UserReportAction extends ActionSupport {
 			reportUser = userReportDAO.getUserInfoByID(selectedUser);
 		} else {
 			//TODO: some error must be added.
+			return ERROR;
 		}
 		
 		// Item selection
@@ -120,6 +113,10 @@ public class UserReportAction extends ActionSupport {
 			condition.setVatRate(1.0); // Note: this value is just !0 and will
 										// be overridden
 		serviceReport = itemReportDAO.getItemReport(condition);
+		
+		if(isPrint != null) {
+			return PRINT;
+		}
 		
 		return SUCCESS;
 	}
@@ -192,85 +189,6 @@ public class UserReportAction extends ActionSupport {
 		return ActionSupport.SUCCESS;
 	}
 
-	public int getSelectedCity() {
-		return selectedCity;
-	}
-
-	public void setSelectedCity(int selectedCity) {
-		this.selectedCity = selectedCity;
-		this.setCity(getText(ReportingAction.CITY_PREFIX + selectedCity, ""));
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public int getCurrencyId() {
-		return currencyId;
-	}
-
-	public void setCurrencyId(int currencyId) {
-		this.currencyId = currencyId;
-		switch (this.currencyId) {
-		case 1:
-			setCurrency(getText("report.report.both.currencies", ""));
-			break;
-		case 2:
-			setCurrency(getText("report.report.dollar", ""));
-			break;
-		case 3:
-			setCurrency(getText("report.report.shekel", ""));
-			break;
-
-		default:
-			break;
-		}
-	}
-
-	public String getCurrency() {
-		return currency;
-	}
-
-	public void setCurrency(String currency) {
-		this.currency = currency;
-	}
-	
-	public int getSelectedUser() {
-		return selectedUser;
-	}
-
-	public void setSelectedUser(int selectedUser) {
-		this.selectedUser = selectedUser;
-	}
-	
-	public List<Integer> getSelectedItems() {
-		return selectedItems;
-	}
-
-	public void setSelectedItems(List<Integer> selectedItems) {
-		this.selectedItems = selectedItems;
-		for (Integer x : this.selectedItems) {
-			for (Item i : ListProvider.getItemList(false)) {
-				if (i.getId() == x) {
-					this.getItemNames().add(i.getDesc());
-					break;
-				}
-			}
-		}
-	}
-
-	public List<String> getItemNames() {
-		return itemNames;
-	}
-
-	public void setItemNames(List<String> itemNames) {
-		this.itemNames = itemNames;
-	}
-
 	// public String test() throws UnsupportedEncodingException {
 	//
 	// if (search.contains("ali")) {
@@ -283,14 +201,6 @@ public class UserReportAction extends ActionSupport {
 	// return SUCCESS;
 	// }
 
-	public boolean isVatSelect() {
-		return vatSelect;
-	}
-
-	public void setVatSelect(boolean vatSelect) {
-		this.vatSelect = vatSelect;
-	}
-
 	public boolean isShowDeletedUsers() {
 		return showDeletedUsers;
 	}
@@ -298,8 +208,7 @@ public class UserReportAction extends ActionSupport {
 	public void setShowDeletedUsers(boolean showDeletedUsers) {
 		this.showDeletedUsers = showDeletedUsers;
 	}
-	
-	
+
 	// For Testing
 	public InputStream getInputStream() {
 		return inputStream;
@@ -327,10 +236,6 @@ public class UserReportAction extends ActionSupport {
 
 	public void setGreeting(String greeting) {
 		this.greeting = greeting;
-	}
-
-	public String getPage() {
-		return this.page;
 	}
 
 	private List<OutstandingUser> fillUserInfo(UserReportDAO dao, List<OutstandingUser> outstandingUsers) {

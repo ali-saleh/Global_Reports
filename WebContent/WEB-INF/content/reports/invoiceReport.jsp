@@ -40,7 +40,7 @@
 	</div>
 </fieldset>
 <div id="accordion_wrapper">
-	<s:if test="%{invoicesDollar != null && invoicesDollar.size > 0}">
+	<s:if test="%{invoicesDollarPaid != null && invoicesDollarPaid.size > 0}">
 		<s:set id="i" value="1" />
 
 		<div class="accordionButton">
@@ -62,7 +62,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<s:iterator value="invoicesDollar" var="invoice">
+						<s:iterator value="invoicesDollarPaid" var="invoice">
 							<tr>
 								<td><s:property value="#invoice.invoiceId" />
 								<td><s:property value="#invoice.userNumber"
