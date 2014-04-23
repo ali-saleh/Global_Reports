@@ -13,12 +13,14 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
-import db.logindb.dao.custom.impl.LoginUserDAO;
-import db.logindb.model.User;
+import db.reportingdb.dao.impl.ReportingUserDAO;
+import db.reportingdb.model.User;
 
 public class LoginAction extends ActionSupport implements SessionAware, ModelDriven<SessionUser> {
 
 	private static final long serialVersionUID = -6190050699323786248L;
+	
+	public static String ADMIN = "admin";
 	private InputStream inputStream;
 	private String username;
 	private String password;
@@ -68,15 +70,17 @@ public class LoginAction extends ActionSupport implements SessionAware, ModelDri
 		}
 
 		LOG.debug("User " + username + " logged-in successfully");
-
-		System.out.println();
+		
+		//TODO: add logic for inactive user state (0-New)
+		
 		this.user.setName(u.getUsername());
 		this.user.setRole(UserRoles.values()[u.getRole_id()]);
+		this.user.setCity(u.getCity_id());
 
 		sessionAttributes.put("USER", this.user);
 
 		if (user.getRole() == UserRoles.Admin)
-			return "admin";
+			return ADMIN;
 
 		return SUCCESS;
 	}
@@ -102,10 +106,10 @@ public class LoginAction extends ActionSupport implements SessionAware, ModelDri
 	}
 
 	private User authenticate(String user, String password) {
-		LoginUserDAO loginUser = new LoginUserDAO();
+		ReportingUserDAO dao = new ReportingUserDAO();
 		User loggedUser = null;
 		try {
-			loggedUser = loginUser.authenticateUser(user, password);
+			loggedUser = dao.authenticateUser(user, password);
 		} catch (Exception e) {
 			LOG.error("Unauthorized access attempt");
 		}

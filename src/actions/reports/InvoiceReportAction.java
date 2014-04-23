@@ -7,7 +7,6 @@ import db.billingdb.dao.custom.impl.InvoiceReportDAO;
 import db.billingdb.model.custom.InvoiceCondition;
 import db.billingdb.model.custom.InvoiceReport;
 
-
 public class InvoiceReportAction extends BaseReportAction {
 
 	/**
@@ -33,93 +32,99 @@ public class InvoiceReportAction extends BaseReportAction {
 		InvoiceCondition condition = new InvoiceCondition();
 
 		// City setting
-		if (selectedCity != 0)
+		if (selectedUser != 0)
+			condition.setUserId(selectedUser);
+		else if (selectedCity != 0)
 			condition.setCity(selectedCity);
-		
+		else if (selectedPartner != 0)
+			condition.setPartnerId(selectedPartner);
+		else if (selectedSalesman != 0)
+			condition.setSalesmanId(selectedSalesman);
+
 		// From date validation
 		if (fromDate != null && !fromDate.isEmpty())
 			condition.setStartDate(Date.valueOf(convertDateFormat(fromDate)));
 		// To date validation
 		if (toDate != null && !toDate.isEmpty())
 			condition.setEndDate(Date.valueOf(convertDateFormat(toDate)));
-		
+
 		if (!vatSelect)
 			condition.setVatRate(1.0); // Note: this value is just !0 and will
 										// be overridden
 		// Currency setting
-		if((this.currencyId & 1) == 1) {
+		if ((this.currencyId & 1) == 1) {
 			condition.setCurrencyId(1);
-			if(invoicePaid) {
+			if (invoicePaid) {
 				condition.setInvoiceState(26);
 				this.invoicesDollarPaid = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
 			}
-			if(invoiceUnPaid) { 
+			if (invoiceUnPaid) {
 				condition.setInvoiceState(27);
 				this.invoicesDollarUnPaid = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
 			}
-			if(invoiceDeleted) {
+			if (invoiceDeleted) {
 				condition.setDeleted(true);
 				this.invoicesDollarDeleted = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
 			}
 		}
 		condition.setDeleted(false);
-		if((this.currencyId & 2) == 2) {
+		if ((this.currencyId & 2) == 2) {
 			condition.setCurrencyId(12);
-			if(invoicePaid) {
+			if (invoicePaid) {
 				condition.setInvoiceState(26);
 				this.invoicesDollarPaid = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
 			}
-			if(invoiceUnPaid) { 
+			if (invoiceUnPaid) {
 				condition.setInvoiceState(27);
 				this.invoicesDollarUnPaid = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
 			}
-			if(invoiceDeleted) {
+			if (invoiceDeleted) {
 				condition.setDeleted(true);
 				this.invoicesShekelDeleted = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
 			}
 		}
-		
-		if(isPrint != null)
+
+		if (isPrint != null)
 			return PRINT;
-		
+
 		return SUCCESS;
 	}
 
 	public List<InvoiceReport> getInvoicesDollarPaid() {
 		return invoicesDollarPaid;
 	}
-	
+
 	public List<InvoiceReport> getInvoicesDollarUnPaid() {
 		return invoicesDollarUnPaid;
 	}
-	
+
 	public List<InvoiceReport> getInvoicesShekelPaid() {
 		return invoicesShekelPaid;
 	}
-	
+
 	public List<InvoiceReport> getInvoicesShekelUnPaid() {
 		return invoicesShekelUnPaid;
 	}
-	
+
 	public List<InvoiceReport> getInvoicesDollarDeleted() {
 		return invoicesDollarDeleted;
 	}
-	
+
 	public List<InvoiceReport> getInvoicesShekelDeleted() {
 		return invoicesShekelDeleted;
 	}
 
 	public double getInvoiceDollarPaidSum() {
 		double sum = 0.0;
-		for(InvoiceReport i : invoicesDollarPaid) {
+		for (InvoiceReport i : invoicesDollarPaid) {
 			sum += i.getTotal();
 		}
 		return sum;
 	}
-	
+
 	public double getInvoiceDollarUnPaidSum() {
 		double sum = 0.0;
-		for(InvoiceReport i : invoicesDollarUnPaid) {
+		for (InvoiceReport i : invoicesDollarUnPaid) {
 			sum += i.getTotal();
 		}
 		return sum;
@@ -127,7 +132,7 @@ public class InvoiceReportAction extends BaseReportAction {
 
 	public double getInvoiceDollarDeletedSum() {
 		double sum = 0.0;
-		for(InvoiceReport i : invoicesDollarDeleted) {
+		for (InvoiceReport i : invoicesDollarDeleted) {
 			sum += i.getTotal();
 		}
 		return sum;
@@ -135,15 +140,15 @@ public class InvoiceReportAction extends BaseReportAction {
 
 	public double getInvoiceShekelPaidSum() {
 		double sum = 0.0;
-		for(InvoiceReport i : invoicesShekelPaid) {
+		for (InvoiceReport i : invoicesShekelPaid) {
 			sum += i.getTotal();
 		}
 		return sum;
 	}
-	
+
 	public double getInvoiceShekelUnPaidSum() {
 		double sum = 0.0;
-		for(InvoiceReport i : invoicesShekelUnPaid) {
+		for (InvoiceReport i : invoicesShekelUnPaid) {
 			sum += i.getTotal();
 		}
 		return sum;
@@ -151,12 +156,12 @@ public class InvoiceReportAction extends BaseReportAction {
 
 	public double getInvoiceShekelDeletedSum() {
 		double sum = 0.0;
-		for(InvoiceReport i : invoicesShekelDeleted) {
+		for (InvoiceReport i : invoicesShekelDeleted) {
 			sum += i.getTotal();
 		}
 		return sum;
 	}
-	
+
 	public boolean isInvoicePaid() {
 		return invoicePaid;
 	}
@@ -180,19 +185,19 @@ public class InvoiceReportAction extends BaseReportAction {
 	public void setInvoiceDeleted(boolean invoiceDeleted) {
 		this.invoiceDeleted = invoiceDeleted;
 	}
-	
-//	void test() {
-//		this.invoices = new ArrayList<InvoiceReport>();
-//		int i = 0;
-//		while (i < 20) {
-//			InvoiceReport x = new InvoiceReport();
-//			x.setCreateDate(Date.valueOf("2012-3-1"));
-//			x.setUserFullName("test user");
-//			x.setInvoiceId(100);
-//			x.setTotal(500.0);
-//			this.invoices.add(x);
-//			
-//			i++;
-//		}
-//	}
+
+	// void test() {
+	// this.invoices = new ArrayList<InvoiceReport>();
+	// int i = 0;
+	// while (i < 20) {
+	// InvoiceReport x = new InvoiceReport();
+	// x.setCreateDate(Date.valueOf("2012-3-1"));
+	// x.setUserFullName("test user");
+	// x.setInvoiceId(100);
+	// x.setTotal(500.0);
+	// this.invoices.add(x);
+	//
+	// i++;
+	// }
+	// }
 }

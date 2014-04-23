@@ -7,82 +7,70 @@
 <tiles-definitions>
 
 	<definition name="baseLayout"
-		template="/WEB-INF/content/TilesPages/baseLayout.jsp">
+		template="/WEB-INF/content/tilesPages/baseLayout.jsp">
 		<put-attribute name="title" value="Tiles Base" />
 		<put-attribute name="header"
-			value="/WEB-INF/content/TilesPages/header.jsp" />
+			value="/WEB-INF/content/tilesPages/header.jsp" />
 		<put-attribute name="menu"
-			value="/WEB-INF/content/TilesPages/menu.jsp" />
+			value="/WEB-INF/content/tilesPages/menu.jsp" />
 		<!-- <put-attribute name="body" -->
 		<!-- value="/WEB-INF/content/TilesPages/body.jsp" /> -->
 		<put-attribute name="footer"
-			value="/WEB-INF/content/TilesPages/footer.jsp" />
+			value="/WEB-INF/content/tilesPages/footer.jsp" />
 	</definition>
 
 	<definition name="printLayout"
-		template="/WEB-INF/content/TilesPages/printLayout.jsp">
+		template="/WEB-INF/content/tilesPages/printLayout.jsp">
 		<put-attribute name="title" value="Print Example" />
-		<!-- <put-attribute name="header" -->
-		<!-- value="/WEB-INF/content/TilesPages/header.jsp" /> -->
-		<!-- <put-attribute name="menu" -->
-		<!-- value="/WEB-INF/content/TilesPages/menu.jsp" /> -->
-		<!-- <put-attribute name="body" -->
-		<!-- value="/WEB-INF/content/TilesPages/body.jsp" /> -->
-		<!-- <put-attribute name="footer" -->
-		<!-- value="/WEB-INF/content/TilesPages/footer.jsp" /> -->
 	</definition>
 
 	<definition name="login.tiles" extends="baseLayout">
 		<put-attribute name="title" value="page.title.login" />
 		<put-attribute name="menu" value="" />
 		<put-attribute name="body"
-			value="/WEB-INF/content/login/loginForm.jsp" />
+			value="/WEB-INF/content/login/loginPage.jsp" />
 	</definition>
 
 	<definition name="admin.tiles" extends="baseLayout">
-		<put-attribute name="title" value="Use properties (admin)" />
+		<put-attribute name="title" value="Admin" />
 		<put-attribute name="body" value="/WEB-INF/content/admin/admin.jsp" />
 	</definition>
 
-	<definition name="welcome.tiles" extends="baseLayout">
+	<definition name="main.tiles" extends="baseLayout">
+		<put-attribute name="title" value="page.title.welcome" />
+		<put-attribute name="menu" value="" />
 		<put-attribute name="body"
-			value="/WEB-INF/content/Welcome/Welcome.jsp" />
+			value="/WEB-INF/content/mainPage.jsp" />
 	</definition>
 
-	<definition name="main.tiles" extends="baseLayout">
-		<put-attribute name="title" value="Home" />
-		<put-attribute name="menu" value="" />
-		<put-attribute name="body" value="/WEB-INF/content/main_page.jsp" />
+	<!-- <definition name="main.tiles" extends="baseLayout"> -->
+	<!-- <put-attribute name="title" value="Home" /> -->
+	<!-- <put-attribute name="menu" value="" /> -->
+	<!-- <put-attribute name="body" value="/WEB-INF/content/main_page.jsp" /> -->
+	<!-- </definition> -->
+
+	<definition name="invoice.tiles" extends="baseLayout">
+		<put-attribute name="title" value="navigation.invoice.reports" />
+		<put-attribute name="body"
+			value="/WEB-INF/content/filterPages/invoiceFilters.jsp" />
 	</definition>
 
 	<definition name="user.tiles" extends="baseLayout">
-		<put-attribute name="title" value="User page (property)" />
+		<put-attribute name="title" value="navigation.user.reports" />
 		<put-attribute name="body"
-			value="/WEB-INF/content/userpage/usersearch.jsp" />
+			value="/WEB-INF/content/filterPages/userFilters.jsp" />
 	</definition>
 
-	<definition name="item-report.tiles" extends="baseLayout">
-		<put-attribute name="title" value="Use properties" />
+	<definition name="payment.tiles" extends="baseLayout">
+		<put-attribute name="title" value="navigation.payment.reports" />
 		<put-attribute name="body"
-			value="/WEB-INF/content/reports/itemReport.jsp" />
+			value="/WEB-INF/content/filterPages/paymentFilters.jsp" />
 	</definition>
 
-	<definition name="invoice-report.tiles" extends="baseLayout">
-		<put-attribute name="title" value="Use properties (invoices)" />
+	<definition name="other.tiles" extends="baseLayout">
+		<put-attribute name="title" value="navigation.other.reports" />
 		<put-attribute name="body"
-			value="/WEB-INF/content/reports/invoiceReport.jsp" />
-	</definition>
-
-	<definition name="service-report.tiles" extends="baseLayout">
-		<put-attribute name="title" value="Use properties (service)" />
-		<put-attribute name="body"
-			value="/WEB-INF/content/reports/serviceReport.jsp" />
-	</definition>
-
-	<definition name="user-service-report.tiles" extends="baseLayout">
-		<put-attribute name="title" value="User-services" />
-		<put-attribute name="body"
-			value="/WEB-INF/content/reports/userService.jsp" />
+			value="/WEB-INF/content/filterPages/otherFilters.jsp" />
 	</definition>
 
 	<!-- Separator -->
@@ -95,17 +83,13 @@
 			value="/WEB-INF/content/reports/print/invoiceReport.jsp" />
 	</definition>
 
-	<definition name="payment-print.tiles" extends="printLayout">
-		<put-attribute name="title" value="page.title.print" />
+	<definition name="invoice-report.tiles" extends="baseLayout">
+		<put-attribute name="title" value="page.title.report.invoice" />
 		<put-attribute name="body"
-			value="/WEB-INF/content/reports/print/paymentReport.jsp" />
+			value="/WEB-INF/content/reports/invoiceReport.jsp" />
 	</definition>
 
-	<definition name="item-print.tiles" extends="printLayout">
-		<put-attribute name="title" value="page.title.print" />
-		<put-attribute name="body"
-			value="/WEB-INF/content/reports/print/itemReport.jsp" />
-	</definition>
+	<!-- Separator -->
 
 	<definition name="outstanding-print.tiles" extends="printLayout">
 		<put-attribute name="title" value="page.title.print" />
@@ -113,10 +97,54 @@
 			value="/WEB-INF/content/reports/print/outstandingReport.jsp" />
 	</definition>
 
+	<definition name="outstanding-report.tiles" extends="baseLayout">
+		<put-attribute name="title" value="page.title.report.outstanding" />
+		<put-attribute name="body"
+			value="/WEB-INF/content/reports/print/outstandingReport.jsp" />
+	</definition>
+
+	<!-- Separator -->
+
 	<definition name="user-service-print.tiles" extends="printLayout">
 		<put-attribute name="title" value="page.title.print" />
 		<put-attribute name="body"
 			value="/WEB-INF/content/reports/print/userService.jsp" />
 	</definition>
+
+	<definition name="user-service-report.tiles" extends="baseLayout">
+		<put-attribute name="title" value="page.title.report.user.service" />
+		<put-attribute name="body"
+			value="/WEB-INF/content/reports/userService.jsp" />
+	</definition>
+
+	<!-- Separator -->
+
+	<definition name="payment-print.tiles" extends="printLayout">
+		<put-attribute name="title" value="page.title.print" />
+		<put-attribute name="body"
+			value="/WEB-INF/content/reports/print/paymentReport.jsp" />
+	</definition>
+
+	<definition name="payment-report.tiles" extends="baseLayout">
+		<put-attribute name="title" value="page.title.report.payment" />
+		<put-attribute name="body"
+			value="/WEB-INF/content/reports/print/paymentReport.jsp" />
+	</definition>
+
+	<!-- Separator -->
+
+	<definition name="item-print.tiles" extends="printLayout">
+		<put-attribute name="title" value="page.title.print" />
+		<put-attribute name="body"
+			value="/WEB-INF/content/reports/print/itemReport.jsp" />
+	</definition>
+
+	<definition name="item-report.tiles" extends="baseLayout">
+		<put-attribute name="title" value="page.title.report.item" />
+		<put-attribute name="body"
+			value="/WEB-INF/content/reports/itemReport.jsp" />
+	</definition>
+
+	<!-- Separator -->
 
 </tiles-definitions>

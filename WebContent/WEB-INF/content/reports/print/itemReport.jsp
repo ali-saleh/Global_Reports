@@ -1,6 +1,5 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-
 <div class="report_results_page balance_results_report">
 	<div class="report_main_title">
 		<s:text name="report.item.title" />

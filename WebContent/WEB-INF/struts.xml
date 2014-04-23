@@ -45,32 +45,60 @@
 
 		<action name="loginUser" class="actions.LoginAction" method="loginUser">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
-			<result name="admin" type="redirect">/admin</result>
+			<result name="admin" type="tiles">admin.tiles</result>
 			<result name="success" type="tiles">main.tiles</result>
 			<result name="error" type="tiles">login.tiles</result>
 		</action>
 
 		<action name="logout" class="actions.LoginAction" method="logout" />
 
-		<action name="admin" class="actions.AdministrationAction">
-			<interceptor-ref name="adminStack" />
-			<result type="tiles">admin.tiles</result>
+		<!-- <action name="admin" class="actions.AdministrationAction"> -->
+		<!-- <interceptor-ref name="adminStack" /> -->
+		<!-- <result type="tiles">admin.tiles</result> -->
+		<!-- </action> -->
+
+		<!-- Separator -->
+		<!-- Separator -->
+		<!-- Separator -->
+
+		<action name="invoice_reports" class="actions.ReportingAction"
+			method="prepareInvoicePage">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">invoice.tiles</result>
 		</action>
+
+		<action name="user_reports" class="actions.ReportingAction"
+			method="prepareUserPage">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">user.tiles</result>
+		</action>
+
+		<action name="payment_reports" class="actions.ReportingAction"
+			method="preparePaymentPage">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">payment.tiles</result>
+		</action>
+
+		<!-- Separator -->
+		<!-- Separator -->
+		<!-- Separator -->
 
 		<action name="invoice_report" class="actions.reports.InvoiceReportAction">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
-			<result name="print" type="tiles">invoice-report.tiles</result>
-			<result name="success" type="tiles">invoice-print.tiles</result>
+			<result name="print" type="tiles">invoice-print.tiles</result>
+			<result name="success" type="tiles">invoice-report.tiles</result>
 		</action>
 
 		<action name="payment_report" class="actions.reports.PaymentReportAction">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
-			<result name="success" type="tiles">payment-print.tiles</result>
+			<result name="print" type="tiles">payment-print.tiles</result>
+			<result name="success" type="tiles">payment-report.tiles</result>
 		</action>
 
 		<action name="item_report" class="actions.reports.ItemReportAction">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
-			<result name="success" type="tiles">item-print.tiles</result>
+			<result name="print" type="tiles">item-print.tiles</result>
+			<result name="success" type="tiles">item-report.tiles</result>
 		</action>
 
 		<action name="outstanding_report" class="actions.reports.UserReportAction"
@@ -91,9 +119,9 @@
 		<!-- Separator -->
 		<!-- Separator -->
 
-		<action name="user" class="actions.ReportingAction" method="prepareUserPage">
+		<action name="reporting" class="actions.ReportingAction">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
-			<result name="success" type="tiles">user.tiles</result>
+			<result name="success" type="tiles">other.tiles</result>
 		</action>
 
 		<action name="userTest" class="actions.reports.UserReportAction"
@@ -116,27 +144,6 @@
 				<param name="contentType">text/html</param>
 				<param name="inputName">inputStream</param>
 			</result>
-		</action>
-
-		<action name="reporting" class="actions.ReportingAction">
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-			<result name="success" type="tiles">welcome.tiles</result>
-		</action>
-
-
-
-		<action name="reporting-invoices" class="actions.ReportingAction"
-			method="getInvoiceReport">
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-			<result name="success" type="tiles">invoice-report.tiles</result>
-		</action>
-
-
-
-		<action name="reporting-services" class="actions.ReportingAction"
-			method="getServiceReport">
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-			<result name="success" type="tiles">service-report.tiles</result>
 		</action>
 
 		<!-- <action name="*Menu" method="{1}" class="actions.MenuAction"> -->

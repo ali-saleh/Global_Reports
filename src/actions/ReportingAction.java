@@ -54,6 +54,8 @@ public class ReportingAction extends ActionSupport implements UserAware {
 	private boolean vatSelect;
 	
 	public ReportingAction() {
+		
+		//TODO: Remove this. Only for testing !
 		sessionUser = new SessionUser();
 		sessionUser.setRole(UserRoles.Admin);
 		sessionUser.setName("Ali");
@@ -61,13 +63,25 @@ public class ReportingAction extends ActionSupport implements UserAware {
 	}
 	
 	public String execute() {
-		page = "reporting";
+		page = "other";
+		prepareLists();
+		return SUCCESS;
+	}
+	
+	public String prepareInvoicePage() {
+		this.page = "invoice";
+		prepareLists();
+		return SUCCESS;
+	}
+	
+	public String prepareUserPage() {
+		this.page = "user";
 		prepareLists();
 		return SUCCESS;
 	}
 
-	public String prepareUserPage() {
-		this.page = "user";
+	public String preparePaymentPage() {
+		this.page = "payment";
 		prepareLists();
 		return SUCCESS;
 	}
