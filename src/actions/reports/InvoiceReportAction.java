@@ -3,15 +3,13 @@ package actions.reports;
 import java.sql.Date;
 import java.util.List;
 
+import actions.ListProvider;
 import db.billingdb.dao.custom.impl.InvoiceReportDAO;
 import db.billingdb.model.custom.InvoiceCondition;
 import db.billingdb.model.custom.InvoiceReport;
 
 public class InvoiceReportAction extends BaseReportAction {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -6342410377606008436L;
 
 	private List<InvoiceReport> invoicesDollarPaid;
@@ -32,9 +30,21 @@ public class InvoiceReportAction extends BaseReportAction {
 		InvoiceCondition condition = new InvoiceCondition();
 
 		// City setting
-		if (selectedUser != 0)
+		if (selectedUser != 0) {
 			condition.setUserId(selectedUser);
-		else if (selectedCity != 0)
+			int curId = ListProvider.getUserInfo(selectedUser).getCurrencyId();
+
+			switch (curId) {
+			case 1:
+				this.setCurrencyId(1);
+				break;
+			case 12:
+				this.setCurrencyId(2);
+
+			default:
+				break;
+			}
+		} else if (selectedCity != 0)
 			condition.setCity(selectedCity);
 		else if (selectedPartner != 0)
 			condition.setPartnerId(selectedPartner);
@@ -56,15 +66,18 @@ public class InvoiceReportAction extends BaseReportAction {
 			condition.setCurrencyId(1);
 			if (invoicePaid) {
 				condition.setInvoiceState(26);
-				this.invoicesDollarPaid = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
+				this.invoicesDollarPaid = dao.getInvoicesByIDs(dao
+						.getInvoicesIDs(condition));
 			}
 			if (invoiceUnPaid) {
 				condition.setInvoiceState(27);
-				this.invoicesDollarUnPaid = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
+				this.invoicesDollarUnPaid = dao.getInvoicesByIDs(dao
+						.getInvoicesIDs(condition));
 			}
 			if (invoiceDeleted) {
 				condition.setDeleted(true);
-				this.invoicesDollarDeleted = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
+				this.invoicesDollarDeleted = dao.getInvoicesByIDs(dao
+						.getInvoicesIDs(condition));
 			}
 		}
 		condition.setDeleted(false);
@@ -72,15 +85,18 @@ public class InvoiceReportAction extends BaseReportAction {
 			condition.setCurrencyId(12);
 			if (invoicePaid) {
 				condition.setInvoiceState(26);
-				this.invoicesDollarPaid = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
+				this.invoicesDollarPaid = dao.getInvoicesByIDs(dao
+						.getInvoicesIDs(condition));
 			}
 			if (invoiceUnPaid) {
 				condition.setInvoiceState(27);
-				this.invoicesDollarUnPaid = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
+				this.invoicesDollarUnPaid = dao.getInvoicesByIDs(dao
+						.getInvoicesIDs(condition));
 			}
 			if (invoiceDeleted) {
 				condition.setDeleted(true);
-				this.invoicesShekelDeleted = dao.getInvoicesByIDs(dao.getInvoicesIDs(condition));
+				this.invoicesShekelDeleted = dao.getInvoicesByIDs(dao
+						.getInvoicesIDs(condition));
 			}
 		}
 

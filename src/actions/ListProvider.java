@@ -7,6 +7,7 @@ import db.billingdb.dao.custom.impl.UserReportDAO;
 import db.billingdb.model.custom.Customer;
 import db.billingdb.model.custom.Item;
 import db.billingdb.model.custom.SimpleUser;
+import db.billingdb.model.custom.info.UserInfo;
 
 public class ListProvider {
 
@@ -54,6 +55,11 @@ public class ListProvider {
 		return salesmen;
 	}
 
+	/**
+	 * @param city
+	 * @param reload
+	 * @return
+	 */
 	public static List<Customer> getCustomerList(int city, boolean reload) {
 		if (customrs == null) {
 			System.out.println("ListProvider: Creating customer list");
@@ -64,5 +70,16 @@ public class ListProvider {
 		}
 
 		return customrs;
+	}
+	
+	/**
+	 *  Though it is not a list but this is the optimal place
+	 * 	possibly will change class name to something else
+	 * 
+	 * @param userId 
+	 * @return
+	 */
+	public static UserInfo getUserInfo(int userId) {
+		return userReportDAO.getUserInfoByID(userId);
 	}
 }

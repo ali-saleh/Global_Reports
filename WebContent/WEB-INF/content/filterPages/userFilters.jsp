@@ -13,7 +13,7 @@
 		<form action="user_service_report" method="post">
 			<div class="field_wrapper" id="city-field">
 				<div class="fieldlabel">
-					<s:text name="reports.city" />
+					<s:text name="report.city" />
 				</div>
 				<div class="fieldinput">
 					<select name="selectedCity">
