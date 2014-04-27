@@ -8,6 +8,10 @@ import db.billingdb.dao.custom.impl.InvoiceReportDAO;
 import db.billingdb.model.custom.InvoiceCondition;
 import db.billingdb.model.custom.InvoiceReport;
 
+/**
+ * @author aalsaleh
+ * 
+ */
 public class InvoiceReportAction extends BaseReportAction {
 
 	private static final long serialVersionUID = -6342410377606008436L;
@@ -25,6 +29,8 @@ public class InvoiceReportAction extends BaseReportAction {
 
 	@Override
 	public String execute() throws Exception {
+
+		resetLists();
 
 		InvoiceReportDAO dao = new InvoiceReportDAO();
 		InvoiceCondition condition = new InvoiceCondition();
@@ -85,12 +91,12 @@ public class InvoiceReportAction extends BaseReportAction {
 			condition.setCurrencyId(12);
 			if (invoicePaid) {
 				condition.setInvoiceState(26);
-				this.invoicesDollarPaid = dao.getInvoicesByIDs(dao
+				this.invoicesShekelPaid = dao.getInvoicesByIDs(dao
 						.getInvoicesIDs(condition));
 			}
 			if (invoiceUnPaid) {
 				condition.setInvoiceState(27);
-				this.invoicesDollarUnPaid = dao.getInvoicesByIDs(dao
+				this.invoicesShekelUnPaid = dao.getInvoicesByIDs(dao
 						.getInvoicesIDs(condition));
 			}
 			if (invoiceDeleted) {
@@ -200,6 +206,24 @@ public class InvoiceReportAction extends BaseReportAction {
 
 	public void setInvoiceDeleted(boolean invoiceDeleted) {
 		this.invoiceDeleted = invoiceDeleted;
+	}
+
+	/**
+	 * Clears all result lists.
+	 */
+	private void resetLists() {
+		if (invoicesDollarPaid != null)
+			this.invoicesDollarPaid.clear();
+		if (invoicesDollarUnPaid != null)
+			this.invoicesDollarUnPaid.clear();
+		if (invoicesDollarDeleted != null)
+			this.invoicesDollarDeleted.clear();
+		if (invoicesShekelPaid != null)
+			this.invoicesShekelPaid.clear();
+		if (invoicesShekelUnPaid != null)
+			this.invoicesShekelUnPaid.clear();
+		if (invoicesShekelDeleted != null)
+			this.invoicesShekelDeleted.clear();
 	}
 
 	// void test() {

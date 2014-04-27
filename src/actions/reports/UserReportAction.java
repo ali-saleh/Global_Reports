@@ -35,8 +35,6 @@ public class UserReportAction extends BaseReportAction {
 	
 	private List<ItemReport> serviceReport;
 	
-	private UserInfo reportUser;
-	
 	private boolean showDeletedUsers;
 
 	// For Testing
@@ -175,10 +173,6 @@ public class UserReportAction extends BaseReportAction {
 
 	public List<ItemReport> getServiceReport() {
 		return this.serviceReport;
-	}
-	
-	public UserInfo getReportUser() {
-		return this.reportUser;
 	}
 	
 	// For testing

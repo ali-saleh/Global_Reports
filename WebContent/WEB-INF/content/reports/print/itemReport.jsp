@@ -13,16 +13,29 @@
 	<div class="seperator"></div>
 
 	<div class="report_info">
-		<div class="report_city">
-			<s:if test="%{selectedCity != 0}">
-				<s:text name="report.city.one.city" />
-				<s:property value="city" escapeHtml="false" />
-				<br>
-			</s:if>
-			<s:else>
-				<s:text name="report.city.all.cities" />
-			</s:else>
-		</div>
+		<s:if test="%{reportUser != null}">
+			<div class="user_field">
+				<s:text name="reports.customer" />
+				<s:property value="reportUser.fullname" escapeHtml="false"/>
+			</div>
+			<div class="userinfo">
+				<s:text name="report.user.install.date" />
+				<s:property value="reportUser.installationDate" />
+			</div>
+		</s:if>
+		<s:else>
+			<div class="report_city">
+				<s:if test="%{selectedCity != 0}">
+					<s:text name="report.city.one.city" />
+					<s:property value="city" escapeHtml="false" />
+					<br>
+				</s:if>
+				<s:else>
+					<s:text name="report.city.all.cities" />
+				</s:else>
+			</div>
+		</s:else>
+		<div style="clear: both;"></div>
 		<div class="report_date">
 			<div class="report_from_date">
 				<s:if test="%{fromDate != null}">
@@ -37,6 +50,7 @@
 				</s:if>
 			</div>
 		</div>
+		<div style="clear: both;"></div>
 		<div class="report_payway">
 			<s:if test="%{itemNames != null && itemNames.size > 0}">
 				<s:text name="reports.item" />:&nbsp;
@@ -60,7 +74,7 @@
 
 	<s:if test="%{itemsReportDollar != null && itemsReportDollar.size > 0}">
 		<div class="report_title">
-			<s:text name="report.items.shekel" />
+			<s:text name="report.items.dollar" />
 		</div>
 		<div style="clear: both;"></div>
 		<table>
@@ -151,7 +165,7 @@
 	<s:if
 		test="%{itemsReportDollarDeleted != null && itemsReportDollarDeleted.size > 0}">
 		<div class="report_title">
-			<s:text name="report.items.shekel" />
+			<s:text name="report.items.dollar.deleted" />
 		</div>
 		<div style="clear: both;"></div>
 		<table>
@@ -197,7 +211,7 @@
 	<s:if
 		test="%{itemsReportShekelDeleted != null && itemsReportShekelDeleted.size > 0}">
 		<div class="report_title">
-			<s:text name="report.items.shekel" />
+			<s:text name="report.items.shekel.deleted" />
 		</div>
 		<div style="clear: both;"></div>
 		<table>

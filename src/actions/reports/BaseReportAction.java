@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import db.billingdb.model.custom.Item;
+import db.billingdb.model.custom.info.UserInfo;
 import actions.BaseAction;
 import actions.ListProvider;
 import actions.ReportingAction;
@@ -21,11 +22,13 @@ public class BaseReportAction extends BaseAction {
 
 	protected int selectedCity;
 	protected String city;
-
+	
 	protected int selectedUser;
 	protected int selectedPartner;
 	protected int selectedSalesman;
-
+	
+	protected UserInfo reportUser;
+	
 	protected int currencyId;
 	protected String currency;
 	protected List<Integer> selectedItems;
@@ -80,6 +83,10 @@ public class BaseReportAction extends BaseAction {
 
 	public void setSelectedSalesman(int selectedSalesman) {
 		this.selectedSalesman = selectedSalesman;
+	}
+
+	public UserInfo getReportUser() {
+		return reportUser;
 	}
 
 	public int getCurrencyId() {

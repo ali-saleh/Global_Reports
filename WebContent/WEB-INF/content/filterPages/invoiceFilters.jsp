@@ -11,7 +11,7 @@
 		<s:text name="reports.invoice.user.report" />
 	</div>
 	<div class="accordionContent">
-		<form action="invoice_report" method="post">
+		<form action="item_report" method="post">
 			<div class="field_wrapper" id="user-field" style="width: 370px;">
 				<label><s:text name="report.report.user" /></label>
 				<div class="fieldinput">
@@ -122,7 +122,7 @@
 		<s:text name="reports.invoice.all.user.city" />
 	</div>
 	<div class="accordionContent">
-		<form action="invoice_report" method="post">
+		<form action="item_report" method="post">
 			<div class="field_wrapper" id="city-field">
 				<div class="fieldlabel">
 					<s:text name="report.city" />
@@ -257,7 +257,7 @@
 		<s:text name="reports.invoice.all.user.partner" />
 	</div>
 	<div class="accordionContent">
-		<form action="invoice_report" method="post">
+		<form action="item_report" method="post">
 			<div class="field_wrapper" id="partner-field" style="width: 370px;">
 				<label><s:text name="report.report.partner" /></label>
 				<div class="input_area">
@@ -389,7 +389,7 @@
 		<s:text name="reports.invoice.all.user.salesman" />
 	</div>
 	<div class="accordionContent">
-		<form action="invoice_report" method="post">
+		<form action="item_report" method="post">
 			<div class="field_wrapper" id="salesman-field" style="width: 370px;">
 				<label><s:text name="report.report.salesman" /></label>
 				<div class="input_area">
