@@ -71,15 +71,53 @@ public class ListProvider {
 
 		return customrs;
 	}
-	
+
 	/**
-	 *  Though it is not a list but this is the optimal place
-	 * 	possibly will change class name to something else
+	 * Though it is not a list but this is the optimal place possibly will
+	 * change class name to something else
 	 * 
-	 * @param userId 
+	 * @param userId
 	 * @return
 	 */
 	public static UserInfo getUserInfo(int userId) {
 		return userReportDAO.getUserInfoByID(userId);
+	}
+
+	/**
+	 * Simple getter to get selected partner
+	 * Note: the function is passive and only checks created lists
+	 * @param partnerId
+	 * @return
+	 */
+	public static SimpleUser getPartnerInfoById(int partnerId) {
+		if (partners == null) {
+			return null;
+		}
+
+		for (SimpleUser user : partners) {
+			if (user.getId() == partnerId)
+				return user;
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * Simple getter to get selected salesman
+	 * Note: the function is passive and only checks created lists
+	 * @param salesmanId
+	 * @return
+	 */
+	public static SimpleUser getSalesmanInfoById(int salesmanId) {
+		if (salesmen == null) {
+			return null;
+		}
+
+		for (SimpleUser user : salesmen) {
+			if (user.getId() == salesmanId)
+				return user;
+		}
+		
+		return null;
 	}
 }

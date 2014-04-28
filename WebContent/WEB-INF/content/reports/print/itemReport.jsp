@@ -13,53 +13,59 @@
 	<div class="seperator"></div>
 
 	<div class="report_info">
-		<s:if test="%{reportUser != null}">
-			<div class="user_field">
-				<s:text name="reports.customer" />
-				<s:property value="reportUser.fullname" escapeHtml="false"/>
-			</div>
-			<div class="userinfo">
-				<s:text name="report.user.install.date" />
-				<s:property value="reportUser.installationDate" />
-			</div>
-		</s:if>
-		<s:else>
-			<div class="report_city">
-				<s:if test="%{selectedCity != 0}">
-					<s:text name="report.city.one.city" />
-					<s:property value="city" escapeHtml="false" />
-					<br>
-				</s:if>
-				<s:else>
-					<s:text name="report.city.all.cities" />
-				</s:else>
-			</div>
-		</s:else>
-		<div style="clear: both;"></div>
-		<div class="report_date">
-			<div class="report_from_date">
-				<s:if test="%{fromDate != null}">
-					<s:text name="report.from.date" />
-					<s:property value="fromDate" />
-				</s:if>
-			</div>
-			<div class="report_to_date">
-				<s:if test="%{toDate != null}">
-					<s:text name="report.to.date" />
-					<s:property value="toDate" />
-				</s:if>
-			</div>
+		<div class="report_city">
+			<s:if test="%{reportUser != null}">
+				<div class="user_field">
+					<s:text name="reports.customer" />
+					<s:property value="reportUser.fullname" escapeHtml="false" />
+				</div>
+				<div class="userinfo">
+					<s:text name="report.user.install.date" />
+					<s:property value="reportUser.installationDate" />
+				</div>
+			</s:if>
+			<s:elseif test="%{partner != null}">
+				<s:text name="report.partner" />
+				<s:property value="partner.fullname" escapeHtml="false" />
+			</s:elseif>
+			<s:elseif test="%{salesman != null}">
+				<s:text name="report.salesman" />
+				<s:property value="salesman.fullname" escapeHtml="false" />
+			</s:elseif>
+
+			<s:elseif test="%{selectedCity != 0}">
+				<s:text name="report.city.one.city" />
+				<s:property value="city" escapeHtml="false" />
+			</s:elseif>
+			<s:else>
+				<s:text name="report.city.all.cities" />
+			</s:else>
+			<br>
 		</div>
 		<div style="clear: both;"></div>
-		<div class="report_payway">
+
+		<div class="report_date">
+			<s:if test="%{fromDate != null && fromDate != ''}">
+				<div class="report_from_date">
+					<s:text name="report.from.date" />
+					<s:property value="fromDate" />
+				</div>
+			</s:if>
+			<s:if test="%{toDate != null && toDate != ''}">
+				<div class="report_to_date">
+					<s:text name="report.to.date" />
+					<s:property value="toDate" />
+				</div>
+			</s:if>
+		</div>
+		<div style="clear: both;"></div>
+
+		<div class="report_items">
 			<s:if test="%{itemNames != null && itemNames.size > 0}">
 				<s:text name="reports.item" />:&nbsp;
 				<s:set id="i" value="0" />
 				<s:iterator value="itemNames" var="item">
-					<option value="${i}">
-						<s:property value="#item" escapeHtml="false" />
-					</option>
-					<br />
+					<s:property value="#item" escapeHtml="false" />&nbsp;
 					<s:set id="i" value="#i+1" />
 				</s:iterator>
 			</s:if>
@@ -67,6 +73,14 @@
 				<s:text name="reports.allitems" />
 			</s:else>
 		</div>
+		<div style="clear: both;"></div>
+		<div class="report_items">
+			<s:if test="%{currency != null && currency != ''}">
+				<s:text name="report.currency" />
+				<s:property value="currency" escapeHtml="false" />
+			</s:if>
+		</div>
+
 		<div class="seperator"></div>
 		<div class="seperator"></div>
 		<div style="clear: both;"></div>

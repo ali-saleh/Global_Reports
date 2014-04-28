@@ -56,8 +56,7 @@
 				<s:iterator value="outstandingDollar" var="record">
 					<tr>
 						<td style="text-align: center;">${i}</td>
-						<td><s:property value="#record.id" /> <%-- 						<td><s:property value="#record.userNumber" --%>
-							<%-- 								escapeHtml="false" /> --%>
+						<td><s:property value="#record.id" />
 						<td><s:property value="#record.userInfo.fullname" escapeHtml="false" /></td>
 						<s:set id="tmp" value="%{'city.'+#record.userInfo.city}" />
 						<td><s:text name="%{tmp}" /></td>
@@ -105,8 +104,7 @@
 				<s:iterator value="outstandingShekel" var="record">
 					<tr>
 						<td style="text-align: center;">${i}</td>
-						<td><s:property value="#record.id" /> <%-- 						<td><s:property value="#record.userNumber" --%>
-							<%-- 								escapeHtml="false" /> --%>
+						<td><s:property value="#record.id" /> 
 						<td><s:property value="#record.userInfo.fullname" escapeHtml="false" /></td>
 						<s:set id="tmp" value="%{'city.'+#record.userInfo.city}" />
 						<td><s:text name="%{tmp}" /></td>
@@ -164,8 +162,7 @@
 					<s:iterator value="outstandingDollarDeleted" var="record">
 						<tr>
 							<td style="text-align: center;">${i}</td>
-							<td><s:property value="#record.id" /> <%-- 						<td><s:property value="#record.userNumber" --%>
-								<%-- 								escapeHtml="false" /> --%>
+							<td><s:property value="#record.id" /> 
 							<td><s:property value="#record.userInfo.fullname" escapeHtml="false" /></td>
 							<s:set id="tmp" value="%{'city.'+#record.userInfo.city}" />
 							<td><s:text name="%{tmp}" /></td>
@@ -214,8 +211,7 @@
 					<s:iterator value="outstandingShekelDeleted" var="record">
 						<tr>
 							<td style="text-align: center;">${i}</td>
-							<td><s:property value="#record.id" /> <%-- 						<td><s:property value="#record.userNumber" --%>
-								<%-- 								escapeHtml="false" /> --%>
+							<td><s:property value="#record.id" />
 							<td><s:property value="#record.userInfo.fullname" escapeHtml="false" /></td>
 							<s:set id="tmp" value="%{'city.'+#record.userInfo.city}" />
 							<td><s:text name="%{tmp}" /></td>

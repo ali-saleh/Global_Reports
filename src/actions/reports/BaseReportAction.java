@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import db.billingdb.model.custom.Item;
+import db.billingdb.model.custom.SimpleUser;
 import db.billingdb.model.custom.info.UserInfo;
 import actions.BaseAction;
 import actions.ListProvider;
@@ -11,9 +12,6 @@ import actions.ReportingAction;
 
 public class BaseReportAction extends BaseAction {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -2090323518563785350L;
 
 	public static String PRINT = "print";
@@ -22,13 +20,15 @@ public class BaseReportAction extends BaseAction {
 
 	protected int selectedCity;
 	protected String city;
-	
+
 	protected int selectedUser;
 	protected int selectedPartner;
 	protected int selectedSalesman;
-	
+
 	protected UserInfo reportUser;
-	
+	protected SimpleUser partner;
+	protected SimpleUser salesman;
+
 	protected int currencyId;
 	protected String currency;
 	protected List<Integer> selectedItems;
@@ -75,6 +75,7 @@ public class BaseReportAction extends BaseAction {
 
 	public void setSelectedPartner(int selectedPartner) {
 		this.selectedPartner = selectedPartner;
+		partner = ListProvider.getPartnerInfoById(this.selectedSalesman);
 	}
 
 	public int getSelectedSalesman() {
@@ -83,10 +84,19 @@ public class BaseReportAction extends BaseAction {
 
 	public void setSelectedSalesman(int selectedSalesman) {
 		this.selectedSalesman = selectedSalesman;
+		salesman = ListProvider.getSalesmanInfoById(this.selectedSalesman);
 	}
 
 	public UserInfo getReportUser() {
 		return reportUser;
+	}
+
+	public SimpleUser getPartner() {
+		return partner;
+	}
+
+	public SimpleUser getSalesman() {
+		return salesman;
 	}
 
 	public int getCurrencyId() {
@@ -96,13 +106,13 @@ public class BaseReportAction extends BaseAction {
 	public void setCurrencyId(int currencyId) {
 		this.currencyId = currencyId;
 		switch (this.currencyId) {
-		case 1:
+		case 3:
 			setCurrency(getText("report.report.both.currencies", ""));
 			break;
-		case 2:
+		case 1:
 			setCurrency(getText("report.report.dollar", ""));
 			break;
-		case 3:
+		case 2:
 			setCurrency(getText("report.report.shekel", ""));
 			break;
 
