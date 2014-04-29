@@ -11,12 +11,11 @@
 		<s:text name="reports.invoice.user.report" />
 	</div>
 	<div class="accordionContent">
-		<form action="item_report" method="post">
+		<form action="invoice_report" method="post">
 			<div class="field_wrapper" id="user-field" style="width: 370px;">
 				<label><s:text name="report.report.user" /></label>
 				<div class="fieldinput">
 					<select name="selectedUser" class="chosen-select chosen-rtl">
-<!-- 						<option value="0">--</option> -->
 						<s:iterator value="customers" var="cust">
 							<option value="<s:property value='#cust.id'/>">
 								<s:property value="#cust.combinedName" escapeHtml="false" />
@@ -122,7 +121,7 @@
 		<s:text name="reports.invoice.all.user.city" />
 	</div>
 	<div class="accordionContent">
-		<form action="item_report" method="post">
+		<form action="invoice_report" method="post">
 			<div class="field_wrapper" id="city-field">
 				<div class="fieldlabel">
 					<s:text name="report.city" />
@@ -257,7 +256,7 @@
 		<s:text name="reports.invoice.all.user.partner" />
 	</div>
 	<div class="accordionContent">
-		<form action="item_report" method="post">
+		<form action="invoice_report" method="post">
 			<div class="field_wrapper" id="partner-field" style="width: 370px;">
 				<label><s:text name="report.report.partner" /></label>
 				<div class="input_area">
@@ -389,7 +388,7 @@
 		<s:text name="reports.invoice.all.user.salesman" />
 	</div>
 	<div class="accordionContent">
-		<form action="item_report" method="post">
+		<form action="invoice_report" method="post">
 			<div class="field_wrapper" id="salesman-field" style="width: 370px;">
 				<label><s:text name="report.report.salesman" /></label>
 				<div class="input_area">
@@ -517,22 +516,3 @@
 		</form>
 	</div>
 </div>
-<!-- <div> -->
-
-<!-- <form action="" id="testForm"> -->
-
-<!-- <label for="search">Enter search string</label> -->
-<!-- <input name="search"> -->
-<!-- <input type="submit" value="Search"> -->
-
-<!-- <input type="submit" value="Test" onclick="ali_test()"> -->
-<!-- </form> -->
-<!-- </div> -->
-
-<!-- <div class="accordionButton"> -->
-<!-- 	Results -->
-<!-- </div> -->
-
-<!-- <div id="result accordionContent"> -->
-
-<!-- </div> -->

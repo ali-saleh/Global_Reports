@@ -4,6 +4,16 @@
 
 	<div
 		class="navigation_item 
+		<s:if test="%{ page == 'item'}">
+		active_navigation_item
+	</s:if>
+	">
+		<a href="<s:url action="item_reports"/>"><s:text
+				name="navigation.item.reports" /></a><br>
+	</div>
+
+	<div
+		class="navigation_item 
 		<s:if test="%{ page == 'invoice'}">
 		active_navigation_item
 	</s:if>

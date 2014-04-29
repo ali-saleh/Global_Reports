@@ -68,6 +68,12 @@ public class ReportingAction extends ActionSupport implements UserAware {
 		return SUCCESS;
 	}
 	
+	public String prepareItemPage() {
+		this.page = "item";
+		prepareLists();
+		return SUCCESS;
+	}
+	
 	public String prepareInvoicePage() {
 		this.page = "invoice";
 		prepareLists();
@@ -209,7 +215,6 @@ public class ReportingAction extends ActionSupport implements UserAware {
 	public String getPage() {
 		return this.page;
 	}
-	
 
 	private void prepareCities() {
 		if (cities.size() == 0) {

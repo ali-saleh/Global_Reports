@@ -1,21 +1,22 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 <div id="page_title">
-	<s:text name="navigation.payment.reports" />
+	<s:text name="navigation.item.reports" />
 </div>
 
 <div style="clear: both;"></div>
-<div id="accordion_wrapper">
+<div id="accordion_wrapper" hidden="true">
 	<br>
 	<div class="accordionButton">
-		<s:text name="reports.payment.user.report" />
+		<s:text name="reports.item.user.report" />
 	</div>
 	<div class="accordionContent">
-		<form action="payment_report" method="post">
+		<form action="item_report" method="post">
 			<div class="field_wrapper" id="user-field" style="width: 370px;">
 				<label><s:text name="report.report.user" /></label>
 				<div class="fieldinput">
 					<select name="selectedUser" class="chosen-select chosen-rtl">
+						<!-- 						<option value="0">--</option> -->
 						<s:iterator value="customers" var="cust">
 							<option value="<s:property value='#cust.id'/>">
 								<s:property value="#cust.combinedName" escapeHtml="false" />
@@ -71,30 +72,10 @@
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
 
-			<div class="fieldwrapper" id="payment-method">
-				<div class="fieldlabel">
-					<label><s:text name="report.report.payway" /></label>
-				</div>
-				<div class="input_area">
-					<input style="float: right;" type="radio" name="paymentMethodId"
-						checked="checked" value="3"> <label style="width: 90px"><s:text
-							name="reports.both" /></label>
-					<div style="clear: both;"></div>
-					<input style="float: right;" type="radio" name="paymentMethodId"
-						value="1"> <label><s:text name="reports.cheque" /></label>
-					<div style="clear: both;"></div>
-					<input style="float: right;" type="radio" name="paymentMethodId"
-						value="2"><label><s:text name="reports.cash" /></label>
-				</div>
-			</div>
-			<div style="clear: both;"></div>
-			<div style="clear: both;"></div>
-			<div style="clear: both;"></div>
-
 			<div class="fieldwrapper" id="deleted-field">
 				<input style="float: right;" type="checkbox" checked="checked"
 					name="showDeleted" value="true"> <label><s:text
-						name="report.payment.report.show.deleted" /></label>
+						name="report.item.report.show.deleted" /></label>
 			</div>
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
@@ -130,10 +111,10 @@
 	</div>
 
 	<div class="accordionButton">
-		<s:text name="reports.payment.all.user.city" />
+		<s:text name="reports.item.all.user.city" />
 	</div>
 	<div class="accordionContent">
-		<form action="payment_report" method="post">
+		<form action="item_report" method="post">
 			<div class="field_wrapper" id="city-field">
 				<div class="fieldlabel">
 					<s:text name="report.city" />
@@ -218,30 +199,10 @@
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
 
-			<div class="fieldwrapper" id="payment-method">
-				<div class="fieldlabel">
-					<label><s:text name="report.report.payway" /></label>
-				</div>
-				<div class="input_area">
-					<input style="float: right;" type="radio" name="paymentMethodId"
-						checked="checked" value="3"> <label style="width: 90px"><s:text
-							name="reports.both" /></label>
-					<div style="clear: both;"></div>
-					<input style="float: right;" type="radio" name="paymentMethodId"
-						value="1"> <label><s:text name="reports.cheque" /></label>
-					<div style="clear: both;"></div>
-					<input style="float: right;" type="radio" name="paymentMethodId"
-						value="2"><label><s:text name="reports.cash" /></label>
-				</div>
-			</div>
-			<div style="clear: both;"></div>
-			<div style="clear: both;"></div>
-			<div style="clear: both;"></div>
-
 			<div class="fieldwrapper" id="deleted-field">
 				<input style="float: right;" type="checkbox" checked="checked"
 					name="showDeleted" value="true"> <label><s:text
-						name="report.payment.report.show.deleted" /></label>
+						name="report.item.report.show.deleted" /></label>
 			</div>
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
@@ -277,10 +238,10 @@
 	</div>
 
 	<div class="accordionButton">
-		<s:text name="reports.payment.all.user.partner" />
+		<s:text name="reports.item.all.user.partner" />
 	</div>
 	<div class="accordionContent">
-		<form action="payment_report" method="post">
+		<form action="item_report" method="post">
 			<div class="field_wrapper" id="partner-field" style="width: 370px;">
 				<label><s:text name="report.report.partner" /></label>
 				<div class="input_area">
@@ -362,30 +323,10 @@
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
 
-			<div class="fieldwrapper" id="payment-method">
-				<div class="fieldlabel">
-					<label><s:text name="report.report.payway" /></label>
-				</div>
-				<div class="input_area">
-					<input style="float: right;" type="radio" name="paymentMethodId"
-						checked="checked" value="3"> <label style="width: 90px"><s:text
-							name="reports.both" /></label>
-					<div style="clear: both;"></div>
-					<input style="float: right;" type="radio" name="paymentMethodId"
-						value="1"> <label><s:text name="reports.cheque" /></label>
-					<div style="clear: both;"></div>
-					<input style="float: right;" type="radio" name="paymentMethodId"
-						value="2"><label><s:text name="reports.cash" /></label>
-				</div>
-			</div>
-			<div style="clear: both;"></div>
-			<div style="clear: both;"></div>
-			<div style="clear: both;"></div>
-
 			<div class="fieldwrapper" id="deleted-field">
 				<input style="float: right;" type="checkbox" checked="checked"
 					name="showDeleted" value="true"> <label><s:text
-						name="report.payment.report.show.deleted" /></label>
+						name="report.item.report.show.deleted" /></label>
 			</div>
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
@@ -421,10 +362,10 @@
 	</div>
 
 	<div class="accordionButton">
-		<s:text name="reports.payment.all.user.salesman" />
+		<s:text name="reports.item.all.user.salesman" />
 	</div>
 	<div class="accordionContent">
-		<form action="payment_report" method="post">
+		<form action="item_report" method="post">
 			<div class="field_wrapper" id="salesman-field" style="width: 370px;">
 				<label><s:text name="report.report.salesman" /></label>
 				<div class="input_area">
@@ -506,30 +447,10 @@
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
 
-			<div class="fieldwrapper" id="payment-method">
-				<div class="fieldlabel">
-					<label><s:text name="report.report.payway" /></label>
-				</div>
-				<div class="input_area">
-					<input style="float: right;" type="radio" name="paymentMethodId"
-						checked="checked" value="3"> <label style="width: 90px"><s:text
-							name="reports.both" /></label>
-					<div style="clear: both;"></div>
-					<input style="float: right;" type="radio" name="paymentMethodId"
-						value="1"> <label><s:text name="reports.cheque" /></label>
-					<div style="clear: both;"></div>
-					<input style="float: right;" type="radio" name="paymentMethodId"
-						value="2"><label><s:text name="reports.cash" /></label>
-				</div>
-			</div>
-			<div style="clear: both;"></div>
-			<div style="clear: both;"></div>
-			<div style="clear: both;"></div>
-
 			<div class="fieldwrapper" id="deleted-field">
 				<input style="float: right;" type="checkbox" checked="checked"
 					name="showDeleted" value="true"> <label><s:text
-						name="report.payment.report.show.deleted" /></label>
+						name="report.item.report.show.deleted" /></label>
 			</div>
 			<div style="clear: both;"></div>
 			<div style="clear: both;"></div>
@@ -564,3 +485,22 @@
 		</form>
 	</div>
 </div>
+<!-- <div> -->
+
+<!-- <form action="" id="testForm"> -->
+
+<!-- <label for="search">Enter search string</label> -->
+<!-- <input name="search"> -->
+<!-- <input type="submit" value="Search"> -->
+
+<!-- <input type="submit" value="Test" onclick="ali_test()"> -->
+<!-- </form> -->
+<!-- </div> -->
+
+<!-- <div class="accordionButton"> -->
+<!-- 	Results -->
+<!-- </div> -->
+
+<!-- <div id="result accordionContent"> -->
+
+<!-- </div> -->

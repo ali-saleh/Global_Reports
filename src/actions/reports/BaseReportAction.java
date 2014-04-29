@@ -67,6 +67,7 @@ public class BaseReportAction extends BaseAction {
 
 	public void setSelectedUser(int selectedUser) {
 		this.selectedUser = selectedUser;
+		this.reportUser = ListProvider.getUserInfo(this.selectedUser);
 	}
 
 	public int getSelectedPartner() {
@@ -75,7 +76,7 @@ public class BaseReportAction extends BaseAction {
 
 	public void setSelectedPartner(int selectedPartner) {
 		this.selectedPartner = selectedPartner;
-		partner = ListProvider.getPartnerInfoById(this.selectedSalesman);
+		this.partner = ListProvider.getPartnerInfoById(this.selectedPartner);
 	}
 
 	public int getSelectedSalesman() {
@@ -84,7 +85,7 @@ public class BaseReportAction extends BaseAction {
 
 	public void setSelectedSalesman(int selectedSalesman) {
 		this.selectedSalesman = selectedSalesman;
-		salesman = ListProvider.getSalesmanInfoById(this.selectedSalesman);
+		this.salesman = ListProvider.getSalesmanInfoById(this.selectedSalesman);
 	}
 
 	public UserInfo getReportUser() {

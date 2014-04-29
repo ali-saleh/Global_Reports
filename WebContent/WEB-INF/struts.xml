@@ -15,18 +15,18 @@
 
 		<interceptors>
 			<interceptor name="authentication"
-				class="interceptors.AuthenticationInterceptor"></interceptor>
+				class="interceptors.AuthenticationInterceptor" />
 
-			<interceptor name="administrator" class="interceptors.AdminInterceptor"></interceptor>
+			<interceptor name="administrator" class="interceptors.AdminInterceptor" />
 
 			<interceptor-stack name="authStack">
-				<interceptor-ref name="authentication"></interceptor-ref>
-				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="authentication" />
+				<interceptor-ref name="defaultStack" />
 			</interceptor-stack>
 
 			<interceptor-stack name="adminStack">
-				<interceptor-ref name="administrator"></interceptor-ref>
-				<interceptor-ref name="authStack"></interceptor-ref>
+				<interceptor-ref name="administrator" />
+				<interceptor-ref name="authStack" />
 			</interceptor-stack>
 
 		</interceptors>
@@ -39,12 +39,12 @@
 		</global-results>
 
 		<action name="login" class="actions.LoginAction">
-			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="defaultStack" />
 			<result type="tiles">login.tiles</result>
 		</action>
 
 		<action name="loginUser" class="actions.LoginAction" method="loginUser">
-			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="defaultStack" />
 			<result name="admin" type="tiles">admin.tiles</result>
 			<result name="success" type="tiles">main.tiles</result>
 			<result name="error" type="tiles">login.tiles</result>
@@ -60,6 +60,12 @@
 		<!-- Separator -->
 		<!-- Separator -->
 		<!-- Separator -->
+
+		<action name="item_reports" class="actions.ReportingAction"
+			method="prepareItemPage">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">item.tiles</result>
+		</action>
 
 		<action name="invoice_reports" class="actions.ReportingAction"
 			method="prepareInvoicePage">
@@ -113,6 +119,36 @@
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<result name="print" type="tiles">user-service-print.tiles</result>
 			<result name="success" type="tiles">user-service-report.tiles</result>
+		</action>
+
+		<action name="user_payment_report" class="actions.reports.UserReportAction"
+			method="userPaymentReport">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="print" type="tiles">user-payment-print.tiles</result>
+			<result name="success" type="tiles">user-payment-report.tiles</result>
+		</action>
+
+		<action name="user_type_report" class="actions.reports.UserReportAction"
+			method="userTypeReport">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="print" type="tiles">user-type-print.tiles</result>
+			<result name="success" type="tiles">user-type-report.tiles</result>
+		</action>
+
+		<action name="user_inactive_report" class="actions.reports.UserReportAction"
+			method="userInactiveReport">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="print" type="tiles">user-inactive-print.tiles</result>
+			<result name="success" type="tiles">user-inactive-report.tiles
+			</result>
+		</action>
+
+		<action name="radius_user_report" class="actions.reports.UserReportAction"
+			method="radiusUserReport">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="print" type="tiles">radius-user-print.tiles</result>
+			<result name="success" type="tiles">radius-user-report.tiles
+			</result>
 		</action>
 
 		<!-- Separator -->

@@ -39,8 +39,7 @@
 	<definition name="main.tiles" extends="baseLayout">
 		<put-attribute name="title" value="page.title.welcome" />
 		<put-attribute name="menu" value="" />
-		<put-attribute name="body"
-			value="/WEB-INF/content/mainPage.jsp" />
+		<put-attribute name="body" value="/WEB-INF/content/mainPage.jsp" />
 	</definition>
 
 	<!-- <definition name="main.tiles" extends="baseLayout"> -->
@@ -48,6 +47,12 @@
 	<!-- <put-attribute name="menu" value="" /> -->
 	<!-- <put-attribute name="body" value="/WEB-INF/content/main_page.jsp" /> -->
 	<!-- </definition> -->
+
+	<definition name="item.tiles" extends="baseLayout">
+		<put-attribute name="title" value="navigation.item.reports" />
+		<put-attribute name="body"
+			value="/WEB-INF/content/filterPages/itemFilters.jsp" />
+	</definition>
 
 	<definition name="invoice.tiles" extends="baseLayout">
 		<put-attribute name="title" value="navigation.invoice.reports" />
@@ -108,13 +113,41 @@
 	<definition name="user-service-print.tiles" extends="printLayout">
 		<put-attribute name="title" value="page.title.print" />
 		<put-attribute name="body"
-			value="/WEB-INF/content/reports/print/userService.jsp" />
+			value="/WEB-INF/content/reports/print/userServiceReport.jsp" />
 	</definition>
 
 	<definition name="user-service-report.tiles" extends="baseLayout">
 		<put-attribute name="title" value="page.title.report.user.service" />
 		<put-attribute name="body"
-			value="/WEB-INF/content/reports/userService.jsp" />
+			value="/WEB-INF/content/reports/userServiceReport.jsp" />
+	</definition>
+
+	<!-- Separator -->
+
+	<definition name="user-payment-print.tiles" extends="printLayout">
+		<put-attribute name="title" value="page.title.print" />
+		<put-attribute name="body"
+			value="/WEB-INF/content/reports/print/userPaymentReport.jsp" />
+	</definition>
+
+	<definition name="user-payment-report.tiles" extends="baseLayout">
+		<put-attribute name="title" value="page.title.report.user.payment" />
+		<put-attribute name="body"
+			value="/WEB-INF/content/reports/userPaymentReport.jsp" />
+	</definition>
+	
+	<!-- Separator -->
+
+	<definition name="user-type-print.tiles" extends="printLayout">
+		<put-attribute name="title" value="page.title.print" />
+		<put-attribute name="body"
+			value="/WEB-INF/content/reports/print/userTypeReport.jsp" />
+	</definition>
+
+	<definition name="user-type-report.tiles" extends="baseLayout">
+		<put-attribute name="title" value="page.title.report.user.type" />
+		<put-attribute name="body"
+			value="/WEB-INF/content/reports/userTypeReport.jsp" />
 	</definition>
 
 	<!-- Separator -->
@@ -132,7 +165,35 @@
 	</definition>
 
 	<!-- Separator -->
+	
+	<definition name="user-inactive-print.tiles" extends="printLayout">
+		<put-attribute name="title" value="page.title.print" />
+		<put-attribute name="body"
+			value="/WEB-INF/content/reports/print/userInactiveReport.jsp" />
+	</definition>
 
+	<definition name="user-inactive-report.tiles" extends="baseLayout">
+		<put-attribute name="title" value="page.title.report.user.inactive" />
+		<put-attribute name="body"
+			value="/WEB-INF/content/reports/userInactiveReport.jsp" />
+	</definition>
+
+	<!-- Separator -->
+		
+	<definition name="radius-user-print.tiles" extends="printLayout">
+		<put-attribute name="title" value="page.title.print" />
+		<put-attribute name="body"
+			value="/WEB-INF/content/reports/print/radiusUserStatus.jsp" />
+	</definition>
+
+	<definition name="radius-user-report.tiles" extends="baseLayout">
+		<put-attribute name="title" value="page.title.report.raduis.user" />
+		<put-attribute name="body"
+			value="/WEB-INF/content/reports/radiusUserStatus.jsp" />
+	</definition>
+
+	<!-- Separator -->
+	
 	<definition name="item-print.tiles" extends="printLayout">
 		<put-attribute name="title" value="page.title.print" />
 		<put-attribute name="body"

@@ -6,6 +6,6 @@
 <a href="http://www.google.com">Second Link</a>
 <br />
 <br />
-<a href="<s:url action="reporting"/>">Reports Link</a>
+<a href="<s:url action="item_reports"/>">Reports Link</a>
 <br />
 <br />

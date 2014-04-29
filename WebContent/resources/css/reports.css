@@ -65,6 +65,7 @@ table td {
 .report_from_date {
 	float: right;
 	margin-left: 30px;
+	width: 125px;
 }
 
 .seperator {
@@ -86,4 +87,10 @@ table td {
 
 .report_city {
 	font-weight: bold;
+}
+
+.report_vat {
+	font-size: 10px;
+	font-style: italic;
+	float: left;
 }

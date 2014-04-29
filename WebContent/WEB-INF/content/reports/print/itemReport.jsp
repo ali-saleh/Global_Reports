@@ -2,7 +2,12 @@
 
 <div class="report_results_page balance_results_report">
 	<div class="report_main_title">
-		<s:text name="report.item.title" />
+		<s:if test="%{reportUser != null}">
+			<s:text name="report.item.title.single" />
+		</s:if>
+		<s:else>
+			<s:text name="report.item.title" />
+		</s:else>
 	</div>
 	<div class="report_logo">
 		<img alt="logo"
@@ -74,13 +79,21 @@
 			</s:else>
 		</div>
 		<div style="clear: both;"></div>
-		<div class="report_items">
+		<div class="report_currency">
 			<s:if test="%{currency != null && currency != ''}">
 				<s:text name="report.currency" />
 				<s:property value="currency" escapeHtml="false" />
 			</s:if>
 		</div>
-
+		<div class="report_vat">
+			<s:if test="%{vatSelect}">
+				<s:text name="report.with.vat" />
+			</s:if>
+			<s:else>
+				<s:text name="report.without.vat" />
+			</s:else>
+		</div>
+		<br>
 		<div class="seperator"></div>
 		<div class="seperator"></div>
 		<div style="clear: both;"></div>
