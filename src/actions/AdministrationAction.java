@@ -10,7 +10,7 @@ public class AdministrationAction extends ActionSupport implements UserAware {
 	private static final long serialVersionUID = 5837460494893351128L;
 	
 	private SessionUser user;
-	private String page = "reports";
+	private String page = "admin";
 	
 	public String getPage() {
 		return page;

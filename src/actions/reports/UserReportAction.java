@@ -131,6 +131,15 @@ public class UserReportAction extends BaseReportAction {
 		return SUCCESS;
 	}
 
+	public String userPaymentReport() {
+
+		if (isPrint != null) {
+			return PRINT;
+		}
+
+		return SUCCESS;
+	}
+
 	public String userTypeReport() {
 		UserTypeCondition condition = new UserTypeCondition();
 		if (selectedCity != 0)
@@ -161,15 +170,19 @@ public class UserReportAction extends BaseReportAction {
 
 		return SUCCESS;
 	}
-	
+
 	public String userInactiveReport() {
 		throw new NotImplementedException();
 	}
-	
+
 	public String radiusUserReport() {
 		throw new NotImplementedException();
 	}
-	
+
+	public String radiusVsBillingReport() {
+		throw new NotImplementedException();
+	}
+
 	public List<OutstandingUser> getOutstandingDollar() {
 		return outstandingDollar;
 	}
@@ -286,6 +299,8 @@ public class UserReportAction extends BaseReportAction {
 	public void setGreeting(String greeting) {
 		this.greeting = greeting;
 	}
+
+	// //////////////////////////////////
 
 	private List<OutstandingUser> fillUserInfo(UserReportDAO dao,
 			List<OutstandingUser> outstandingUsers) {

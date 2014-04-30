@@ -2,26 +2,16 @@ package actions;
 
 import interceptors.UserAware;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.StringUtils;
 
 import model.SessionUser;
 import model.UserRoles;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import db.billingdb.dao.custom.impl.InvoiceReportDAO;
-import db.billingdb.dao.custom.impl.ItemReportDAO;
 import db.billingdb.model.custom.Customer;
-import db.billingdb.model.custom.InvoiceCondition;
-import db.billingdb.model.custom.InvoiceReport;
 import db.billingdb.model.custom.Item;
-import db.billingdb.model.custom.ItemReport;
-import db.billingdb.model.custom.ItemReportCondition;
 import db.billingdb.model.custom.SimpleUser;
 
 public class ReportingAction extends ActionSupport implements UserAware {
@@ -40,7 +30,7 @@ public class ReportingAction extends ActionSupport implements UserAware {
 	private List<Customer> customers;
 	private List<SimpleUser> partners;
 	private List<SimpleUser> salesmen;
-	
+
 	private int selectedCity;
 	private String city;
 
@@ -52,34 +42,34 @@ public class ReportingAction extends ActionSupport implements UserAware {
 	private String fromDate;
 	private String toDate;
 	private boolean vatSelect;
-	
+
 	public ReportingAction() {
-		
-		//TODO: Remove this. Only for testing !
+
+		// TODO: Remove this. Only for testing !
 		sessionUser = new SessionUser();
 		sessionUser.setRole(UserRoles.Admin);
 		sessionUser.setName("Ali");
 		sessionUser.setCity(1);
 	}
-	
+
 	public String execute() {
 		page = "other";
 		prepareLists();
 		return SUCCESS;
 	}
-	
+
 	public String prepareItemPage() {
 		this.page = "item";
 		prepareLists();
 		return SUCCESS;
 	}
-	
+
 	public String prepareInvoicePage() {
 		this.page = "invoice";
 		prepareLists();
 		return SUCCESS;
 	}
-	
+
 	public String prepareUserPage() {
 		this.page = "user";
 		prepareLists();
@@ -236,8 +226,10 @@ public class ReportingAction extends ActionSupport implements UserAware {
 		items = ListProvider.getItemList(true);
 		customers = ListProvider.getCustomerList(
 				cityLimit ? sessionUser.getCity() : 0, true);
-		partners = ListProvider.getPartnerList(cityLimit ? sessionUser.getCity() : 0, true);
-		salesmen = ListProvider.getSalesmanList(cityLimit ? sessionUser.getCity() : 0, true);
-		
+		partners = ListProvider.getPartnerList(
+				cityLimit ? sessionUser.getCity() : 0, true);
+		salesmen = ListProvider.getSalesmanList(
+				cityLimit ? sessionUser.getCity() : 0, true);
+
 	}
 }

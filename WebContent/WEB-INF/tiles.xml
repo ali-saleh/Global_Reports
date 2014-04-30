@@ -193,6 +193,20 @@
 	</definition>
 
 	<!-- Separator -->
+			
+	<definition name="radius-billing-print.tiles" extends="printLayout">
+		<put-attribute name="title" value="page.title.print" />
+		<put-attribute name="body"
+			value="/WEB-INF/content/reports/print/radiusBillingReport.jsp" />
+	</definition>
+
+	<definition name="radius-billing-report.tiles" extends="baseLayout">
+		<put-attribute name="title" value="page.title.report.raduis.user" />
+		<put-attribute name="body"
+			value="/WEB-INF/content/reports/radiusBillingReport.jsp" />
+	</definition>
+
+	<!-- Separator -->
 	
 	<definition name="item-print.tiles" extends="printLayout">
 		<put-attribute name="title" value="page.title.print" />

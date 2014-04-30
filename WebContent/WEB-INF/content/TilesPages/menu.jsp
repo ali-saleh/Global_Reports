@@ -29,7 +29,7 @@
 	</s:if>
 	">
 		<a href="<s:url action="user_reports"/>"><s:text
-				name="navigation.customer.reports" /></a><br>
+				name="navigation.user.reports" /></a><br>
 	</div>
 
 	<div

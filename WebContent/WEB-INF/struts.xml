@@ -45,9 +45,14 @@
 
 		<action name="loginUser" class="actions.LoginAction" method="loginUser">
 			<interceptor-ref name="defaultStack" />
-			<result name="admin" type="tiles">admin.tiles</result>
+			<result name="admin" type="redirect">/admin</result>
 			<result name="success" type="tiles">main.tiles</result>
 			<result name="error" type="tiles">login.tiles</result>
+		</action>
+
+		<action name="admin" class="actions.AdministrationAction">
+			<interceptor-ref name="adminStack" />
+			<result name="success" type="tiles">admin.tiles</result>
 		</action>
 
 		<action name="logout" class="actions.LoginAction" method="logout" />
@@ -63,25 +68,25 @@
 
 		<action name="item_reports" class="actions.ReportingAction"
 			method="prepareItemPage">
-			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
 			<result name="success" type="tiles">item.tiles</result>
 		</action>
 
 		<action name="invoice_reports" class="actions.ReportingAction"
 			method="prepareInvoicePage">
-			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
 			<result name="success" type="tiles">invoice.tiles</result>
 		</action>
 
 		<action name="user_reports" class="actions.ReportingAction"
 			method="prepareUserPage">
-			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
 			<result name="success" type="tiles">user.tiles</result>
 		</action>
 
 		<action name="payment_reports" class="actions.ReportingAction"
 			method="preparePaymentPage">
-			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
 			<result name="success" type="tiles">payment.tiles</result>
 		</action>
 
@@ -90,54 +95,54 @@
 		<!-- Separator -->
 
 		<action name="invoice_report" class="actions.reports.InvoiceReportAction">
-			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
 			<result name="print" type="tiles">invoice-print.tiles</result>
 			<result name="success" type="tiles">invoice-report.tiles</result>
 		</action>
 
 		<action name="payment_report" class="actions.reports.PaymentReportAction">
-			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
 			<result name="print" type="tiles">payment-print.tiles</result>
 			<result name="success" type="tiles">payment-report.tiles</result>
 		</action>
 
 		<action name="item_report" class="actions.reports.ItemReportAction">
-			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
 			<result name="print" type="tiles">item-print.tiles</result>
 			<result name="success" type="tiles">item-report.tiles</result>
 		</action>
 
 		<action name="outstanding_report" class="actions.reports.UserReportAction"
 			method="outstandingReport">
-			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
 			<result name="print" type="tiles">outstanding-print.tiles</result>
 			<result name="success" type="tiles">outstanding-report.tiles</result>
 		</action>
 
 		<action name="user_service_report" class="actions.reports.UserReportAction"
 			method="userServiceReport">
-			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
 			<result name="print" type="tiles">user-service-print.tiles</result>
 			<result name="success" type="tiles">user-service-report.tiles</result>
 		</action>
 
 		<action name="user_payment_report" class="actions.reports.UserReportAction"
 			method="userPaymentReport">
-			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
 			<result name="print" type="tiles">user-payment-print.tiles</result>
 			<result name="success" type="tiles">user-payment-report.tiles</result>
 		</action>
 
 		<action name="user_type_report" class="actions.reports.UserReportAction"
 			method="userTypeReport">
-			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
 			<result name="print" type="tiles">user-type-print.tiles</result>
 			<result name="success" type="tiles">user-type-report.tiles</result>
 		</action>
 
 		<action name="user_inactive_report" class="actions.reports.UserReportAction"
 			method="userInactiveReport">
-			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
 			<result name="print" type="tiles">user-inactive-print.tiles</result>
 			<result name="success" type="tiles">user-inactive-report.tiles
 			</result>
@@ -145,9 +150,17 @@
 
 		<action name="radius_user_report" class="actions.reports.UserReportAction"
 			method="radiusUserReport">
-			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
 			<result name="print" type="tiles">radius-user-print.tiles</result>
 			<result name="success" type="tiles">radius-user-report.tiles
+			</result>
+		</action>
+
+		<action name="radius_billing_report" class="actions.reports.UserReportAction"
+			method="radiusVsBillingReport">
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
+			<result name="print" type="tiles">radius-billing-print.tiles</result>
+			<result name="success" type="tiles">radius-billing-report.tiles
 			</result>
 		</action>
 
